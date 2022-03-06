@@ -3,7 +3,6 @@ package user
 import (
 	"catering/model"
 	"catering/model/common/response"
-	"fmt"
 )
 
 type UserAddressDetail struct {
@@ -35,26 +34,26 @@ func (impl userAddressServiceImpl) Count() int {
 }
 
 func (impl userAddressServiceImpl) ListPage(pageNum, pageSize int, params *model.UserAddress) *response.ApiResponse {
-	addr, err := model.ListUserAddressPage(pageNum, pageSize, params)
-	if err != nil {
-		fmt.Println(err)
-		return nil
-	}
+	// addr, err := model.ListUserAddressPage(pageNum, pageSize, params)
+	// if err != nil {
+	// 	fmt.Println(err)
+	// 	return nil
+	// }
 	var details []*UserAddressDetail
-	for _, item := range addr {
-		tags := model.ListAddressTagByAddressId(int(item.Id))
+	// for _, item := range addr {
+	// 	// tags := model.ListAddressTagByAddressId(int(item.Id))
 
-		pro := model.GetProvinceById(item.ProvinceId)
-		ci := model.GetCityById(item.CityId)
-		di := model.GetDistrictById(item.DistinctId)
-		details = append(details, &UserAddressDetail{
-			Addr:     item,
-			Tags:     tags,
-			Province: pro,
-			City:     ci,
-			District: di,
-		})
-	}
+	// 	// pro := model.GetProvinceById(item.ProvinceId)
+	// 	// ci := model.GetCityById(item.CityId)
+	// 	// di := model.GetDistrictById(item.DistinctId)
+	// 	// details = append(details, &UserAddressDetail{
+	// 	// 	Addr:     item,
+	// 	// 	Tags:     tags,
+	// 	// 	Province: pro,
+	// 	// 	City:     ci,
+	// 	// 	District: di,
+	// 	// })
+	// }
 	total := impl.Count()
 	res := &response.ApiResponse{List: details, Total: total}
 	return res

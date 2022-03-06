@@ -1,6 +1,7 @@
 package shop
 
 import (
+	"catering/global"
 	"catering/model"
 	"catering/model/common/response"
 	"fmt"
@@ -16,20 +17,31 @@ type shopCategoryServiceImpl struct {
 }
 
 func (impl shopCategoryServiceImpl) Add(params *model.ShopCategory) error {
-	return model.AddShopCategory(params)
+	return global.DB.Create(&params).Error
 }
 func (impl shopCategoryServiceImpl) Delete(id uint64) error {
-	return model.DeleteShopCategory(id)
+	return global.DB.Delete(&model.ShopCategory{}, id).Error
 }
 func (impl shopCategoryServiceImpl) Update(params *model.ShopCategory) error {
-	return model.UpdateShopCategory(params)
+	return global.DB.Model(&model.ShopCategory{}).Where("id = ?", params.Id).Updates(&params).Error
 }
 
-func (impl shopCategoryServiceImpl) GetById(id uint64) *model.ShopCategory {
-	return model.GetShopCategoryById(id)
+func (impl shopCategoryServiceImpl) GetOne(params *model.ShopCategory) *model.ShopCategory {
+	var res model.ShopCategory
+	err := global.DB.Where(&params).First(&res).Error
+	if err != nil {
+		return nil
+	}
+	return &res
 }
 func (impl shopCategoryServiceImpl) List(params *model.ShopCategory) []*model.ShopCategory {
-	return model.ListShopCategory(params)
+	var res []*model.ShopCategory
+	err := global.DB.Where(&params).Find(&res).Error
+	if err != nil {
+		fmt.Println(err)
+		return nil
+	}
+	return res
 }
 
 func (impl shopCategoryServiceImpl) Count() int {
@@ -37,12 +49,13 @@ func (impl shopCategoryServiceImpl) Count() int {
 }
 
 func (impl shopCategoryServiceImpl) ListPage(pageNum, pageSize int, params *model.ShopCategory) *response.ApiResponse {
-	shopCategorys, err := model.ListShopCategoryPage(pageNum, pageSize, params)
+	var shopCategorys []*model.ShopCategory
+	err := global.DB.Where(&params).Find(&shopCategorys).Error
 	if err != nil {
 		fmt.Println(err)
 		return nil
 	}
-	total := model.CountShopCategory()
-	res := &response.ApiResponse{List: shopCategorys, Total: total}
-	return res
+	var total int64
+	global.DB.Model(&model.ShopCategory{}).Where(&params).Count(&total)
+	return &response.ApiResponse{List: shopCategorys, Total: int(total)}
 }

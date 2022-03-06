@@ -3,23 +3,15 @@ package voucher_get_log
 import (
 	"catering/model"
 	"catering/model/common/response"
+	"catering/model/voucher/request"
 	"catering/pkg/app"
 
 	"github.com/gin-gonic/gin"
 )
 
-type QueryParams struct {
-	PageSize  int    `uri:"pageSize" json:"pageSize" form:"pageSize" valid:"Required"`
-	PageNum   int    `uri:"pageNum" json:"pageNum" form:"pageNum" valid:"Required"`
-	Uid       int    `uri:"uid" json:"uid" form:"uid"`
-	VoucherId uint64 `uri:"voucher_id" json:"voucher_id" form:"voucher_id"`
-	UseStatus uint32 `uri:"use_status" json:"use_status" form:"use_status"`
-	GetType   uint32 `uri:"get_type" json:"get_type" form:"get_type"`
-}
-
-func List(c *gin.Context) {
+func ListPage(c *gin.Context) {
 	var (
-		form = QueryParams{}
+		form = request.VoucherGetLogQueryParams{}
 	)
 	msg, err := app.BindAndValid(c, &form)
 	if err != nil {

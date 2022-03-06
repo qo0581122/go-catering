@@ -1,6 +1,7 @@
 package coupon
 
 import (
+	"catering/global"
 	"catering/model"
 	"catering/model/common/response"
 	"fmt"
@@ -16,64 +17,55 @@ type couponServiceImpl struct {
 }
 
 func (impl couponServiceImpl) Add(params *model.Coupon) error {
-	return model.AddCoupon(params)
+	return global.DB.Create(&params).Error
 }
 func (impl couponServiceImpl) Delete(id uint64) error {
-	return model.DeleteCoupon(id)
+	return global.DB.Delete(&model.Coupon{}, id).Error
 }
 func (impl couponServiceImpl) Update(params *model.Coupon) error {
-	return model.UpdateCoupon(params)
+	return global.DB.Model(&model.Coupon{}).Where("id = ?", params.Id).Updates(&params).Error
 }
 
-func (impl couponServiceImpl) GetById(id uint64) *model.Coupon {
-	return model.GetCouponById(id)
+func (impl couponServiceImpl) GetOne(params *model.Coupon) *model.Coupon {
+	var res model.Coupon
+	err := global.DB.Where(&params).First(&res).Error
+	if err != nil {
+		return nil
+	}
+	return &res
 }
+
 func (impl couponServiceImpl) List(params *model.Coupon) []*model.Coupon {
-	return model.ListCoupon(params)
-}
-
-func (impl couponServiceImpl) Count() int {
-	return model.CountUserAddress()
-}
-
-func (impl couponServiceImpl) ListPage(pageNum, pageSize int, params *model.Coupon) *response.ApiResponse {
-	coupons, err := model.ListCouponPage(pageNum, pageSize, params)
+	var coupons []*model.Coupon
+	err := global.DB.Where(&params).Find(&coupons).Error
 	if err != nil {
 		fmt.Println(err)
 		return nil
 	}
-	var detail []*model.CouponDetail
-	for _, item := range coupons {
-		productId := item.ProductId
-		product := model.GetProductById(productId)
-		detail = append(detail, &model.CouponDetail{
-			Coupon:  item,
-			Product: product,
-		})
-	}
-	count := model.CountCoupon()
-	res := &response.ApiResponse{
-		List:  detail,
-		Total: count,
-	}
-	return res
+	return coupons
 }
 
-func (impl couponServiceImpl) ListByProductId(pid uint64) []*model.CouponDetail {
-	var result []*model.CouponDetail
-	coupons := model.ListCoupon(&model.Coupon{
-		ProductId: pid,
-	})
-	if len(result) <= 0 {
-		return result
+func (impl couponServiceImpl) Count() int {
+	var count int64
+	global.DB.Model(&model.Coupon{}).Count(&count)
+	return int(count)
+}
+
+func (impl couponServiceImpl) ListPage(pageNum, pageSize int, params *model.Coupon) *response.ApiResponse {
+	var coupons []*model.Coupon
+	if params.Name != "" {
+		global.DB = global.DB.Where("coupon_name LIKE ?", "%"+params.Name+"%")
+		params.Name = ""
 	}
-	for _, item := range coupons {
-		productId := item.ProductId
-		product := model.GetProductById(productId)
-		result = append(result, &model.CouponDetail{
-			Coupon:  item,
-			Product: product,
-		})
+	err := global.DB.Preload("Product").Where(&params).Scopes(model.Paginate(pageNum, pageSize)).Find(&coupons).Error
+	if err != nil {
+		return nil
 	}
-	return result
+
+	var count int64
+	global.DB.Model(&model.Coupon{}).Count(&count)
+	return &response.ApiResponse{
+		List:  coupons,
+		Total: int(count),
+	}
 }

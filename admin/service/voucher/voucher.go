@@ -1,9 +1,9 @@
 package voucher
 
 import (
+	"catering/global"
 	"catering/model"
 	"catering/model/common/response"
-	"fmt"
 )
 
 var VoucherService voucherService = NewVoucherService()
@@ -16,36 +16,49 @@ type voucherServiceImpl struct {
 }
 
 func (impl voucherServiceImpl) Add(params *model.Voucher) error {
-	return model.AddVoucher(params)
+	return global.DB.Create(&params).Error
 }
 func (impl voucherServiceImpl) Delete(id uint64) error {
-	return model.DeleteVoucher(id)
+	return global.DB.Delete(&model.Voucher{}, id).Error
 }
 func (impl voucherServiceImpl) Update(params *model.Voucher) error {
-	return model.UpdateVoucher(params)
+	return global.DB.Model(&model.Voucher{}).Where("id = ?", params.Id).Updates(&params).Error
 }
 
-func (impl voucherServiceImpl) GetById(id uint64) *model.Voucher {
-	return model.GetVoucherById(id)
+func (impl voucherServiceImpl) GetOne(params *model.Voucher) *model.Voucher {
+	var res *model.Voucher
+	err := global.DB.Where(&params).First(&res).Error
+	if err != nil {
+		return nil
+	}
+	return res
 }
 func (impl voucherServiceImpl) List(params *model.Voucher) []*model.Voucher {
-	return model.ListVoucher(params)
+	var vouchers []*model.Voucher
+	err := global.DB.Where(&params).Find(&vouchers).Error
+	if err != nil {
+		return nil
+	}
+	return vouchers
 }
 
 func (impl voucherServiceImpl) Count() int {
-	return model.CountUserAddress()
+	var count int64
+	global.DB.Model(&model.Voucher{}).Count(&count)
+	return int(count)
 }
 
 func (impl voucherServiceImpl) ListPage(pageNum, pageSize int, params *model.Voucher) *response.ApiResponse {
-	vouchers, err := model.ListVoucherPage(pageNum, pageSize, params)
+	var vouchers []*model.Voucher
+	err := global.DB.Where(&params).Find(&vouchers).Error
 	if err != nil {
-		fmt.Println(err)
 		return nil
 	}
-	count := model.CountVoucher()
+	var count int64
+	global.DB.Model(&model.Voucher{}).Where(&params).Count(&count)
 	res := &response.ApiResponse{
 		List:  vouchers,
-		Total: count,
+		Total: int(count),
 	}
 	return res
 }

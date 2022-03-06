@@ -10,14 +10,14 @@ import (
 type ShopRouter struct{}
 
 func (d *ShopRouter) InitShopRouter(Router *gin.RouterGroup) {
-	r := Router.Group("shops").Use(middleware.OperationRecord())
+	r := Router.Group("shops").Use()
 	{
-		r.GET("", shop.List)
+		r.GET("page", shop.ListPage)
 	}
 	r = Router.Group("shop").Use(middleware.OperationRecord())
 	{
-		r.POST("add", shop.Add)
-		r.POST("update", shop.Update)
-		r.DELETE("delete/:id", shop.Delete)
+		r.PUT("", shop.Add)
+		r.POST("", shop.Update)
+		r.DELETE(":id", shop.Delete)
 	}
 }

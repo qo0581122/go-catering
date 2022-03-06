@@ -1,15 +1,11 @@
 package coupon
 
 import (
+	"catering/global"
 	"catering/model"
 	"catering/model/common/response"
 	"fmt"
 )
-
-type CouponGetLogDetail struct {
-	Log    *model.CouponGetLog `json:"log"`
-	Coupon *model.Coupon       `json:"coupon"`
-}
 
 var CouponGetLogService couponGetLogService = NewCouponGetLogService()
 
@@ -20,33 +16,38 @@ func NewCouponGetLogService() couponGetLogService {
 type couponGetLogServiceImpl struct {
 }
 
-func (impl couponGetLogServiceImpl) GetById(id uint64) *model.CouponGetLog {
-	return model.GetCouponGetLogById(id)
+func (impl couponGetLogServiceImpl) GetOne(params *model.CouponGetLog) *model.CouponGetLog {
+	var res *model.CouponGetLog
+	err := global.DB.Where(&params).First(&res).Error
+	if err != nil {
+		return nil
+	}
+	return res
 }
 func (impl couponGetLogServiceImpl) List(params *model.CouponGetLog) []*model.CouponGetLog {
-	return model.ListCouponGetLog(params)
-}
-
-func (impl couponGetLogServiceImpl) Count() int {
-	return model.CountUserAddress()
-}
-
-func (impl couponGetLogServiceImpl) ListPage(pageNum, pageSize int, params *model.CouponGetLog) *response.ApiResponse {
-	logs, err := model.ListCouponGetLogPage(pageNum, pageSize, params)
+	var coupons []*model.CouponGetLog
+	err := global.DB.Where(&params).Find(&coupons).Error
 	if err != nil {
 		fmt.Println(err)
 		return nil
 	}
-	var result []*CouponGetLogDetail
-	for _, item := range logs {
-		couponId := item.CouponId
-		coupon := model.GetCouponById(couponId)
-		result = append(result, &CouponGetLogDetail{
-			Log:    item,
-			Coupon: coupon,
-		})
+	return coupons
+}
+
+func (impl couponGetLogServiceImpl) Count() int {
+	var count int64
+	global.DB.Model(&model.CouponGetLog{}).Count(&count)
+	return int(count)
+}
+
+func (impl couponGetLogServiceImpl) ListPage(pageNum, pageSize int, params *model.CouponGetLog) *response.ApiResponse {
+	var logs []*model.CouponGetLog
+	err := global.DB.Preload("Coupon").Where(&params).Scopes(model.Paginate(pageNum, pageSize)).Find(&logs).Error
+	if err != nil {
+		return nil
 	}
-	total := impl.Count()
-	res := &response.ApiResponse{List: result, Total: total}
+	var total int64
+	global.DB.Model(&model.CouponGetLog{}).Count(&total)
+	res := &response.ApiResponse{List: logs, Total: int(total)}
 	return res
 }

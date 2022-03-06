@@ -10,15 +10,15 @@ import (
 type CityRouter struct{}
 
 func (d *CityRouter) InitCityRouter(Router *gin.RouterGroup) {
-	r := Router.Group("citys").Use(middleware.OperationRecord())
+	r := Router.Group("citys").Use()
 	{
+		r.GET("page", city.ListPage)
 		r.GET("", city.List)
-		r.GET("province/:id", city.ListCityByProvinceId)
 	}
 	r = Router.Group("city").Use(middleware.OperationRecord())
 	{
-		r.POST("create", city.Add)
-		r.POST("update", city.Update)
-		r.DELETE("delete/:id", city.Delete)
+		r.PUT("", city.Add)
+		r.POST("", city.Update)
+		r.DELETE(":id", city.Delete)
 	}
 }

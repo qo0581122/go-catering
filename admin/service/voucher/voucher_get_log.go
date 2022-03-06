@@ -1,17 +1,13 @@
 package voucher
 
 import (
+	"catering/global"
 	"catering/model"
 	"catering/model/common/response"
 	"fmt"
 )
 
 var VoucherGetLogService voucherGetLogService = NewVoucherGetLogService()
-
-type VoucherGetLogDetail struct {
-	Log     *model.VoucherGetLog `json:"log"`
-	Voucher *model.Voucher       `json:"voucher"`
-}
 
 func NewVoucherGetLogService() voucherGetLogService {
 	return voucherGetLogServiceImpl{}
@@ -20,33 +16,38 @@ func NewVoucherGetLogService() voucherGetLogService {
 type voucherGetLogServiceImpl struct {
 }
 
-func (impl voucherGetLogServiceImpl) GetById(id uint64) *model.VoucherGetLog {
-	return model.GetVoucherGetLogById(id)
+func (impl voucherGetLogServiceImpl) GetOne(params *model.VoucherGetLog) *model.VoucherGetLog {
+	var res model.VoucherGetLog
+	err := global.DB.Where(&params).First(&res).Error
+	if err != nil {
+		return nil
+	}
+	return &res
 }
 func (impl voucherGetLogServiceImpl) List(params *model.VoucherGetLog) []*model.VoucherGetLog {
-	return model.ListVoucherGetLog(params)
-}
-
-func (impl voucherGetLogServiceImpl) Count() int {
-	return model.CountUserAddress()
-}
-
-func (impl voucherGetLogServiceImpl) ListPage(pageNum, pageSize int, params *model.VoucherGetLog) *response.ApiResponse {
-	logs, err := model.ListVoucherGetLogPage(pageNum, pageSize, params)
+	var logs []*model.VoucherGetLog
+	err := global.DB.Where(&params).Find(&logs).Error
 	if err != nil {
 		fmt.Println(err)
 		return nil
 	}
-	var result []*VoucherGetLogDetail
-	for _, item := range logs {
-		voucherId := item.VoucherId
-		voucher := model.GetVoucherById(voucherId)
-		result = append(result, &VoucherGetLogDetail{
-			Log:     item,
-			Voucher: voucher,
-		})
+	return logs
+}
+
+func (impl voucherGetLogServiceImpl) Count() int {
+	var count int64
+	global.DB.Model(&model.VoucherGetLog{}).Count(&count)
+	return int(count)
+}
+
+func (impl voucherGetLogServiceImpl) ListPage(pageNum, pageSize int, params *model.VoucherGetLog) *response.ApiResponse {
+	var logs []*model.VoucherGetLog
+	err := global.DB.Preload("Voucher").Where(&params).Scopes(model.Paginate(pageNum, pageSize)).Find(&logs).Error
+	if err != nil {
+		return nil
 	}
-	total := impl.Count()
-	res := &response.ApiResponse{List: result, Total: total}
+	var total int64
+	global.DB.Model(&model.VoucherGetLog{}).Where(&params).Count(&total)
+	res := &response.ApiResponse{List: logs, Total: int(total)}
 	return res
 }

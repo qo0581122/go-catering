@@ -1,9 +1,9 @@
 package area
 
 import (
+	"catering/global"
 	"catering/model"
 	"catering/model/common/response"
-	"fmt"
 )
 
 var ProvinceService provinceService = NewProvinceService()
@@ -16,33 +16,58 @@ type provinceServiceImpl struct {
 }
 
 func (impl provinceServiceImpl) Add(params *model.Province) error {
-	return model.AddProvince(params)
+	return global.DB.Create(&params).Error
 }
 func (impl provinceServiceImpl) Delete(id uint64) error {
-	return model.DeleteProvince(id)
+	return global.DB.Delete(&model.Province{}, id).Error
 }
 func (impl provinceServiceImpl) Update(params *model.Province) error {
-	return model.UpdateProvince(params)
+	return global.DB.Model(&model.Province{}).Where("id = ?", params.Id).Updates(&params).Error
 }
 
-func (impl provinceServiceImpl) GetById(id uint64) *model.Province {
-	return model.GetProvinceById(id)
+func (impl provinceServiceImpl) Get(params *model.Province) *model.Province {
+	var province model.Province
+	err := global.DB.Where(&params).First(&province).Error
+	if err != nil {
+		return nil
+	}
+	return &province
 }
+
 func (impl provinceServiceImpl) List(params *model.Province) []*model.Province {
-	return model.ListProvince(params)
+	var provinces []*model.Province
+	if params.ProvinceName != "" {
+		global.DB = global.DB.Where("province_name LIKE ?", "%"+params.ProvinceName+"%")
+		params.ProvinceName = ""
+	}
+	err := global.DB.Where(&params).Find(&provinces).Error
+	if err != nil {
+		return provinces
+	}
+	return provinces
 }
 
 func (impl provinceServiceImpl) Count() int {
-	return model.CountUserAddress()
+	var total int64
+	global.DB.Model(&model.Province{}).Count(&total)
+	return int(total)
 }
 
 func (impl provinceServiceImpl) ListPage(pageNum, pageSize int, params *model.Province) *response.ApiResponse {
-	provinces, err := model.ListProvincePage(pageNum, pageSize, params)
-	if err != nil {
-		fmt.Println(err)
-		return nil
+	res := &response.ApiResponse{}
+
+	var provinces []*model.Province
+	if params.ProvinceName != "" {
+		global.DB = global.DB.Where("province_name LIKE ?", "%"+params.ProvinceName+"%")
+		params.ProvinceName = ""
 	}
-	total := model.CountProvince()
-	res := &response.ApiResponse{List: provinces, Total: total}
+	err := global.DB.Where(&params).Scopes(model.Paginate(pageNum, pageSize)).Find(&provinces).Error
+	if err != nil {
+		return res
+	}
+	var total int64
+	global.DB.Model(&model.Province{}).Where(&params).Count(&total)
+	res.List = provinces
+	res.Total = int(total)
 	return res
 }

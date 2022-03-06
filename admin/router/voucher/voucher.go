@@ -11,16 +11,16 @@ import (
 type VoucherRouter struct{}
 
 func (d *VoucherRouter) InitVoucherRouter(Router *gin.RouterGroup) {
-	r := Router.Group("vouchers").Use(middleware.OperationRecord())
+	r := Router.Group("vouchers").Use()
 	{
-		r.GET("", voucher.List)
+		r.GET("page", voucher.ListPage)
 
-		r.GET("get-logs", voucher_get_log.List)
+		r.GET("getLogs", voucher_get_log.ListPage)
 	}
 	r = Router.Group("voucher").Use(middleware.OperationRecord())
 	{
-		r.POST("add", voucher.Add)
-		r.POST("update", voucher.Update)
-		r.DELETE("delete/:id", voucher.Delete)
+		r.PUT("", voucher.Add)
+		r.POST("", voucher.Update)
+		r.DELETE(":id", voucher.Delete)
 	}
 }

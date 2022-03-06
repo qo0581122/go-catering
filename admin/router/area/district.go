@@ -10,15 +10,15 @@ import (
 type DistrictRouter struct{}
 
 func (d *DistrictRouter) InitDistrictRouter(Router *gin.RouterGroup) {
-	r := Router.Group("districts").Use(middleware.OperationRecord())
+	r := Router.Group("districts").Use()
 	{
+		r.GET("page", district.ListPage)
 		r.GET("", district.List)
-		r.GET("city/:id", district.ListDistrictByCityId)
 	}
 	r = Router.Group("district").Use(middleware.OperationRecord())
 	{
-		r.POST("create", district.Add)
-		r.POST("update", district.Update)
-		r.DELETE("delete/:id", district.Delete)
+		r.PUT("", district.Add)
+		r.POST("", district.Update)
+		r.DELETE(":id", district.Delete)
 	}
 }

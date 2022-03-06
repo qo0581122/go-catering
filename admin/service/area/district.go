@@ -1,17 +1,11 @@
 package area
 
 import (
+	"catering/global"
 	"catering/model"
-	"catering/model/common/response"
-	"fmt"
+	"catering/model/area/response"
+	common "catering/model/common/response"
 )
-
-type DistrictDetail struct {
-	*model.District
-	ProvinceName string `json:"province_name"`
-	CityName     string `json:"city_name"`
-	ProvinceId   uint64 `json:"province_id"`
-}
 
 var DistrictService districtService = NewDistrictService()
 
@@ -23,44 +17,70 @@ type districtServiceImpl struct {
 }
 
 func (impl districtServiceImpl) Add(params *model.District) error {
-	return model.AddDistrict(params)
+	return global.DB.Create(&params).Error
 }
 func (impl districtServiceImpl) Delete(id uint64) error {
-	return model.DeleteDistrict(id)
+	return global.DB.Delete(&model.District{}, id).Error
 }
 func (impl districtServiceImpl) Update(params *model.District) error {
-	return model.UpdateDistrict(params)
+	return global.DB.Model(&model.District{}).Where("id = ?", params.Id).Updates(&params).Error
 }
 
-func (impl districtServiceImpl) GetById(id uint64) *model.District {
-	return model.GetDistrictById(id)
+func (impl districtServiceImpl) Get(params *model.District) *model.District {
+	var district model.District
+	err := global.DB.Where(&params).First(&district).Error
+	if err != nil {
+		return nil
+	}
+	return &district
 }
+
 func (impl districtServiceImpl) List(params *model.District) []*model.District {
-	return model.ListDistrict(params)
+	var districts []*model.District
+	if params.DistrictName != "" {
+		global.DB = global.DB.Where("district_name LIKE ?", "%"+params.DistrictName+"%")
+		params.DistrictName = ""
+	}
+	err := global.DB.Where(&params).Find(&districts).Error
+	if err != nil {
+		return nil
+	}
+	return districts
 }
 
 func (impl districtServiceImpl) Count() int {
-	return model.CountUserAddress()
+	var total int64
+	global.DB.Model(&model.Province{}).Count(&total)
+	return int(total)
 }
 
-func (impl districtServiceImpl) ListPage(pageNum, pageSize int, params *model.District) *response.ApiResponse {
-	districts, err := model.ListDistrictPage(pageNum, pageSize, params)
-	if err != nil {
-		fmt.Println(err)
-		return nil
+func (impl districtServiceImpl) ListPage(pageNum, pageSize int, params *model.District) *common.ApiResponse {
+	res := &common.ApiResponse{}
+	var districts []*response.DistrictDetail
+	var datas []*model.District
+	if params.DistrictName != "" {
+		global.DB = global.DB.Where("district_name LIKE ?", "%"+params.DistrictName+"%")
+		params.DistrictName = ""
 	}
-	total := model.CountDistrict()
-	var detail []*DistrictDetail
-	for _, item := range districts {
-		city := model.GetCityById(item.CityId)
-		province := model.GetProvinceById(city.ProvinceId)
-		detail = append(detail, &DistrictDetail{
+	err := global.DB.Preload("City").Preload("City.Province").Where(&params).Scopes(model.Paginate(pageNum, pageSize)).Find(&datas).Error
+	if err != nil {
+		return res
+	}
+	for _, item := range datas {
+		cityName := item.City.CityName
+		provinceName := item.City.Province.ProvinceName
+		provinceId := item.City.ProvinceId
+		item.City = nil
+		districts = append(districts, &response.DistrictDetail{
 			District:     item,
-			ProvinceName: province.ProvinceName,
-			CityName:     city.CityName,
-			ProvinceId:   province.Id,
+			ProvinceName: provinceName,
+			CityName:     cityName,
+			ProvinceId:   provinceId,
 		})
 	}
-	res := &response.ApiResponse{List: detail, Total: total}
+	var total int64
+	global.DB.Model(&model.Province{}).Where(&params).Count(&total)
+	res.List = districts
+	res.Total = int(total)
 	return res
 }

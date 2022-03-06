@@ -2,6 +2,7 @@ package city
 
 import (
 	"catering/model"
+	"catering/model/area/request"
 	"catering/model/common/response"
 	"catering/pkg/app"
 	"strconv"
@@ -9,22 +10,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type QueryParams struct {
-	PageSize   int    `uri:"pageSize" json:"pageSize" form:"pageSize" valid:"Required"`
-	PageNum    int    `uri:"pageNum" json:"pageNum" form:"pageNum" valid:"Required"`
-	CityName   string `uri:"city_name"  form:"city_name" json:"city_name"`
-	Status     int    `uri:"status" json:"status" form:"status"`
-	ProvinceId uint64 `uri:"province_id"  form:"province_id" json:"province_id"`
-}
-
-type ResponseCity struct {
-	*model.City
-	Province_name string `json:"province_name" `
-}
-
-func List(c *gin.Context) {
+func ListPage(c *gin.Context) {
 	var (
-		params = QueryParams{}
+		params = request.CityQueryParams{}
 	)
 	msg, err := app.BindAndValid(c, &params)
 	if err != nil {
@@ -40,15 +28,9 @@ func List(c *gin.Context) {
 	response.OkWithData(res, c)
 }
 
-type AddCityForm struct {
-	ProvinceId uint64 `form:"province_id" json:"province_id" valid:"Required"`
-	Status     int    `form:"status" json:"status" valid:"Range(1,2)"`
-	CityName   string `json:"city_name" form:"city_name" valid:"Required"`
-}
-
 func Add(c *gin.Context) {
 	var (
-		form = AddCityForm{}
+		form = request.CityAddForm{}
 	)
 	msg, err := app.BindAndValid(c, &form)
 	if err != nil {
@@ -68,16 +50,9 @@ func Add(c *gin.Context) {
 	response.Fail(c)
 }
 
-type UpdateCityForm struct {
-	Id         uint64 `form:"id" json:"id" valid:"Required"`
-	ProvinceId uint64 `form:"province_id" json:"province_id" valid:"Required"`
-	Status     int    `form:"status" json:"status" valid:"Range(1,2)"`
-	CityName   string `json:"city_name" form:"city_name" valid:"Required"`
-}
-
 func Update(c *gin.Context) {
 	var (
-		form = UpdateCityForm{}
+		form = request.CityUpdateForm{}
 	)
 	msg, err := app.BindAndValid(c, &form)
 	if err != nil {
@@ -100,7 +75,6 @@ func Update(c *gin.Context) {
 
 func Delete(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
-	// id, _ := strconv.Atoi(c.DefaultQuery("id", ""))
 	err := cityService.Delete(uint64(id))
 	if err != nil {
 		response.Fail(c)
@@ -109,11 +83,17 @@ func Delete(c *gin.Context) {
 	response.Ok(c)
 }
 
-func ListCityByProvinceId(c *gin.Context) {
-	id, _ := strconv.Atoi(c.Param("id"))
-	// id, _ := strconv.Atoi(c.DefaultQuery("province_id", ""))
+func List(c *gin.Context) {
+	var (
+		form = request.CityListParams{}
+	)
+	msg, err := app.BindAndValid(c, &form)
+	if err != nil {
+		response.FailWithMessage(msg, c)
+		return
+	}
 	city := &model.City{
-		ProvinceId: uint64(id),
+		ProvinceId: form.ProvinceId,
 	}
 	res := cityService.List(city)
 	response.OkWithData(response.NewApiResponse(res), c)

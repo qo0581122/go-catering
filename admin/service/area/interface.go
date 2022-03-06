@@ -7,7 +7,7 @@ import (
 
 type cityService interface {
 	ListPage(pageNum, pageSize int, params *model.City) *response.ApiResponse
-	GetById(id uint64) *model.City
+	Get(params *model.City) *model.City
 	List(params *model.City) []*model.City
 	Count() int
 	Add(params *model.City) error
@@ -17,7 +17,7 @@ type cityService interface {
 
 type provinceService interface {
 	ListPage(pageNum, pageSize int, params *model.Province) *response.ApiResponse
-	GetById(id uint64) *model.Province
+	Get(params *model.Province) *model.Province
 	List(params *model.Province) []*model.Province
 	Count() int
 	Add(params *model.Province) error
@@ -27,7 +27,7 @@ type provinceService interface {
 
 type districtService interface {
 	ListPage(pageNum, pageSize int, params *model.District) *response.ApiResponse
-	GetById(id uint64) *model.District
+	Get(params *model.District) *model.District
 	List(params *model.District) []*model.District
 	Count() int
 	Add(params *model.District) error

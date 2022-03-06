@@ -7,14 +7,14 @@ import (
 
 type voucherGetLogService interface {
 	ListPage(pageNum, pageSize int, params *model.VoucherGetLog) *response.ApiResponse
-	GetById(id uint64) *model.VoucherGetLog
+	GetOne(params *model.VoucherGetLog) *model.VoucherGetLog
 	List(params *model.VoucherGetLog) []*model.VoucherGetLog
 	Count() int
 }
 
 type voucherService interface {
 	ListPage(pageNum, pageSize int, params *model.Voucher) *response.ApiResponse
-	GetById(id uint64) *model.Voucher
+	GetOne(params *model.Voucher) *model.Voucher
 	List(params *model.Voucher) []*model.Voucher
 	Count() int
 	Add(params *model.Voucher) error
