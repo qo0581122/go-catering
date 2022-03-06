@@ -1,0 +1,512 @@
+[catering]2022/02/10 - 17:37:33.430	[34minfo[0m	E:/GoPath/project/server/initialize/router.go:32	use middleware logger
+[catering]2022/02/10 - 17:37:33.431	[34minfo[0m	E:/GoPath/project/server/initialize/router.go:36	use middleware cors
+[catering]2022/02/10 - 17:37:33.432	[34minfo[0m	E:/GoPath/project/server/initialize/router.go:38	register swagger handler
+[catering]2022/02/10 - 17:37:33.456	[34minfo[0m	E:/GoPath/project/server/initialize/router.go:83	router register success
+[catering]2022/02/10 - 17:37:33.460	[34minfo[0m	E:/GoPath/project/server/core/server.go:38	server run success on 	{"address": ":8888"}
+[catering]2022/02/10 - 17:39:17.862	[34minfo[0m	E:/GoPath/project/server/initialize/router.go:32	use middleware logger
+[catering]2022/02/10 - 17:39:17.862	[34minfo[0m	E:/GoPath/project/server/initialize/router.go:36	use middleware cors
+[catering]2022/02/10 - 17:39:17.863	[34minfo[0m	E:/GoPath/project/server/initialize/router.go:38	register swagger handler
+[catering]2022/02/10 - 17:39:17.879	[34minfo[0m	E:/GoPath/project/server/initialize/router.go:83	router register success
+[catering]2022/02/10 - 17:39:17.881	[34minfo[0m	E:/GoPath/project/server/core/server.go:38	server run success on 	{"address": ":8888"}
+[catering]2022/02/10 - 18:29:00.094	[34minfo[0m	E:/GoPath/project/server/initialize/router.go:32	use middleware logger
+[catering]2022/02/10 - 18:29:00.095	[34minfo[0m	E:/GoPath/project/server/initialize/router.go:36	use middleware cors
+[catering]2022/02/10 - 18:29:00.095	[34minfo[0m	E:/GoPath/project/server/initialize/router.go:38	register swagger handler
+[catering]2022/02/10 - 18:29:00.113	[34minfo[0m	E:/GoPath/project/server/initialize/router.go:79	router register success
+[catering]2022/02/10 - 18:29:00.115	[34minfo[0m	E:/GoPath/project/server/core/server.go:38	server run success on 	{"address": ":8888"}
+[catering]2022-02-12 19:48:17.036	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-12 19:48:17.064	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-12 19:48:17.065	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-12 19:48:17.098	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-12 19:48:17.106	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-12 19:55:59.317	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-12 19:55:59.346	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-12 19:55:59.348	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-12 19:55:59.385	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-12 19:55:59.391	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-12 19:57:36.862	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-12 19:57:36.887	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-12 19:57:36.888	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-12 19:57:36.928	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-12 19:57:36.940	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-12 20:03:46.662	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-12 20:03:46.694	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-12 20:03:46.695	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-12 20:03:46.729	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-12 20:03:46.737	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-12 20:12:28.865	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-12 20:12:28.891	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-12 20:12:28.892	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-12 20:12:28.925	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-12 20:12:28.928	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-12 20:13:14.550	[34minfo[0m	C:/Users/fujj/Desktop/server/server/api/v1/system/sys_initdb.go:58	数据库无需初始化
+[catering]2022-02-12 20:13:33.215	[34minfo[0m	C:/Users/fujj/Desktop/server/server/api/v1/system/sys_initdb.go:58	数据库无需初始化
+[catering]2022-02-12 20:13:43.358	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-12 20:13:43.359	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-12 20:13:43.360	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-12 20:13:43.386	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-12 20:13:43.402	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-12 20:13:45.443	[34minfo[0m	C:/Users/fujj/Desktop/server/server/api/v1/system/sys_initdb.go:58	前往初始化数据库
+[catering]2022-02-14 20:46:58.312	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-14 20:46:58.356	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-14 20:46:58.357	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-14 20:46:58.400	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-14 20:46:58.410	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-14 22:11:43.396	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-14 22:11:43.430	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-14 22:11:43.431	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-14 22:11:43.458	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-14 22:11:43.465	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-14 22:14:56.994	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-14 22:14:57.023	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-14 22:14:57.024	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-14 22:14:57.060	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-14 22:14:57.061	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-14 22:15:43.995	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-14 22:15:44.179	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-14 22:15:44.188	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-14 22:15:44.340	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-14 22:15:44.351	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-14 22:24:22.436	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-14 22:24:22.463	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-14 22:24:22.464	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-14 22:24:22.491	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-14 22:24:22.497	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-16 19:51:38.146	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-16 19:51:38.272	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-16 19:51:38.273	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-16 19:51:38.350	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-16 19:51:38.361	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-16 20:24:41.630	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-16 20:24:41.667	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-16 20:24:41.668	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-16 20:24:41.703	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-16 20:24:41.704	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-16 20:26:11.974	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-16 20:26:12.002	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-16 20:26:12.003	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-16 20:26:12.035	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-16 20:26:12.051	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-16 20:27:57.719	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-16 20:27:57.746	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-16 20:27:57.746	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-16 20:27:57.780	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-16 20:27:57.783	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-16 20:34:07.276	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-16 20:34:07.300	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-16 20:34:07.300	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-16 20:34:07.330	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-16 20:34:07.344	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-16 20:51:26.828	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-16 20:51:26.854	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-16 20:51:26.854	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-16 20:51:26.886	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-16 20:51:26.889	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-16 20:52:36.984	[34minfo[0m	C:/Users/fujj/Desktop/server/server/api/v1/system/sys_initdb.go:58	数据库无需初始化
+[catering]2022-02-16 21:14:24.965	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-16 21:14:24.992	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-16 21:14:24.993	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-16 21:14:25.022	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-16 21:14:25.026	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-16 21:15:11.146	[34minfo[0m	C:/Users/fujj/Desktop/server/server/api/v1/system/sys_initdb.go:58	数据库无需初始化
+[catering]2022-02-16 21:16:06.452	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-16 21:16:06.477	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-16 21:16:06.478	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-16 21:16:06.507	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-16 21:16:06.510	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-16 21:16:09.501	[34minfo[0m	C:/Users/fujj/Desktop/server/server/api/v1/system/sys_initdb.go:58	前往初始化数据库
+[catering]2022-02-16 21:28:19.073	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-16 21:28:19.100	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-16 21:28:19.101	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-16 21:28:19.133	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-16 21:28:19.159	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-16 21:28:47.509	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-16 21:28:47.534	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-16 21:28:47.535	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-16 21:28:47.560	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-16 21:28:47.589	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-16 21:33:53.140	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-16 21:33:53.170	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-16 21:33:53.170	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-16 21:33:53.203	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-16 21:33:53.207	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-16 22:02:22.894	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-16 22:02:22.915	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-16 22:02:22.916	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-16 22:02:22.939	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-16 22:02:22.942	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-16 22:02:28.673	[34minfo[0m	C:/Users/fujj/Desktop/server/server/api/v1/system/sys_initdb.go:58	前往初始化数据库
+[catering]2022-02-16 22:23:01.360	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-16 22:23:01.385	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-16 22:23:01.385	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-16 22:23:01.410	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-16 22:23:01.424	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-16 22:24:36.833	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-16 22:24:36.859	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-16 22:24:36.859	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-16 22:24:36.884	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-16 22:24:36.899	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-16 22:26:26.800	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-16 22:26:26.821	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-16 22:26:26.822	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-16 22:26:26.843	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-16 22:26:26.848	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-17 20:03:10.805	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-17 20:03:10.830	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-17 20:03:10.830	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-17 20:03:10.858	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-17 20:03:10.869	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-17 20:34:38.808	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-17 20:34:38.841	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-17 20:34:38.842	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-17 20:34:38.917	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-17 20:34:38.919	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-17 20:36:14.872	[34minfo[0m	C:/Users/fujj/Desktop/server/server/api/v1/system/sys_initdb.go:58	前往初始化数据库
+[catering]2022-02-17 21:12:46.253	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-17 21:12:46.288	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-17 21:12:46.288	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-17 21:12:46.317	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-17 21:12:46.328	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-18 20:54:39.188	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-18 20:54:39.230	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-18 20:54:39.231	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-18 20:54:39.259	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-18 20:54:39.274	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-18 21:09:19.726	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-18 21:09:19.764	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-18 21:09:19.764	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-18 21:09:19.795	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-18 21:09:19.798	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-18 21:24:12.867	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-18 21:24:12.890	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-18 21:24:12.891	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-18 21:24:12.914	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-18 21:24:12.929	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-19 11:56:51.850	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-19 11:56:51.877	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-19 11:56:51.877	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-19 11:56:51.906	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-19 11:56:51.918	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-19 11:59:08.887	[34minfo[0m	C:/Users/fujj/Desktop/server/server/api/v1/system/sys_initdb.go:58	前往初始化数据库
+[catering]2022-02-19 12:03:22.761	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-19 12:03:22.789	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-19 12:03:22.790	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-19 12:03:22.817	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-19 12:03:22.833	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-19 12:06:58.031	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-19 12:06:58.056	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-19 12:06:58.056	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-19 12:06:58.083	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-19 12:06:58.091	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-19 12:07:00.551	[34minfo[0m	C:/Users/fujj/Desktop/server/server/api/v1/system/sys_initdb.go:58	前往初始化数据库
+[catering]2022-02-19 12:16:23.046	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-19 12:16:23.071	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-19 12:16:23.071	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-19 12:16:23.101	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-19 12:16:23.111	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-19 12:40:48.644	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-19 12:40:48.673	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-19 12:40:48.673	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-19 12:40:48.706	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-19 12:40:48.714	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-19 12:41:17.491	[34minfo[0m	C:/Users/fujj/Desktop/server/server/api/v1/system/sys_initdb.go:58	前往初始化数据库
+[catering]2022-02-19 13:29:39.091	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-19 13:29:39.113	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-19 13:29:39.114	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-19 13:29:39.144	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-19 13:29:39.148	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-19 13:40:50.596	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-19 13:40:50.619	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-19 13:40:50.620	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-19 13:40:50.647	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-19 13:40:50.657	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-19 13:41:19.424	[34minfo[0m	C:/Users/fujj/Desktop/server/server/api/v1/system/sys_initdb.go:58	前往初始化数据库
+[catering]2022-02-19 13:58:35.542	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-19 13:58:35.567	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-19 13:58:35.568	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-19 13:58:35.592	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-19 13:58:35.606	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-19 13:59:25.015	[34minfo[0m	C:/Users/fujj/Desktop/server/server/api/v1/system/sys_initdb.go:58	前往初始化数据库
+[catering]2022-02-19 14:10:16.860	[34minfo[0m	C:/Users/fujj/Desktop/server/server/api/v1/system/sys_initdb.go:58	前往初始化数据库
+[catering]2022-02-19 14:12:21.521	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-19 14:12:21.548	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-19 14:12:21.548	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-19 14:12:21.573	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-19 14:12:21.584	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-19 14:12:48.282	[34minfo[0m	C:/Users/fujj/Desktop/server/server/api/v1/system/sys_initdb.go:58	前往初始化数据库
+[catering]2022-02-19 14:17:48.768	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-19 14:17:48.792	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-19 14:17:48.792	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-19 14:17:48.867	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-19 14:17:48.884	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-19 14:32:44.808	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-19 14:32:44.837	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-19 14:32:44.837	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-19 14:32:44.860	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-19 14:32:44.869	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-19 14:32:55.229	[34minfo[0m	C:/Users/fujj/Desktop/server/server/api/v1/system/sys_initdb.go:58	前往初始化数据库
+[catering]2022-02-19 14:50:26.847	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-19 14:50:26.874	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-19 14:50:26.875	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-19 14:50:26.905	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-19 14:50:26.910	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-19 15:07:33.495	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-19 15:07:33.523	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-19 15:07:33.523	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-19 15:07:33.545	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-19 15:07:33.561	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-19 15:15:52.950	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-19 15:15:52.980	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-19 15:15:52.981	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-19 15:15:53.006	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-19 15:15:53.013	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-19 18:01:01.853	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-19 18:01:01.882	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-19 18:01:01.883	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-19 18:01:01.907	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-19 18:01:01.922	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-20 13:42:15.085	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-20 13:42:15.111	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-20 13:42:15.112	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-20 13:42:15.133	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-20 13:42:15.142	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-20 13:59:56.554	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-20 13:59:56.602	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-20 13:59:56.603	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-20 13:59:56.628	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-20 13:59:56.633	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-20 14:04:51.680	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-20 14:04:51.709	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-20 14:04:51.710	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-20 14:04:51.737	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-20 14:04:51.750	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-20 14:05:36.996	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-20 14:05:37.024	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-20 14:05:37.024	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-20 14:05:37.050	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-20 14:05:37.064	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-20 14:07:54.320	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-20 14:07:54.362	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-20 14:07:54.363	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-20 14:07:54.396	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-20 14:07:54.408	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-20 14:11:06.233	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-20 14:11:06.260	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-20 14:11:06.261	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-20 14:11:06.284	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-20 14:11:06.286	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-20 14:15:02.768	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-20 14:15:02.793	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-20 14:15:02.794	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-20 14:15:02.815	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-20 14:15:02.823	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-20 14:17:22.400	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-20 14:17:22.428	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-20 14:17:22.429	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-20 14:17:22.510	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-20 14:17:22.521	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-20 14:18:44.127	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-20 14:18:44.156	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-20 14:18:44.157	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-20 14:18:44.185	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-20 14:18:44.193	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-20 15:01:15.438	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-20 15:01:15.467	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-20 15:01:15.467	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-20 15:01:15.498	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-20 15:01:15.510	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-20 15:01:48.915	[34minfo[0m	C:/Users/fujj/Desktop/server/server/api/v1/system/sys_initdb.go:58	前往初始化数据库
+[catering]2022-02-24 20:30:01.295	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-24 20:30:01.346	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-24 20:30:01.346	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-24 20:30:01.389	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-24 20:30:01.393	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-27 12:29:13.217	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-27 12:29:13.243	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-27 12:29:13.243	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-27 12:29:13.266	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-27 12:29:13.271	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-27 13:19:19.352	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-27 13:19:19.437	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-27 13:19:19.439	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-27 13:19:19.511	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-27 13:19:19.520	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-27 13:38:20.781	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-27 13:38:20.818	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-27 13:38:20.819	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-27 13:38:20.852	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-27 13:38:20.858	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-27 13:40:31.331	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-27 13:40:31.375	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-27 13:40:31.376	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-27 13:40:31.412	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-27 13:40:31.420	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-27 15:37:48.413	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-27 15:37:48.446	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-27 15:37:48.447	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-27 15:37:48.474	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-27 15:37:48.482	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-02-27 17:27:38.430	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-02-27 17:27:38.468	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-02-27 17:27:38.469	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-02-27 17:27:38.505	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-02-27 17:27:38.520	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-01 20:19:25.859	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-01 20:19:26.003	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-01 20:19:26.015	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-01 20:19:26.393	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-01 20:19:26.443	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-01 20:26:41.620	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-01 20:26:41.661	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-01 20:26:41.662	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-01 20:26:41.697	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-01 20:26:41.707	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-01 20:35:21.260	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-01 20:35:21.286	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-01 20:35:21.287	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-01 20:35:21.318	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-01 20:35:21.341	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-01 20:36:18.101	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-01 20:36:18.130	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-01 20:36:18.131	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-01 20:36:18.165	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-01 20:36:18.174	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-01 20:36:52.542	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-01 20:36:52.575	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-01 20:36:52.575	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-01 20:36:52.608	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-01 20:36:52.621	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-01 20:37:58.056	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-01 20:37:58.119	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-01 20:37:58.120	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-01 20:37:58.161	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-01 20:37:58.169	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-01 22:11:36.133	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-01 22:11:36.159	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-01 22:11:36.160	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-01 22:11:36.185	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-01 22:11:36.192	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-02 20:48:36.424	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-02 20:48:36.507	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-02 20:48:36.509	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-02 20:48:36.569	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-02 20:48:36.577	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-02 21:37:22.353	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-02 21:37:22.390	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-02 21:37:22.391	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-02 21:37:22.429	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-02 21:37:22.442	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-04 20:36:28.376	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-04 20:36:28.439	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-04 20:36:28.440	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-04 20:36:28.537	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-04 20:36:28.542	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-04 20:38:37.384	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-04 20:38:37.441	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-04 20:38:37.443	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-04 20:38:37.505	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-04 20:38:37.512	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-04 20:43:08.553	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-04 20:43:08.599	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-04 20:43:08.600	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-04 20:43:08.642	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-04 20:43:08.645	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-04 21:43:56.473	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-04 21:43:56.501	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-04 21:43:56.502	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-04 21:43:56.536	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-04 21:43:56.541	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-04 21:49:38.753	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-04 21:49:38.781	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-04 21:49:38.782	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-04 21:49:38.808	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-04 21:49:38.824	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-04 21:52:07.746	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-04 21:52:07.780	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-04 21:52:07.781	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-04 21:52:07.807	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-04 21:52:07.818	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-04 21:54:11.491	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-04 21:54:11.523	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-04 21:54:11.524	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-04 21:54:11.563	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-04 21:54:11.564	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-04 21:58:03.745	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-04 21:58:03.780	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-04 21:58:03.781	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-04 21:58:03.812	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-04 21:58:03.816	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-04 21:59:42.615	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-04 21:59:42.643	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-04 21:59:42.643	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-04 21:59:42.672	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-04 21:59:42.673	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-05 11:27:11.268	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-05 11:27:11.322	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-05 11:27:11.323	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-05 11:27:11.366	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-05 11:27:11.374	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-05 11:43:13.681	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-05 11:43:13.713	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-05 11:43:13.714	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-05 11:43:13.744	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-05 11:43:13.753	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-05 11:52:52.780	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-05 11:52:52.812	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-05 11:52:52.813	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-05 11:52:52.840	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-05 11:52:52.846	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-05 13:31:00.223	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-05 13:31:00.274	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-05 13:31:00.275	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-05 13:31:00.315	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-05 13:31:00.323	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-05 13:34:29.490	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-05 13:34:29.519	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-05 13:34:29.520	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-05 13:34:29.543	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-05 13:34:29.548	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-05 13:36:41.865	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-05 13:36:41.891	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-05 13:36:41.892	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-05 13:36:41.913	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-05 13:36:41.918	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-05 13:40:06.658	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-05 13:40:06.683	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-05 13:40:06.684	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-05 13:40:06.714	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-05 13:40:06.719	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-05 13:41:02.487	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-05 13:41:02.515	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-05 13:41:02.516	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-05 13:41:02.542	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-05 13:41:02.547	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-05 13:41:56.417	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-05 13:41:56.441	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-05 13:41:56.442	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-05 13:41:56.468	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-05 13:41:56.473	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-05 14:07:36.485	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-05 14:07:36.512	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-05 14:07:36.512	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-05 14:07:36.549	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-05 14:07:36.565	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-05 14:13:04.182	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-05 14:13:04.208	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-05 14:13:04.208	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-05 14:13:04.232	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-05 14:13:04.238	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-05 14:59:00.006	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-05 14:59:00.032	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-05 14:59:00.032	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-05 14:59:00.059	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-05 14:59:00.069	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-05 18:17:05.417	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-05 18:17:05.449	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-05 18:17:05.450	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-05 18:17:05.475	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-05 18:17:05.479	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
+[catering]2022-03-05 20:12:29.686	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
+[catering]2022-03-05 20:12:29.720	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors
+[catering]2022-03-05 20:12:29.720	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:38	register swagger handler
+[catering]2022-03-05 20:12:29.781	[34minfo[0m	C:/Users/fujj/Desktop/server/server/initialize/router.go:106	router register success
+[catering]2022-03-05 20:12:29.791	[34minfo[0m	C:/Users/fujj/Desktop/server/server/core/server.go:30	server run success on 	{"address": ":8888"}
