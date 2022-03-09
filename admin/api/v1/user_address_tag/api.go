@@ -3,29 +3,23 @@ package user_address_tag
 import (
 	"catering/model"
 	"catering/model/common/response"
+	"catering/model/user/request"
 	"catering/pkg/app"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
 
-type QueryParams struct {
-	PageSize       int    `uri:"pageSize" json:"pageSize" form:"pageSize" valid:"Required"`
-	PageNum        int    `uri:"pageNum" json:"pageNum" form:"pageNum" valid:"Required"`
-	AddressTagName string `uri:"tag_name"  form:"tag_name" json:"tag_name"`
-	Status         uint32 `uri:"status" json:"status" form:"status"`
-}
-
-func List(c *gin.Context) {
+func ListPage(c *gin.Context) {
 	var (
-		form = QueryParams{}
+		form = request.UserAddressTagQueryParams{}
 	)
 	msg, err := app.BindAndValid(c, &form)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 		return
 	}
-	model := &model.AddressTag{
+	model := &model.UserAddressTag{
 		TagName: form.AddressTagName,
 		Status:  form.Status,
 	}
@@ -33,25 +27,16 @@ func List(c *gin.Context) {
 	response.OkWithData(tags, c)
 }
 
-type AddForm struct {
-	TagName         string `json:"tag_name" form:"tag_name" valid:"Required"`
-	TextColor       string `json:"text_color" form:"text_color" valid:"Required"`
-	BorderColor     string `json:"border_color" form:"border_color" `
-	BackgroundColor string `json:"background_color" form:"background_color" `
-	Sort            uint32 `json:"sort" form:"sort" valid:"Required"`
-	Status          uint32 `json:"status" form:"status" valid:"Required"`
-}
-
 func Add(c *gin.Context) {
 	var (
-		form = AddForm{}
+		form = request.UserAddressTagAddForm{}
 	)
 	msg, err := app.BindAndValid(c, &form)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 		return
 	}
-	tag := &model.AddressTag{
+	tag := &model.UserAddressTag{
 		TagName:         form.TagName,
 		TextColor:       form.TextColor,
 		BorderColor:     form.BorderColor,
@@ -67,26 +52,16 @@ func Add(c *gin.Context) {
 	response.Ok(c)
 }
 
-type UpdateForm struct {
-	Id              uint64 `form:"id" json:"id" valid:"Required"`
-	TagName         string `json:"tag_name" form:"tag_name" valid:"Required"`
-	TextColor       string `json:"text_color" form:"text_color" valid:"Required"`
-	BorderColor     string `json:"border_color" form:"border_color" `
-	BackgroundColor string `json:"background_color" form:"background_color" `
-	Sort            uint32 `json:"sort" form:"sort" valid:"Required"`
-	Status          uint32 `json:"status" form:"status" valid:"Required"`
-}
-
 func Update(c *gin.Context) {
 	var (
-		form = UpdateForm{}
+		form = request.UserAddressTagUpdateForm{}
 	)
 	msg, err := app.BindAndValid(c, &form)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 		return
 	}
-	tag := &model.AddressTag{
+	tag := &model.UserAddressTag{
 		TagName:         form.TagName,
 		TextColor:       form.TextColor,
 		BorderColor:     form.BorderColor,

@@ -14,7 +14,7 @@ type UserAddressQueryParams struct {
 	Uid      uint64 `uri:"uid" json:"uid" form:"uid"`
 }
 
-func ListUserAddress(c *gin.Context) {
+func ListPage(c *gin.Context) {
 	var (
 		form = UserAddressQueryParams{}
 	)

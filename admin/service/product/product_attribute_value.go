@@ -47,7 +47,7 @@ func (impl productAttributeValueServiceImpl) List(params *model.ProductAttribute
 }
 
 func (impl productAttributeValueServiceImpl) Count() int {
-	return model.CountUserAddress()
+	return model.CountProductAttributeValue()
 }
 
 func (impl productAttributeValueServiceImpl) ListPage(pageNum, pageSize int, params *model.ProductAttributeValue) *response.ApiResponse {

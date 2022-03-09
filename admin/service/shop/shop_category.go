@@ -45,7 +45,9 @@ func (impl shopCategoryServiceImpl) List(params *model.ShopCategory) []*model.Sh
 }
 
 func (impl shopCategoryServiceImpl) Count() int {
-	return model.CountUserAddress()
+	var total int64
+	global.DB.Model(&model.ShopCategory{}).Count(&total)
+	return int(total)
 }
 
 func (impl shopCategoryServiceImpl) ListPage(pageNum, pageSize int, params *model.ShopCategory) *response.ApiResponse {

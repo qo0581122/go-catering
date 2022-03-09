@@ -6,33 +6,33 @@ import (
 )
 
 type addressTagService interface {
-	ListPage(pageNum, pageSize int, params *model.AddressTag) *response.ApiResponse
-	GetById(id uint64) *model.AddressTag
-	List(params *model.AddressTag) []*model.AddressTag
+	ListPage(pageNum, pageSize int, params *model.UserAddressTag) *response.ApiResponse
+	GetOne(params *model.UserAddressTag) *model.UserAddressTag
+	List(params *model.UserAddressTag) []*model.UserAddressTag
 	Count() int
-	Add(params *model.AddressTag) error
-	Update(params *model.AddressTag) error
+	Add(params *model.UserAddressTag) error
+	Update(params *model.UserAddressTag) error
 	Delete(id uint64) error
 }
 
 type userAddressService interface {
 	ListPage(pageNum, pageSize int, params *model.UserAddress) *response.ApiResponse
-	GetById(id uint64) *model.UserAddress
+	GetOne(params *model.UserAddress) *model.UserAddress
 	List(params *model.UserAddress) []*model.UserAddress
 	Count() int
 }
 
 type userIntegrationLogService interface {
 	ListPage(pageNum, pageSize int, params *model.UserIntegrationLog) *response.ApiResponse
-	GetById(id uint64) *model.UserIntegrationLog
+	GetOne(params *model.UserIntegrationLog) *model.UserIntegrationLog
 	List(params *model.UserIntegrationLog) []*model.UserIntegrationLog
+	Add(params *model.UserIntegrationLog) error
 	Count() int
 }
 
 type userIntegrationService interface {
 	ListPage(pageNum, pageSize int, params *model.UserIntegration) *response.ApiResponse
-	GetById(id uint64) *model.UserIntegration
-	GetByUin(uin uint64) *model.UserIntegration
+	GetOne(params *model.UserIntegration) *model.UserIntegration
 	List(params *model.UserIntegration) []*model.UserIntegration
 	Count() int
 	IncreaseIntegration(uid uint64, changeValue int, changeType int) error
@@ -41,21 +41,21 @@ type userIntegrationService interface {
 
 type userVipLevelLogService interface {
 	ListPage(pageNum, pageSize int, params *model.UserVipLevelLog) *response.ApiResponse
-	GetById(id uint64) *model.UserVipLevelLog
+	GetOne(params *model.UserVipLevelLog) *model.UserVipLevelLog
 	List(params *model.UserVipLevelLog) []*model.UserVipLevelLog
+	Add(params *model.UserVipLevelLog) error
 	Count() int
 }
 
 type userVipLevelService interface {
 	ListPage(pageNum, pageSize int, params *model.UserVipLevel) *response.ApiResponse
-	GetById(id uint64) *model.UserVipLevel
+	GetOne(params *model.UserVipLevel) *model.UserVipLevel
 	List(params *model.UserVipLevel) []*model.UserVipLevel
 	Count() int
 	Add(params *model.UserVipLevel, preLevelId uint64) error
-	Adds(params []*model.UserVipLevel) error
+	Adds(params []model.UserVipLevel) error
 	Update(params *model.UserVipLevel) error
 	Delete(id uint64) error
-	GetByUin(uin uint64) *model.UserVipLevel
 }
 
 type userService interface {

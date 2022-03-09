@@ -11,17 +11,17 @@ import (
 type UserVipLevelRouter struct{}
 
 func (d *UserVipLevelRouter) InitUserVipLevelRouter(Router *gin.RouterGroup) {
-	r := Router.Group("user-vip-levels").Use(middleware.OperationRecord())
+	router := Router.Group("user").Group("vip")
+	r := router.Group("levels").Use()
 	{
-		r.GET("", user_vip_level.List)
-		r.GET("logs", user_vip_level_log.ListUserVipLevelLog)
-		r.POST("create", user_vip_level.Adds)
+		r.GET("page", user_vip_level.ListPage)
+		r.GET("logs", user_vip_level_log.ListPage)
 	}
 
-	r = Router.Group("user-vip-level").Use(middleware.OperationRecord())
+	r = router.Group("level").Use(middleware.OperationRecord())
 	{
-		r.POST("create", user_vip_level.Add)
-		r.POST("update", user_vip_level.Update)
-		r.DELETE("delete", user_vip_level.Delete)
+		r.PUT("", user_vip_level.Adds)
+		r.POST("", user_vip_level.Update)
+		r.DELETE("", user_vip_level.Delete)
 	}
 }

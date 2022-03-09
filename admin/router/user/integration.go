@@ -11,12 +11,13 @@ import (
 type IntegrationRouter struct{}
 
 func (d *IntegrationRouter) InitIntegrationRouter(Router *gin.RouterGroup) {
-	r := Router.Group("user-integrations").Use(middleware.OperationRecord())
+	router := Router.Group("user")
+	r := router.Group("integrations").Use()
 	{
-		r.GET("", user_integration.List)
-		r.GET("logs", user_integration_log.List)
+		r.GET("page", user_integration.ListPage)
+		r.GET("logs", user_integration_log.ListPage)
 	}
-	r = Router.Group("user-integration").Use(middleware.OperationRecord())
+	r = router.Group("integration").Use(middleware.OperationRecord())
 	{
 		r.POST("change", user_integration.Change)
 	}

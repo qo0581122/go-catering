@@ -20,3 +20,12 @@
 [catering]2022-03-05 11:34:45.342	[31merror[0m	C:/Users/fujj/Desktop/server/server/pkg/app/request.go:13	PageNum.Required.	{"message": "PageNum Can not be empty"}
 [catering]2022-03-05 11:35:22.554	[31merror[0m	C:/Users/fujj/Desktop/server/server/pkg/app/request.go:13	PageSize.Required.	{"message": "PageSize Can not be empty"}
 [catering]2022-03-05 11:35:22.555	[31merror[0m	C:/Users/fujj/Desktop/server/server/pkg/app/request.go:13	PageNum.Required.	{"message": "PageNum Can not be empty"}
+[catering]2022-03-09 21:30:55.291	[31merror[0m	D:/goProject/src/catering/admin/pkg/app/request.go:13	Id.Required.	{"message": "Id Can not be empty"}
+[catering]2022-03-09 21:30:55.319	[31merror[0m	D:/goProject/src/catering/admin/pkg/app/request.go:13	LevelName.Required.	{"message": "LevelName Can not be empty"}
+[catering]2022-03-09 21:30:55.319	[31merror[0m	D:/goProject/src/catering/admin/pkg/app/request.go:13	UpNeedIntegration.Required.	{"message": "UpNeedIntegration Can not be empty"}
+[catering]2022-03-09 21:35:33.812	[31merror[0m	D:/goProject/src/catering/admin/pkg/app/request.go:13	Id.Required.	{"message": "Id Can not be empty"}
+[catering]2022-03-09 21:35:33.813	[31merror[0m	D:/goProject/src/catering/admin/pkg/app/request.go:13	LevelName.Required.	{"message": "LevelName Can not be empty"}
+[catering]2022-03-09 21:35:33.813	[31merror[0m	D:/goProject/src/catering/admin/pkg/app/request.go:13	UpNeedIntegration.Required.	{"message": "UpNeedIntegration Can not be empty"}
+[catering]2022-03-09 21:38:36.397	[31merror[0m	D:/goProject/src/catering/admin/pkg/app/request.go:13	Id.Required.	{"message": "Id Can not be empty"}
+[catering]2022-03-09 21:38:36.398	[31merror[0m	D:/goProject/src/catering/admin/pkg/app/request.go:13	LevelName.Required.	{"message": "LevelName Can not be empty"}
+[catering]2022-03-09 21:38:36.398	[31merror[0m	D:/goProject/src/catering/admin/pkg/app/request.go:13	UpNeedIntegration.Required.	{"message": "UpNeedIntegration Can not be empty"}

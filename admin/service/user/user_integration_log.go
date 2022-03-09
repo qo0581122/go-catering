@@ -1,8 +1,10 @@
 package user
 
 import (
+	"catering/global"
 	"catering/model"
 	"catering/model/common/response"
+	userResponse "catering/model/user/response"
 	"fmt"
 )
 
@@ -15,40 +17,60 @@ func NewUserIntegrationLogService() userIntegrationLogService {
 type userIntegrationLogServiceImpl struct {
 }
 
-func (impl userIntegrationLogServiceImpl) GetById(id uint64) *model.UserIntegrationLog {
-	return model.GetUserIntegrationLogById(id)
+func (impl userIntegrationLogServiceImpl) Add(params *model.UserIntegrationLog) error {
+	return global.DB.Create(&params).Error
+}
+
+func (impl userIntegrationLogServiceImpl) GetOne(params *model.UserIntegrationLog) *model.UserIntegrationLog {
+	var res model.UserIntegrationLog
+	err := global.DB.Where(&params).First(&res).Error
+	if err != nil {
+		return nil
+	}
+	return &res
 }
 func (impl userIntegrationLogServiceImpl) List(params *model.UserIntegrationLog) []*model.UserIntegrationLog {
-	return model.ListUserIntegrationLog(params)
-}
-
-func (impl userIntegrationLogServiceImpl) Count() int {
-	return model.CountUserAddress()
-}
-
-type UserIntegrationLogResponse struct {
-	*model.UserIntegrationLog
-	LevelName string `json:"level_name"`
-	Level     int    `json:"level"`
-}
-
-func (impl userIntegrationLogServiceImpl) ListPage(pageNum, pageSize int, params *model.UserIntegrationLog) *response.ApiResponse {
-	logs, err := model.ListUserIntegrationLogPage(pageNum, pageSize, params)
+	var tags []*model.UserIntegrationLog
+	err := global.DB.Where(&params).Find(&tags).Error
 	if err != nil {
 		fmt.Println(err)
 		return nil
 	}
-	var result []UserIntegrationLogResponse
-	vipLevelService := NewUserVipLevelService()
+	return tags
+}
+
+func (impl userIntegrationLogServiceImpl) Count() int {
+	var count int64
+	global.DB.Model(&model.UserIntegrationLog{}).Count(&count)
+	return int(count)
+}
+
+func (impl userIntegrationLogServiceImpl) ListPage(pageNum, pageSize int, params *model.UserIntegrationLog) *response.ApiResponse {
+	var logs []*model.UserIntegrationLog
+	err := global.DB.Where(&params).Scopes(model.Paginate(pageNum, pageSize)).Find(&logs).Error
+	if err != nil {
+		return nil
+	}
+	if err != nil {
+		fmt.Println(err)
+		return nil
+	}
+	var result []userResponse.IntegrationLog
 	for _, item := range logs {
-		levelInfo := vipLevelService.GetByUin(uint64(item.Uid))
-		result = append(result, UserIntegrationLogResponse{
+		userIntegration := UserIntegrationService.GetOne(&model.UserIntegration{
+			Uid: item.Uid,
+		})
+		levelInfo := UserVipLevelService.GetOne(&model.UserVipLevel{
+			Id: userIntegration.LevelId,
+		})
+		result = append(result, userResponse.IntegrationLog{
 			UserIntegrationLog: item,
 			LevelName:          levelInfo.LevelName,
 			Level:              levelInfo.Level,
 		})
 	}
-	total := impl.Count()
-	res := &response.ApiResponse{List: result, Total: total}
+	var total int64
+	global.DB.Model(&model.UserIntegrationLog{}).Where(&params).Count(&total)
+	res := &response.ApiResponse{List: result, Total: int(total)}
 	return res
 }

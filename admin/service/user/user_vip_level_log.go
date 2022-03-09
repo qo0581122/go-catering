@@ -1,8 +1,10 @@
 package user
 
 import (
+	"catering/global"
 	"catering/model"
 	"catering/model/common/response"
+	userResponse "catering/model/user/response"
 	"fmt"
 )
 
@@ -15,37 +17,50 @@ func NewUserVipLevelLogService() userVipLevelLogService {
 type userVipLevelLogServiceImpl struct {
 }
 
-func (impl userVipLevelLogServiceImpl) GetById(id uint64) *model.UserVipLevelLog {
-	return model.GetUserVipLevelLogById(id)
+func (impl userVipLevelLogServiceImpl) Add(params *model.UserVipLevelLog) error {
+	return global.DB.Create(&params).Error
 }
+
+func (impl userVipLevelLogServiceImpl) GetOne(params *model.UserVipLevelLog) *model.UserVipLevelLog {
+	var res model.UserVipLevelLog
+	err := global.DB.Where(&params).First(&res).Error
+	if err != nil {
+		return nil
+	}
+	return &res
+}
+
 func (impl userVipLevelLogServiceImpl) List(params *model.UserVipLevelLog) []*model.UserVipLevelLog {
-	return model.ListUserVipLevelLog(params)
-}
-
-func (impl userVipLevelLogServiceImpl) Count() int {
-	return model.CountUserAddress()
-}
-
-type UserVipLevelLogResponse struct {
-	*model.UserVipLevelLog
-	BeforeLevelName string `json:"before_level_name"`
-	BeforeLevel     int    `json:"before_level"`
-	AfterLevelName  string `json:"after_level_name"`
-	AfterLevel      int    `json:"after_level"`
-}
-
-func (impl userVipLevelLogServiceImpl) ListPage(pageNum, pageSize int, params *model.UserVipLevelLog) *response.ApiResponse {
-	logs, err := model.ListUserVipLevelLogPage(pageNum, pageSize, params)
+	var logs []*model.UserVipLevelLog
+	err := global.DB.Where(&params).Find(&logs).Error
 	if err != nil {
 		fmt.Println(err)
 		return nil
 	}
-	total := impl.Count()
-	var result []UserVipLevelLogResponse
+	return logs
+}
+
+func (impl userVipLevelLogServiceImpl) Count() int {
+	var count int64
+	global.DB.Model(&model.UserVipLevelLog{}).Count(&count)
+	return int(count)
+}
+
+func (impl userVipLevelLogServiceImpl) ListPage(pageNum, pageSize int, params *model.UserVipLevelLog) *response.ApiResponse {
+	var logs []*model.UserVipLevelLog
+	err := global.DB.Where(&params).Scopes(model.Paginate(pageNum, pageSize)).Find(&logs).Error
+	if err != nil {
+		return nil
+	}
+	var result []userResponse.VipLevelLog
 	for _, item := range logs {
-		before := model.GetUserVipLevelById(item.BeforeLevelId)
-		after := model.GetUserVipLevelById(item.AfterLevelId)
-		result = append(result, UserVipLevelLogResponse{
+		before := UserVipLevelService.GetOne(&model.UserVipLevel{
+			Id: item.BeforeLevelId,
+		})
+		after := UserVipLevelService.GetOne(&model.UserVipLevel{
+			Id: item.AfterLevelId,
+		})
+		result = append(result, userResponse.VipLevelLog{
 			UserVipLevelLog: item,
 			BeforeLevelName: before.LevelName,
 			BeforeLevel:     before.Level,
@@ -53,6 +68,8 @@ func (impl userVipLevelLogServiceImpl) ListPage(pageNum, pageSize int, params *m
 			AfterLevel:      after.Level,
 		})
 	}
-	res := &response.ApiResponse{List: result, Total: total}
+	var total int64
+	global.DB.Model(&model.UserVipLevelLog{}).Where(&params).Count(&total)
+	res := &response.ApiResponse{List: result, Total: int(total)}
 	return res
 }

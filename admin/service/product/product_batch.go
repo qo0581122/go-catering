@@ -33,7 +33,7 @@ func (impl productBatchServiceImpl) List(params *model.ProductBatch) []*model.Pr
 }
 
 func (impl productBatchServiceImpl) Count() int {
-	return model.CountUserAddress()
+	return model.CountProductBatch()
 }
 
 func (impl productBatchServiceImpl) ListPage(pageNum, pageSize int, params *model.ProductBatch) *response.ApiResponse {

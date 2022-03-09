@@ -3,25 +3,16 @@ package user_vip_level
 import (
 	"catering/model"
 	"catering/model/common/response"
+	"catering/model/user/request"
 	"catering/pkg/app"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
 
-type QueryParams struct {
-	PageSize int `uri:"pageSize" json:"pageSize" form:"pageSize" valid:"Required"`
-	PageNum  int `uri:"pageNum" json:"pageNum" form:"pageNum" valid:"Required"`
-}
-
-type QueryResponse struct {
-	List  []*model.UserVipLevel `json:"list,inline"`
-	Total int                   `json:"total"`
-}
-
-func List(c *gin.Context) {
+func ListPage(c *gin.Context) {
 	var (
-		form = QueryParams{}
+		form = request.UserVipLevelQueryParams{}
 	)
 	msg, err := app.BindAndValid(c, &form)
 	if err != nil {
@@ -32,18 +23,9 @@ func List(c *gin.Context) {
 	response.OkWithData(levels, c)
 }
 
-type AddForm struct {
-	PreLevelId        uint64 `json:"pre_level_id" form:"pre_level_id"`
-	LevelName         string `json:"level_name" form:"level_name" valid:"Required"`
-	UpNeedIntegration int    `json:"up_need_integration" form:"up_need_integration" valid:"Required"`
-	LevelDiscount     int    `json:"level_discount" form:"level_discount" `
-	NextLevelId       uint64 `json:"next_level_id" form:"next_level_id"`
-	Level             int    `json:"level" form:"level"`
-}
-
 func Add(c *gin.Context) {
 	var (
-		form = AddForm{}
+		form = request.UserVipLevelAddForm{}
 	)
 	msg, err := app.BindAndValid(c, &form)
 	if err != nil {
@@ -65,28 +47,19 @@ func Add(c *gin.Context) {
 	response.Ok(c)
 }
 
-type AddForms struct {
-	Forms []struct {
-		LevelName         string `json:"level_name" form:"level_name" valid:"Required"`
-		UpNeedIntegration int    `json:"up_need_integration" form:"up_need_integration" valid:"Required"`
-		LevelDiscount     int    `json:"level_discount" form:"level_discount" `
-		Level             int    `json:"level" form:"level"`
-	} `json:"forms"`
-}
-
 func Adds(c *gin.Context) {
 	var (
-		form = AddForms{}
+		form = request.UserVipLevelAddForms{}
 	)
 	msg, err := app.BindAndValid(c, &form)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 		return
 	}
-	var levels []*model.UserVipLevel
+	var levels []model.UserVipLevel
 
 	for _, item := range form.Forms {
-		levels = append(levels, &model.UserVipLevel{
+		levels = append(levels, model.UserVipLevel{
 			LevelName:         item.LevelName,
 			UpNeedIntegration: item.UpNeedIntegration,
 			LevelDiscount:     item.LevelDiscount,
@@ -101,17 +74,9 @@ func Adds(c *gin.Context) {
 	response.Ok(c)
 }
 
-type UpdateForm struct {
-	Id                uint64 `form:"id" json:"id" valid:"Required"`
-	LevelName         string `json:"level_name" form:"level_name" valid:"Required"`
-	UpNeedIntegration int    `json:"up_need_integration" form:"up_need_integration" valid:"Required"`
-	LevelDiscount     int    `json:"level_discount" form:"level_discount" `
-	NextLevelId       uint64 `json:"next_level_id" form:"next_level_id"`
-}
-
 func Update(c *gin.Context) {
 	var (
-		form = UpdateForm{}
+		form = request.UserVipLevelUpdateForm{}
 	)
 	msg, err := app.BindAndValid(c, &form)
 	if err != nil {

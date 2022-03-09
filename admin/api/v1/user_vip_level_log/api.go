@@ -3,22 +3,15 @@ package user_vip_level_log
 import (
 	"catering/model"
 	"catering/model/common/response"
+	"catering/model/user/request"
 	"catering/pkg/app"
 
 	"github.com/gin-gonic/gin"
 )
 
-type UserVipLevelLogQueryParams struct {
-	PageSize      int    `uri:"pageSize" json:"pageSize" form:"pageSize" valid:"Required"`
-	PageNum       int    `uri:"pageNum" json:"pageNum" form:"pageNum" valid:"Required"`
-	Uid           int    `uri:"uid" json:"uid" form:"uid"`
-	BeforeLevelId uint64 `uri:"before_level_id" json:"before_level_id" form:"before_level_id"`
-	AfterLevelId  uint64 `uri:"after_level_id" json:"after_level_id" form:"after_level_id"`
-}
-
-func ListUserVipLevelLog(c *gin.Context) {
+func ListPage(c *gin.Context) {
 	var (
-		form = UserVipLevelLogQueryParams{}
+		form = request.UserVipLevelLogQueryParams{}
 	)
 	msg, err := app.BindAndValid(c, &form)
 	if err != nil {

@@ -33,7 +33,7 @@ func (impl productCategoryServiceImpl) List(params *model.ProductCategory) []*mo
 }
 
 func (impl productCategoryServiceImpl) Count() int {
-	return model.CountUserAddress()
+	return model.CountProductCategory()
 }
 
 func (impl productCategoryServiceImpl) ListPage(pageNum, pageSize int, params *model.ProductCategory) *response.ApiResponse {

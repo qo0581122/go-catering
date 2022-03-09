@@ -136,7 +136,7 @@ func (impl productServiceImpl) List(params *model.Product) []*model.Product {
 }
 
 func (impl productServiceImpl) Count() int {
-	return model.CountUserAddress()
+	return model.CountProduct()
 }
 
 func (impl productServiceImpl) ListPage(pageNum, pageSize int, params *model.Product) *response.ApiResponse {

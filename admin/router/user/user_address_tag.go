@@ -10,14 +10,15 @@ import (
 type UserAddressTagRouter struct{}
 
 func (d *UserAddressTagRouter) InitUserAddressTagRouter(Router *gin.RouterGroup) {
-	r := Router.Group("user-address-tags").Use(middleware.OperationRecord())
+	router := Router.Group("user").Group("address")
+	r := router.Group("tags").Use()
 	{
-		r.GET("", user_address_tag.List)
+		r.GET("", user_address_tag.ListPage)
 	}
-	r = Router.Group("user-address-tag").Use(middleware.OperationRecord())
+	r = router.Group("tag").Use(middleware.OperationRecord())
 	{
-		r.POST("create", user_address_tag.Add)
-		r.POST("update", user_address_tag.Update)
-		r.DELETE("delete/:id", user_address_tag.Delete)
+		r.PUT("", user_address_tag.Add)
+		r.POST("", user_address_tag.Update)
+		r.DELETE(":id", user_address_tag.Delete)
 	}
 }

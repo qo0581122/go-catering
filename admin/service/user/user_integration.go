@@ -4,6 +4,7 @@ import (
 	"catering/global"
 	"catering/model"
 	"catering/model/common/response"
+	userResponse "catering/model/user/response"
 	"errors"
 	"fmt"
 	"time"
@@ -22,21 +23,28 @@ type userIntegrationServiceImpl struct {
 
 func (impl userIntegrationServiceImpl) IncreaseIntegration(id uint64, changeValue int, changeType int) error {
 	global.DB.Transaction(func(tx *gorm.DB) error {
-		integration := model.GetUserIntegrationById(id)
+		integration := UserIntegrationService.GetOne(&model.UserIntegration{
+			Id: id,
+		})
 		if integration == nil {
 			return errors.New("can not find integration info")
 		}
-		if err := model.IncreaseIntegration(tx, id, changeValue); err != nil {
+		SQL := "UPDATE user_integration SET current_integration = current_integration + ?, history_integration = history_integration + ?  WHERE id = ?"
+		if err := tx.Exec(SQL, changeValue, id).Error; err != nil {
 			return err
 		}
-		levelInfo := model.GetUserVipLevelById(integration.LevelId)
+		levelInfo := UserVipLevelService.GetOne(&model.UserVipLevel{
+			Id: integration.LevelId,
+		})
 		sum := integration.CurrentIntegration + changeValue
 		for sum <= levelInfo.UpNeedIntegration {
-			levelInfo = model.GetUserVipLevelById(levelInfo.NextLevelId)
+			levelInfo = UserVipLevelService.GetOne(&model.UserVipLevel{
+				Id: levelInfo.NextLevelId,
+			})
 		}
 		if levelInfo.Id != integration.LevelId {
 			integration.LevelId = levelInfo.Id
-			if err := model.UpdateUserIntegration(integration); err != nil {
+			if err := tx.Model(&model.UserIntegration{}).Where("id = ?", integration.Id).Updates(&integration).Error; err != nil {
 				return err
 			}
 			levelLog := &model.UserVipLevelLog{
@@ -45,7 +53,8 @@ func (impl userIntegrationServiceImpl) IncreaseIntegration(id uint64, changeValu
 				AfterLevelId:  levelInfo.Id,
 				UpTime:        model.Time(time.Now()),
 			}
-			if err := model.AddUserVipLevelLog(levelLog); err != nil {
+
+			if err := UserVipLevelLogService.Add(levelLog); err != nil {
 				return err
 			}
 		}
@@ -57,7 +66,7 @@ func (impl userIntegrationServiceImpl) IncreaseIntegration(id uint64, changeValu
 			AfterValue:  sum,
 			ChangeTime:  model.Time(time.Now()),
 		}
-		if err := model.AddUserIntegrationLog(integrationLog); err != nil {
+		if err := UserIntegrationLogService.Add(integrationLog); err != nil {
 			return err
 		}
 		return nil
@@ -67,11 +76,14 @@ func (impl userIntegrationServiceImpl) IncreaseIntegration(id uint64, changeValu
 
 func (impl userIntegrationServiceImpl) DecreaseIntegration(id uint64, changeValue int, changeType int) error {
 	global.DB.Transaction(func(tx *gorm.DB) error {
-		integration := model.GetUserIntegrationById(id)
+		integration := UserIntegrationService.GetOne(&model.UserIntegration{
+			Id: id,
+		})
 		if integration == nil {
 			return errors.New("can not find integration info")
 		}
-		if err := model.DecreaseIntegration(tx, id, changeValue); err != nil {
+		SQL := "UPDATE user_integration SET current_integration = current_integration - ? WHERE id = ? AND current_integration >= ?"
+		if err := tx.Exec(SQL, changeValue, id, changeValue).Error; err != nil {
 			return err
 		}
 		sum := integration.CurrentIntegration + changeValue
@@ -83,7 +95,7 @@ func (impl userIntegrationServiceImpl) DecreaseIntegration(id uint64, changeValu
 			AfterValue:  sum,
 			ChangeTime:  model.Time(time.Now()),
 		}
-		if err := model.AddUserIntegrationLog(integrationLog); err != nil {
+		if err := tx.Create(&integrationLog).Error; err != nil {
 			return err
 		}
 		return nil
@@ -91,46 +103,57 @@ func (impl userIntegrationServiceImpl) DecreaseIntegration(id uint64, changeValu
 	return nil
 }
 
-func (impl userIntegrationServiceImpl) GetById(id uint64) *model.UserIntegration {
-	return model.GetUserIntegrationById(id)
+func (impl userIntegrationServiceImpl) GetOne(params *model.UserIntegration) *model.UserIntegration {
+	var res model.UserIntegration
+	err := global.DB.Where(&params).First(&res).Error
+	if err != nil {
+		return nil
+	}
+	return &res
 }
-func (impl userIntegrationServiceImpl) GetByUin(uin uint64) *model.UserIntegration {
-	return model.GetUserIntegrationByUin(uin)
-}
+
 func (impl userIntegrationServiceImpl) List(params *model.UserIntegration) []*model.UserIntegration {
-	return model.ListUserIntegration(params)
-}
-
-func (impl userIntegrationServiceImpl) Count() int {
-	return model.CountUserAddress()
-}
-
-type IntegrationResponse struct {
-	*model.UserIntegration
-	LevelName string `json:"level_name"`
-	Level     int    `json:"level"`
-}
-
-func (impl userIntegrationServiceImpl) ListPage(pageNum, pageSize int, params *model.UserIntegration) *response.ApiResponse {
-	userIntegrations, err := model.ListUserIntegrationPage(pageNum, pageSize, params)
+	var integrations []*model.UserIntegration
+	err := global.DB.Where(&params).Find(&integrations).Error
 	if err != nil {
 		fmt.Println(err)
 		return nil
 	}
-	levelService := NewUserVipLevelService()
-	var list []IntegrationResponse
-	for _, item := range userIntegrations {
-		levelInfo := levelService.GetById(item.LevelId)
-		list = append(list, IntegrationResponse{
+	return integrations
+}
+
+func (impl userIntegrationServiceImpl) Count() int {
+	var count int64
+	global.DB.Model(&model.UserIntegration{}).Count(&count)
+	return int(count)
+}
+
+func (impl userIntegrationServiceImpl) ListPage(pageNum, pageSize int, params *model.UserIntegration) *response.ApiResponse {
+	var integrations []*model.UserIntegration
+	err := global.DB.Where(&params).Scopes(model.Paginate(pageNum, pageSize)).Find(&integrations).Error
+	if err != nil {
+		return nil
+	}
+	if err != nil {
+		fmt.Println(err)
+		return nil
+	}
+	var list []userResponse.Integration
+	for _, item := range integrations {
+		levelInfo := UserVipLevelService.GetOne(&model.UserVipLevel{
+			Id: item.LevelId,
+		})
+		list = append(list, userResponse.Integration{
 			UserIntegration: item,
 			LevelName:       levelInfo.LevelName,
 			Level:           levelInfo.Level,
 		})
 	}
-	count := model.CountUserIntegration()
+	var count int64
+	global.DB.Model(&model.UserIntegration{}).Where(&params).Count(&count)
 	res := &response.ApiResponse{
 		List:  list,
-		Total: count,
+		Total: int(count),
 	}
 	return res
 }

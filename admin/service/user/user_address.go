@@ -1,16 +1,18 @@
 package user
 
 import (
+	"catering/global"
 	"catering/model"
 	"catering/model/common/response"
+	"fmt"
 )
 
 type UserAddressDetail struct {
-	Addr     *model.UserAddress  `json:"address"`
-	Province *model.Province     `json:"province"`
-	City     *model.City         `json:"city"`
-	District *model.District     `json:"district"`
-	Tags     []*model.AddressTag `json:"tags"`
+	Addr     *model.UserAddress      `json:"address"`
+	Province *model.Province         `json:"province"`
+	City     *model.City             `json:"city"`
+	District *model.District         `json:"district"`
+	Tags     []*model.UserAddressTag `json:"tags"`
 }
 
 var UserAddressService = NewUserAddressService()
@@ -22,39 +24,38 @@ func NewUserAddressService() userAddressService {
 type userAddressServiceImpl struct {
 }
 
-func (impl userAddressServiceImpl) GetById(id uint64) *model.UserAddress {
-	return model.GetUserAddressById(id)
+func (impl userAddressServiceImpl) GetOne(params *model.UserAddress) *model.UserAddress {
+	var res model.UserAddress
+	err := global.DB.Where(params).First(&res).Error
+	if err != nil {
+		return nil
+	}
+	return &res
 }
 func (impl userAddressServiceImpl) List(params *model.UserAddress) []*model.UserAddress {
-	return model.ListUserAddress(params)
+	var address []*model.UserAddress
+	err := global.DB.Where(&params).Find(&address).Error
+	if err != nil {
+		return nil
+	}
+	return address
 }
 
 func (impl userAddressServiceImpl) Count() int {
-	return model.CountUserAddress()
+	var count int64
+	global.DB.Model(&model.UserAddress{}).Count(&count)
+	return int(count)
 }
 
 func (impl userAddressServiceImpl) ListPage(pageNum, pageSize int, params *model.UserAddress) *response.ApiResponse {
-	// addr, err := model.ListUserAddressPage(pageNum, pageSize, params)
-	// if err != nil {
-	// 	fmt.Println(err)
-	// 	return nil
-	// }
-	var details []*UserAddressDetail
-	// for _, item := range addr {
-	// 	// tags := model.ListAddressTagByAddressId(int(item.Id))
-
-	// 	// pro := model.GetProvinceById(item.ProvinceId)
-	// 	// ci := model.GetCityById(item.CityId)
-	// 	// di := model.GetDistrictById(item.DistinctId)
-	// 	// details = append(details, &UserAddressDetail{
-	// 	// 	Addr:     item,
-	// 	// 	Tags:     tags,
-	// 	// 	Province: pro,
-	// 	// 	City:     ci,
-	// 	// 	District: di,
-	// 	// })
-	// }
-	total := impl.Count()
-	res := &response.ApiResponse{List: details, Total: total}
+	var address []*model.UserAddress
+	err := global.DB.Where(&params).Scopes(model.Paginate(pageNum, pageSize)).Preload("Province").Preload("City").Preload("District").Preload("AddressTag").Find(&address).Error
+	if err != nil {
+		fmt.Println(err)
+		return nil
+	}
+	var total int64
+	global.DB.Model(&model.UserAddress{}).Count(&total)
+	res := &response.ApiResponse{List: address, Total: int(total)}
 	return res
 }
