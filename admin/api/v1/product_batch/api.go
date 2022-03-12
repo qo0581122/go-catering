@@ -3,22 +3,16 @@ package product_batch
 import (
 	"catering/model"
 	"catering/model/common/response"
+	"catering/model/product/request"
 	"catering/pkg/app"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
 
-type QueryParams struct {
-	PageSize  int    `uri:"pageSize" json:"pageSize" form:"pageSize" valid:"Required"`
-	PageNum   int    `uri:"pageNum" json:"pageNum" form:"pageNum" valid:"Required"`
-	BatchName string `uri:"batch_name"  form:"batch_name" json:"batch_name"`
-	Status    int    `uri:"status" json:"status" form:"status"`
-}
-
-func List(c *gin.Context) {
+func ListPage(c *gin.Context) {
 	var (
-		form = QueryParams{}
+		form = request.BatchQueryParams{}
 	)
 	msg, err := app.BindAndValid(c, &form)
 	if err != nil {
@@ -33,14 +27,9 @@ func List(c *gin.Context) {
 	response.OkWithData(result, c)
 }
 
-type AddForm struct {
-	Status    int    `form:"status" json:"status" valid:"Range(1,2)"`
-	BatchName string `json:"batch_name" form:"batch_name" valid:"Required"`
-}
-
 func Add(c *gin.Context) {
 	var (
-		form = AddForm{}
+		form = request.BatchAddForm{}
 	)
 	msg, err := app.BindAndValid(c, &form)
 	if err != nil {
@@ -59,15 +48,9 @@ func Add(c *gin.Context) {
 	response.Ok(c)
 }
 
-type UpdateForm struct {
-	Id        uint64 `form:"id" json:"id" valid:"Required"`
-	Status    int    `form:"status" json:"status" valid:"Range(1,2)"`
-	BatchName string `json:"batch_name" form:"batch_name" valid:"Required"`
-}
-
 func Update(c *gin.Context) {
 	var (
-		form = UpdateForm{}
+		form = request.BatchUpdateForm{}
 	)
 	msg, err := app.BindAndValid(c, &form)
 	if err != nil {
@@ -97,7 +80,7 @@ func Delete(c *gin.Context) {
 	response.Ok(c)
 }
 
-func ListAll(c *gin.Context) {
+func List(c *gin.Context) {
 	batch := &model.ProductBatch{}
 	result := productBatchService.List(batch)
 	response.OkWithData(response.NewApiResponse(result), c)

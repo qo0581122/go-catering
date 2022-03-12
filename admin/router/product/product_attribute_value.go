@@ -10,15 +10,16 @@ import (
 type ProductAttributeValueRouter struct{}
 
 func (d *ProductRouter) InitProductAttributeValueRouter(Router *gin.RouterGroup) {
-	r := Router.Group("product-attribute-values").Use()
+	Router = Router.Group("product").Group("attribute")
+	r := Router.Group("values").Use()
 	{
+		r.GET("page", product_attribute_value.ListPage)
 		r.GET("", product_attribute_value.List)
-		r.GET("all", product_attribute_value.ListAll)
 	}
-	r = Router.Group("product-attribute-value").Use(middleware.OperationRecord())
+	r = Router.Group("value").Use(middleware.OperationRecord())
 	{
-		r.POST("add", product_attribute_value.Add)
-		r.POST("update", product_attribute_value.Update)
-		r.DELETE("delete/:id", product_attribute_value.Delete)
+		r.PUT("", product_attribute_value.Add)
+		r.POST("", product_attribute_value.Update)
+		r.DELETE(":id", product_attribute_value.Delete)
 	}
 }

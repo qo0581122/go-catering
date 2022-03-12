@@ -14,3 +14,4 @@
 
 - 2022-03-06 完成区域、代金券、优惠卷、店铺的RESTfulApi，Service层和Model层的重构。
 - 2022-03-09 完成用户积分，用户VIP，用户地址模块的RESTfulApi，Service层和Model层的重构。
+- 2022-03-12 完成商品模块的RESTfulApi，Service层和Model层的重构。

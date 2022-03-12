@@ -3,6 +3,7 @@ package product
 import (
 	"catering/model"
 	"catering/model/common/response"
+	"catering/model/product/request"
 	"catering/pkg/app"
 	"fmt"
 	"strconv"
@@ -10,16 +11,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type QueryParams struct {
-	PageSize    int    `uri:"pageSize" json:"pageSize" form:"pageSize" valid:"Required"`
-	PageNum     int    `uri:"pageNum" json:"pageNum" form:"pageNum" valid:"Required"`
-	ProductName string `uri:"product_name"  form:"product_name" json:"product_name"`
-	Status      int    `uri:"status" json:"status" form:"status"`
-}
-
 func List(c *gin.Context) {
 	var (
-		params = QueryParams{}
+		params = request.ProductQueryParams{}
 	)
 	msg, err := app.BindAndValid(c, &params)
 	if err != nil {
@@ -34,24 +28,9 @@ func List(c *gin.Context) {
 	response.OkWithData(res, c)
 }
 
-type AddForm struct {
-	ProductName   string   `json:"product_name" form:"product_name" valid:"Required"`
-	Description   string   `json:"description" form:"description" valid:"Required"`
-	Specis        int      `json:"specis" form:"specis" valid:"Range(1,2)"`
-	Url           string   `json:"url" form:"url" valid:"Required"`
-	Status        int      `form:"status" json:"status" valid:"Range(1,2)"`
-	CategoryId    uint64   `json:"category_id" form:"category_id"`
-	AttributeIds  []uint64 `json:"attribute_ids" form:"attribute_ids"`
-	BatchIds      []uint64 `json:"batch_ids" form:"batch_ids"`
-	ProductIds    []uint64 `json:"product_ids" form:"product_ids" `
-	Discount      int      `json:"discount" form:"discount"`
-	OriginalPrice int      `json:"original_price" form:"original_price"`
-	PayPrice      int      `json:"pay_price" form:"pay_price"`
-}
-
 func Add(c *gin.Context) {
 	var (
-		form = AddForm{}
+		form = request.ProductAddForm{}
 	)
 	msg, err := app.BindAndValid(c, &form)
 	if err != nil {
@@ -78,22 +57,9 @@ func Add(c *gin.Context) {
 	response.Ok(c)
 }
 
-type UpdateForm struct {
-	Id           uint64   `form:"id" json:"id" valid:"Required"`
-	ProductName  string   `json:"product_name" form:"product_name" valid:"Required"`
-	Description  string   `json:"description" form:"description" valid:"Required"`
-	Specis       int      `json:"specis" form:"specis" valid:"Range(1,2)"`
-	Url          string   `json:"url" form:"url" valid:"Required"`
-	Status       int      `form:"status" json:"status" valid:"Range(1,2)"`
-	CategoryId   uint64   `json:"category_id" form:"category_id"`
-	AttributeIds []uint64 `json:"attribute_ids" form:"attribute_ids"`
-	BatchIds     []uint64 `json:"batch_ids" form:"batch_ids"`
-	ProductIds   []uint64 `json:"product_ids" form:"product_ids" `
-}
-
 func Update(c *gin.Context) {
 	var (
-		form = UpdateForm{}
+		form = request.ProductUpdateForm{}
 	)
 	msg, err := app.BindAndValid(c, &form)
 	if err != nil {

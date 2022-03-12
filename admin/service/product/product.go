@@ -4,6 +4,8 @@ import (
 	"catering/global"
 	"catering/model"
 	"catering/model/common/response"
+	productResp "catering/model/product/response"
+	"fmt"
 
 	"gorm.io/gorm"
 )
@@ -59,7 +61,7 @@ func (impl productServiceImpl) Add(params *model.Product, attributeIds []uint64,
 	})
 }
 func (impl productServiceImpl) Delete(id uint64) error {
-	return model.DeleteProduct(id)
+	return global.DB.Delete(&model.Product{}, id).Error
 }
 func (impl productServiceImpl) Update(params *model.Product, attributeIds []uint64, batchIds []uint64, productIds []uint64) error {
 	tx := global.DB.Begin()
@@ -128,66 +130,53 @@ func (impl productServiceImpl) Update(params *model.Product, attributeIds []uint
 	return nil
 }
 
-func (impl productServiceImpl) GetById(id uint64) *model.Product {
-	return model.GetProductById(id)
+func (impl productServiceImpl) GetOne(params *model.Product) *model.Product {
+	var res model.Product
+	err := global.DB.Preload("Category").Where(&params).First(&res).Error
+	if err != nil {
+		return nil
+	}
+	return &res
 }
 func (impl productServiceImpl) List(params *model.Product) []*model.Product {
-	return model.ListProduct(params)
+	var products []*model.Product
+	err := global.DB.Where(&params).Find(&products).Error
+	if err != nil {
+		fmt.Println(err)
+		return nil
+	}
+	return products
 }
 
 func (impl productServiceImpl) Count() int {
-	return model.CountProduct()
+	var count int64
+	global.DB.Model(&model.Product{}).Count(&count)
+	return int(count)
 }
 
 func (impl productServiceImpl) ListPage(pageNum, pageSize int, params *model.Product) *response.ApiResponse {
-	var responseDatas []*ResponseData
-	products, err := model.ListProductPage(pageNum, pageSize, params)
+	var responseDatas []*productResp.ResponseData
+	var products []*model.Product
+	err := global.DB.Where(&params).Scopes(model.Paginate(pageNum, pageSize)).Preload("Category").Preload("Attributes").Preload("Batchs").Find(&products).Error
 	if err != nil {
 		return nil
 	}
 	for _, product := range products {
 		productId := product.Id
-
-		productAttribute := model.ListProductAttributeByProductId(productId)
-		attributeValueService := NewProductAttributeValueService()
-		var result []*ProductAttributeResponse
-		for _, item := range productAttribute {
-			data := attributeValueService.List(&model.ProductAttributeValue{
-				AttributeId: item.Id,
-			})
-			values := make([]*model.ProductAttributeValue, len(data))
-			for index, v := range data {
-				values[index] = v.ProductAttributeValue
-				// values = append(values, v.ProductAttributeValue)
-			}
-			result = append(result, &ProductAttributeResponse{
-				ProductAttribute: item,
-				Values:           values,
-			})
-		}
-		category := model.GetProductCategoryById(product.CategoryId)
-		productBatch := model.ListProductBatchByProductId(productId)
 		var childProducts []*model.Product
 		if product.Specis == 2 {
-			childProducts = model.ListChildProductByParentId(product.Id)
+			var result []*model.Product
+			SQL := "SELECT a.* FROM product a, product_relation b WHERE b.child_product_id = a.id AND b.parent_product_id = ?"
+			global.DB.Raw(SQL, productId).Scan(&result)
+			childProducts = result
 		}
-		responseDatas = append(responseDatas, &ResponseData{
-			Product:          product,
-			ProductAttibutes: result,
-			ProductBatchs:    productBatch,
-			ProductCategory:  category,
-			ChildProduct:     childProducts,
+		responseDatas = append(responseDatas, &productResp.ResponseData{
+			Product:      product,
+			ChildProduct: childProducts,
 		})
 	}
-	total := model.CountProduct()
-	res := &response.ApiResponse{List: responseDatas, Total: total}
+	var total int64
+	global.DB.Model(&model.Product{}).Where(&params).Count(&total)
+	res := &response.ApiResponse{List: responseDatas, Total: int(total)}
 	return res
-}
-
-type ResponseData struct {
-	Product          *model.Product              `json:"product"`
-	ProductAttibutes []*ProductAttributeResponse `json:"product_attribute"`
-	ProductBatchs    []*model.ProductBatch       `json:"product_batch"`
-	ProductCategory  *model.ProductCategory      `json:"product_category"`
-	ChildProduct     []*model.Product            `json:"child_product"`
 }

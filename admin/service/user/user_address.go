@@ -7,14 +7,6 @@ import (
 	"fmt"
 )
 
-type UserAddressDetail struct {
-	Addr     *model.UserAddress      `json:"address"`
-	Province *model.Province         `json:"province"`
-	City     *model.City             `json:"city"`
-	District *model.District         `json:"district"`
-	Tags     []*model.UserAddressTag `json:"tags"`
-}
-
 var UserAddressService = NewUserAddressService()
 
 func NewUserAddressService() userAddressService {

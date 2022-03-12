@@ -44,7 +44,7 @@ func GetOrderProduct(c *gin.Context) {
 	ids := strings.Split(params.Ids, ",")
 	for _, item := range ids {
 		id, _ := strconv.Atoi(item)
-		product := productService.GetById(uint64(id))
+		product := productService.GetOne(&model.Product{Model: model.Model{Id: uint64(id)}})
 		result = append(result, product)
 	}
 	response.OkWithData(result, c)

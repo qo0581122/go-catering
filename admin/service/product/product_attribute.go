@@ -20,7 +20,7 @@ type productAttributeServiceImpl struct {
 
 func (impl productAttributeServiceImpl) Add(params *model.ProductAttribute, values []string) error {
 	return global.DB.Transaction(func(tx *gorm.DB) error {
-		err := model.AddProductAttribute(tx, params)
+		err := tx.Create(&params).Error
 		if err != nil {
 			return err
 		}
@@ -31,7 +31,7 @@ func (impl productAttributeServiceImpl) Add(params *model.ProductAttribute, valu
 				AttributeValue: v,
 				Status:         1,
 			}
-			err = model.AddProductAttributeValue(tx, value)
+			err = tx.Create(&value).Error
 			if err != nil {
 				return err
 			}
@@ -40,16 +40,16 @@ func (impl productAttributeServiceImpl) Add(params *model.ProductAttribute, valu
 	})
 }
 func (impl productAttributeServiceImpl) Delete(id uint64) error {
-	return model.DeleteProductAttribute(id)
+	return global.DB.Delete(&model.ProductAttribute{}, id).Error
 }
 func (impl productAttributeServiceImpl) Update(params *model.ProductAttribute, values []string) error {
 	return global.DB.Transaction(func(tx *gorm.DB) error {
-		err := model.UpdateProductAttribute(tx, params)
+		err := tx.Model(&model.ProductAttribute{}).Where("id = ?", params.Id).Updates(&params).Error
 		if err != nil {
 			return err
 		}
 		id := params.Id
-		err = model.DeleteProductAttributeValueByAttributeId(id)
+		err = global.DB.Where("attribute_id", id).Delete(&model.ProductAttributeValue{}).Error
 		if err != nil {
 			return err
 		}
@@ -59,7 +59,7 @@ func (impl productAttributeServiceImpl) Update(params *model.ProductAttribute, v
 				AttributeValue: v,
 				Status:         1,
 			}
-			err = model.AddProductAttributeValue(tx, value)
+			err = tx.Create(&value).Error
 			if err != nil {
 				return err
 			}
@@ -68,63 +68,39 @@ func (impl productAttributeServiceImpl) Update(params *model.ProductAttribute, v
 	})
 }
 
-func (impl productAttributeServiceImpl) GetById(id uint64) *model.ProductAttribute {
-	return model.GetProductAttributeById(id)
-}
-
-type ProductAttributeResponse struct {
-	*model.ProductAttribute
-	Values []*model.ProductAttributeValue `json:"values"`
-}
-
-func (impl productAttributeServiceImpl) List(params *model.ProductAttribute) []*ProductAttributeResponse {
-	attributes := model.ListProductAttribute(params)
-	attributeValueService := NewProductAttributeValueService()
-	var result []*ProductAttributeResponse
-	for _, item := range attributes {
-		data := attributeValueService.List(&model.ProductAttributeValue{
-			AttributeId: item.Id,
-		})
-		values := make([]*model.ProductAttributeValue, len(data))
-		for index, v := range data {
-			values[index] = v.ProductAttributeValue
-			// values = append(values, v.ProductAttributeValue)
-		}
-		result = append(result, &ProductAttributeResponse{
-			ProductAttribute: item,
-			Values:           values,
-		})
+func (impl productAttributeServiceImpl) GetOne(params *model.ProductAttribute) *model.ProductAttribute {
+	var res model.ProductAttribute
+	err := global.DB.Where(params).First(&res).Error
+	if err != nil {
+		return nil
 	}
-	return result
+	return &res
 }
 
-func (impl productAttributeServiceImpl) Count() int {
-	return model.CountProductAttribute()
-}
-
-func (impl productAttributeServiceImpl) ListPage(pageNum, pageSize int, params *model.ProductAttribute) *response.ApiResponse {
-	productAttributes, err := model.ListProductAttributePage(pageNum, pageSize, params)
+func (impl productAttributeServiceImpl) List(params *model.ProductAttribute) []*model.ProductAttribute {
+	var attributes []*model.ProductAttribute
+	err := global.DB.Where(&params).Preload("Values").Find(&attributes).Error
 	if err != nil {
 		fmt.Println(err)
 		return nil
 	}
-	attributeValueService := NewProductAttributeValueService()
-	var result []*ProductAttributeResponse
-	for _, item := range productAttributes {
-		data := attributeValueService.List(&model.ProductAttributeValue{
-			AttributeId: item.Id,
-		})
-		values := make([]*model.ProductAttributeValue, len(data))
-		for index, v := range data {
-			values[index] = v.ProductAttributeValue
-			// values = append(values, v.ProductAttributeValue)
-		}
-		result = append(result, &ProductAttributeResponse{
-			ProductAttribute: item,
-			Values:           values,
-		})
+	return attributes
+}
+
+func (impl productAttributeServiceImpl) Count() int {
+	var count int64
+	global.DB.Model(&model.ProductAttribute{}).Count(&count)
+	return int(count)
+}
+
+func (impl productAttributeServiceImpl) ListPage(pageNum, pageSize int, params *model.ProductAttribute) *response.ApiResponse {
+	var attributes []*model.ProductAttribute
+	err := global.DB.Where(&params).Scopes(model.Paginate(pageNum, pageSize)).Preload("Values").Find(&attributes).Error
+	if err != nil {
+		return nil
 	}
-	total := model.CountProductAttribute()
-	res := &response.ApiResponse{List: result, Total: total}
+	var total int64
+	global.DB.Model(&model.ProductAttribute{}).Where(params).Count(&total)
+	res := &response.ApiResponse{List: attributes, Total: int(total)}
 	return res
 }

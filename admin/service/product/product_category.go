@@ -1,6 +1,7 @@
 package product
 
 import (
+	"catering/global"
 	"catering/model"
 	"catering/model/common/response"
 	"fmt"
@@ -16,33 +17,48 @@ type productCategoryServiceImpl struct {
 }
 
 func (impl productCategoryServiceImpl) Add(params *model.ProductCategory) error {
-	return model.AddProductCategory(params)
+	return global.DB.Create(&params).Error
 }
 func (impl productCategoryServiceImpl) Delete(id uint64) error {
-	return model.DeleteProductCategory(id)
+	return global.DB.Delete(&model.ProductCategory{}, id).Error
 }
 func (impl productCategoryServiceImpl) Update(params *model.ProductCategory) error {
-	return model.UpdateProductCategory(params)
+	return global.DB.Model(&model.ProductCategory{}).Where("id = ?", params.Id).Updates(&params).Error
 }
 
-func (impl productCategoryServiceImpl) GetById(id uint64) *model.ProductCategory {
-	return model.GetProductCategoryById(id)
+func (impl productCategoryServiceImpl) GetOne(params *model.ProductCategory) *model.ProductCategory {
+	var res model.ProductCategory
+	err := global.DB.Where(&params).First(&res).Error
+	if err != nil {
+		return nil
+	}
+	return &res
 }
 func (impl productCategoryServiceImpl) List(params *model.ProductCategory) []*model.ProductCategory {
-	return model.ListProductCategory(params)
-}
-
-func (impl productCategoryServiceImpl) Count() int {
-	return model.CountProductCategory()
-}
-
-func (impl productCategoryServiceImpl) ListPage(pageNum, pageSize int, params *model.ProductCategory) *response.ApiResponse {
-	productCategorys, err := model.ListProductCategoryPage(pageNum, pageSize, params)
+	var tags []*model.ProductCategory
+	err := global.DB.Where(&params).Find(&tags).Error
 	if err != nil {
 		fmt.Println(err)
 		return nil
 	}
-	total := model.CountProductCategory()
-	res := &response.ApiResponse{List: productCategorys, Total: total}
+	return tags
+}
+
+func (impl productCategoryServiceImpl) Count() int {
+	var count int64
+	global.DB.Model(&model.ProductCategory{}).Count(&count)
+	return int(count)
+}
+
+func (impl productCategoryServiceImpl) ListPage(pageNum, pageSize int, params *model.ProductCategory) *response.ApiResponse {
+	var productCategorys []*model.ProductCategory
+	err := global.DB.Where(&params).Scopes(model.Paginate(pageNum, pageSize)).Find(&productCategorys).Error
+	if err != nil {
+		fmt.Println(err)
+		return nil
+	}
+	var total int64
+	global.DB.Model(&model.ProductCategory{}).Count(&total)
+	res := &response.ApiResponse{List: productCategorys, Total: int(total)}
 	return res
 }

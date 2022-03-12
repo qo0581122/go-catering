@@ -10,15 +10,15 @@ import (
 type ProductBatchRouter struct{}
 
 func (d *ProductRouter) InitProductBatchRouter(Router *gin.RouterGroup) {
-	r := Router.Group("product-batchs").Use()
+	r := Router.Group("product").Group("batchs").Use()
 	{
+		r.GET("page", product_batch.ListPage)
 		r.GET("", product_batch.List)
-		r.GET("all", product_batch.ListAll)
 	}
-	r = Router.Group("product-batch").Use(middleware.OperationRecord())
+	r = Router.Group("product").Group("batch").Use(middleware.OperationRecord())
 	{
-		r.POST("add", product_batch.Add)
-		r.POST("update", product_batch.Update)
-		r.DELETE("delete/:id", product_batch.Delete)
+		r.PUT("", product_batch.Add)
+		r.POST("", product_batch.Update)
+		r.DELETE(":id", product_batch.Delete)
 	}
 }

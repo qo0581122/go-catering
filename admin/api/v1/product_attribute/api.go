@@ -3,22 +3,16 @@ package product_attribute
 import (
 	"catering/model"
 	"catering/model/common/response"
+	"catering/model/product/request"
 	"catering/pkg/app"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
 
-type QueryParams struct {
-	PageSize      int    `uri:"pageSize" json:"pageSize" form:"pageSize" valid:"Required"`
-	PageNum       int    `uri:"pageNum" json:"pageNum" form:"pageNum" valid:"Required"`
-	AttributeName string `uri:"attribute_name"  form:"attribute_name" json:"attribute_name"`
-	Status        int    `uri:"status" json:"status" form:"status"`
-}
-
-func List(c *gin.Context) {
+func ListPage(c *gin.Context) {
 	var (
-		form = QueryParams{}
+		form = request.AttributeQueryParams{}
 	)
 	msg, err := app.BindAndValid(c, &form)
 	if err != nil {
@@ -33,15 +27,9 @@ func List(c *gin.Context) {
 	response.OkWithData(result, c)
 }
 
-type AddForm struct {
-	Status          int      `form:"status" json:"status" valid:"Range(1,2)"`
-	AttributeName   string   `json:"attribute_name" form:"attribute_name" valid:"Required"`
-	AttributeValues []string `json:"values" form:"values"`
-}
-
 func Add(c *gin.Context) {
 	var (
-		form = AddForm{}
+		form = request.AttributeAddForm{}
 	)
 	msg, err := app.BindAndValid(c, &form)
 	if err != nil {
@@ -62,16 +50,9 @@ func Add(c *gin.Context) {
 	response.Ok(c)
 }
 
-type UpdateForm struct {
-	Id              uint64   `form:"id" json:"id" valid:"Required"`
-	Status          int      `form:"status" json:"status" valid:"Range(1,2)"`
-	AttributeName   string   `json:"attribute_name" form:"attribute_name" valid:"Required"`
-	AttributeValues []string `json:"values" form:"values"`
-}
-
 func Update(c *gin.Context) {
 	var (
-		form = UpdateForm{}
+		form = request.AttributeUpdateForm{}
 	)
 	msg, err := app.BindAndValid(c, &form)
 	if err != nil {
@@ -101,7 +82,7 @@ func Delete(c *gin.Context) {
 	response.Ok(c)
 }
 
-func ListAll(c *gin.Context) {
+func List(c *gin.Context) {
 	productattribute := &model.ProductAttribute{}
 	result := productAttributeService.List(productattribute)
 	response.OkWithData(response.NewApiResponse(result), c)

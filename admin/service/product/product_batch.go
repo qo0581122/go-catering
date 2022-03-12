@@ -1,6 +1,7 @@
 package product
 
 import (
+	"catering/global"
 	"catering/model"
 	"catering/model/common/response"
 	"fmt"
@@ -16,33 +17,48 @@ type productBatchServiceImpl struct {
 }
 
 func (impl productBatchServiceImpl) Add(params *model.ProductBatch) error {
-	return model.AddProductBatch(params)
+	return global.DB.Create(&params).Error
 }
 func (impl productBatchServiceImpl) Delete(id uint64) error {
-	return model.DeleteProductBatch(id)
+	return global.DB.Delete(&model.ProductBatch{}, id).Error
 }
 func (impl productBatchServiceImpl) Update(params *model.ProductBatch) error {
-	return model.UpdateProductBatch(params)
+	return global.DB.Model(&model.ProductBatch{}).Where("id = ?", params.Id).Updates(&params).Error
 }
 
-func (impl productBatchServiceImpl) GetById(id uint64) *model.ProductBatch {
-	return model.GetProductBatchById(id)
+func (impl productBatchServiceImpl) GetOne(params *model.ProductBatch) *model.ProductBatch {
+	var res model.ProductBatch
+	err := global.DB.Where(&params).First(&res).Error
+	if err != nil {
+		return nil
+	}
+	return &res
 }
 func (impl productBatchServiceImpl) List(params *model.ProductBatch) []*model.ProductBatch {
-	return model.ListProductBatch(params)
-}
-
-func (impl productBatchServiceImpl) Count() int {
-	return model.CountProductBatch()
-}
-
-func (impl productBatchServiceImpl) ListPage(pageNum, pageSize int, params *model.ProductBatch) *response.ApiResponse {
-	productBatchs, err := model.ListProductBatchPage(pageNum, pageSize, params)
+	var tags []*model.ProductBatch
+	err := global.DB.Where(&params).Find(&tags).Error
 	if err != nil {
 		fmt.Println(err)
 		return nil
 	}
-	total := model.CountProductBatch()
-	res := &response.ApiResponse{List: productBatchs, Total: total}
+	return tags
+}
+
+func (impl productBatchServiceImpl) Count() int {
+	var count int64
+	global.DB.Model(&model.ProductBatch{}).Count(&count)
+	return int(count)
+}
+
+func (impl productBatchServiceImpl) ListPage(pageNum, pageSize int, params *model.ProductBatch) *response.ApiResponse {
+	var productBatchs []*model.ProductBatch
+	err := global.DB.Where(&params).Scopes(model.Paginate(pageNum, pageSize)).Find(&productBatchs).Error
+	if err != nil {
+		fmt.Println(err)
+		return nil
+	}
+	var total int64
+	global.DB.Model(&model.ProductBatch{}).Count(&total)
+	res := &response.ApiResponse{List: productBatchs, Total: int(total)}
 	return res
 }
