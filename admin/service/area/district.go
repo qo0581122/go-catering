@@ -23,7 +23,7 @@ func (impl districtServiceImpl) Delete(id uint64) error {
 	return global.DB.Delete(&model.District{}, id).Error
 }
 func (impl districtServiceImpl) Update(params *model.District) error {
-	return global.DB.Model(&model.District{}).Where("id = ?", params.Id).Updates(&params).Error
+	return global.DB.Model(&model.District{}).Where("id = ?", params.ID).Updates(&params).Error
 }
 
 func (impl districtServiceImpl) Get(params *model.District) *model.District {

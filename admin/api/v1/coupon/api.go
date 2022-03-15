@@ -86,7 +86,7 @@ func Update(c *gin.Context) {
 	useEndTime := model.ParseTime(form.UseEndTime)
 	coupon := &model.Coupon{
 		Model: model.Model{
-			Id: form.Id,
+			ID: form.Id,
 		},
 		Name:          form.CouponName,
 		Price:         form.Price,

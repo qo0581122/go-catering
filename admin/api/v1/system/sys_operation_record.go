@@ -86,7 +86,7 @@ func (s *OperationRecordApi) FindSysOperationRecord(c *gin.Context) {
 		response.FailWithMessage(err.Error(), c)
 		return
 	}
-	if err, resysOperationRecord := operationRecordService.GetSysOperationRecord(sysOperationRecord.ID); err != nil {
+	if err, resysOperationRecord := operationRecordService.GetSysOperationRecord(uint(sysOperationRecord.ID)); err != nil {
 		global.Log.Error("查询失败!", zap.Error(err))
 		response.FailWithMessage("查询失败", c)
 	} else {

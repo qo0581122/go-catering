@@ -35,11 +35,7 @@ func (initDBService *InitDBService) initTables() error {
 		system.SysUser{},
 		system.SysBaseMenu{},
 		system.SysAuthority{},
-		system.JwtBlacklist{},
-		system.SysDictionary{},
-		system.SysAutoCodeHistory{},
 		system.SysOperationRecord{},
-		system.SysDictionaryDetail{},
 		system.SysBaseMenuParameter{},
 
 		adapter.CasbinRule{},

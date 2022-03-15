@@ -59,7 +59,7 @@ func Update(c *gin.Context) {
 		return
 	}
 	productattributevalue := &model.ProductAttributeValue{
-		Model:          model.Model{Id: form.Id},
+		Model:          model.Model{ID: form.Id},
 		AttributeValue: form.AttributeValue,
 		Status:         form.Status,
 	}

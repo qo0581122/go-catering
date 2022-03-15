@@ -50,7 +50,7 @@ func (e *CustomerApi) CreateExaCustomer(c *gin.Context) {
 func (e *CustomerApi) DeleteExaCustomer(c *gin.Context) {
 	var customer example.ExaCustomer
 	_ = c.ShouldBindJSON(&customer)
-	if err := pkg.Verify(customer.GVA_MODEL, pkg.IdVerify); err != nil {
+	if err := pkg.Verify(customer.Model, pkg.IdVerify); err != nil {
 		response.FailWithMessage(err.Error(), c)
 		return
 	}
@@ -73,7 +73,7 @@ func (e *CustomerApi) DeleteExaCustomer(c *gin.Context) {
 func (e *CustomerApi) UpdateExaCustomer(c *gin.Context) {
 	var customer example.ExaCustomer
 	_ = c.ShouldBindJSON(&customer)
-	if err := pkg.Verify(customer.GVA_MODEL, pkg.IdVerify); err != nil {
+	if err := pkg.Verify(customer.Model, pkg.IdVerify); err != nil {
 		response.FailWithMessage(err.Error(), c)
 		return
 	}
@@ -100,11 +100,11 @@ func (e *CustomerApi) UpdateExaCustomer(c *gin.Context) {
 func (e *CustomerApi) GetExaCustomer(c *gin.Context) {
 	var customer example.ExaCustomer
 	_ = c.ShouldBindQuery(&customer)
-	if err := pkg.Verify(customer.GVA_MODEL, pkg.IdVerify); err != nil {
+	if err := pkg.Verify(customer.Model, pkg.IdVerify); err != nil {
 		response.FailWithMessage(err.Error(), c)
 		return
 	}
-	err, data := customerService.GetExaCustomer(customer.ID)
+	err, data := customerService.GetExaCustomer(uint(customer.ID))
 	if err != nil {
 		global.Log.Error("获取失败!", zap.Error(err))
 		response.FailWithMessage("获取失败", c)

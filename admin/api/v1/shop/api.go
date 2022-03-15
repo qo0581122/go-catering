@@ -71,7 +71,7 @@ func Update(c *gin.Context) {
 	}
 	model := &model.Shop{
 		Model: model.Model{
-			Id: form.Id,
+			ID: form.Id,
 		},
 		ShopName:      form.ShopName,
 		CategoryId:    form.CategoryId,

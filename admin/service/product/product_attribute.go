@@ -24,7 +24,7 @@ func (impl productAttributeServiceImpl) Add(params *model.ProductAttribute, valu
 		if err != nil {
 			return err
 		}
-		id := params.Id
+		id := params.ID
 		for _, v := range values {
 			value := &model.ProductAttributeValue{
 				AttributeId:    id,
@@ -44,11 +44,11 @@ func (impl productAttributeServiceImpl) Delete(id uint64) error {
 }
 func (impl productAttributeServiceImpl) Update(params *model.ProductAttribute, values []string) error {
 	return global.DB.Transaction(func(tx *gorm.DB) error {
-		err := tx.Model(&model.ProductAttribute{}).Where("id = ?", params.Id).Updates(&params).Error
+		err := tx.Model(&model.ProductAttribute{}).Where("id = ?", params.ID).Updates(&params).Error
 		if err != nil {
 			return err
 		}
-		id := params.Id
+		id := params.ID
 		err = global.DB.Where("attribute_id", id).Delete(&model.ProductAttributeValue{}).Error
 		if err != nil {
 			return err

@@ -1,12 +1,12 @@
 package example
 
 import (
-	"catering/global"
+	"catering/model"
 )
 
 // file struct, 文件结构体
 type ExaFile struct {
-	global.GVA_MODEL
+	model.Model
 	FileName     string
 	FileMd5      string
 	FilePath     string
@@ -17,7 +17,7 @@ type ExaFile struct {
 
 // file chunk struct, 切片结构体
 type ExaFileChunk struct {
-	global.GVA_MODEL
+	model.Model
 	ExaFileID       uint
 	FileChunkNumber int
 	FileChunkPath   string

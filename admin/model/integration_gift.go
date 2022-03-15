@@ -29,7 +29,7 @@ func AddIntegrationGift(params *IntegrationGift) error {
 }
 
 func UpdateIntegrationGift(params *IntegrationGift) error {
-	return global.DB.Model(&IntegrationGift{}).Where("id = ?", params.Id).Updates(&params).Error
+	return global.DB.Model(&IntegrationGift{}).Where("id = ?", params.ID).Updates(&params).Error
 }
 
 func DeleteIntegrationGift(id uint64) error {

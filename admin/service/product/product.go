@@ -24,7 +24,7 @@ func (impl productServiceImpl) Add(params *model.Product, attributeIds []uint64,
 		if err := tx.Create(&params).Error; err != nil {
 			return err
 		}
-		productId := params.Id
+		productId := params.ID
 		if params.Specis == 1 {
 			for _, id := range attributeIds {
 				attributeRelationModel := &model.ProductAttributeRelation{
@@ -71,25 +71,25 @@ func (impl productServiceImpl) Update(params *model.Product, attributeIds []uint
 		}
 	}()
 
-	if err := tx.Model(&params).Where("id = ?", params.Id).Updates(&params).Error; err != nil {
+	if err := tx.Model(&params).Where("id = ?", params.ID).Updates(&params).Error; err != nil {
 		tx.Rollback()
 		return err
 	}
 
-	if err := tx.Delete("product_id = ?", params.Id).Delete(&model.ProductAttributeRelation{}).Error; err != nil {
+	if err := tx.Delete("product_id = ?", params.ID).Delete(&model.ProductAttributeRelation{}).Error; err != nil {
 		tx.Rollback()
 		return err
 	}
-	if err := tx.Delete("product_id = ?", params.Id).Delete(&model.ProductBatchRelation{}).Error; err != nil {
+	if err := tx.Delete("product_id = ?", params.ID).Delete(&model.ProductBatchRelation{}).Error; err != nil {
 		tx.Rollback()
 		return err
 	}
-	if err := tx.Delete("parent_product_id = ?", params.Id).Delete(&model.ProductRelation{}).Error; err != nil {
+	if err := tx.Delete("parent_product_id = ?", params.ID).Delete(&model.ProductRelation{}).Error; err != nil {
 		tx.Rollback()
 		return err
 	}
 
-	productId := params.Id
+	productId := params.ID
 	for _, id := range attributeIds {
 		attributeRelationModel := &model.ProductAttributeRelation{
 			ProductId:   productId,
@@ -162,7 +162,7 @@ func (impl productServiceImpl) ListPage(pageNum, pageSize int, params *model.Pro
 		return nil
 	}
 	for _, product := range products {
-		productId := product.Id
+		productId := product.ID
 		var childProducts []*model.Product
 		if product.Specis == 2 {
 			var result []*model.Product

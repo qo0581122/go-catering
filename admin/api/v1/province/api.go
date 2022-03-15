@@ -59,7 +59,7 @@ func Update(c *gin.Context) {
 	}
 	province := &model.Province{
 		Model: model.Model{
-			Id: form.Id,
+			ID: form.Id,
 		},
 		ProvinceName: form.ProvinceName,
 		Status:       form.Status,

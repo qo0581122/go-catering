@@ -20,17 +20,17 @@ type shopServiceImpl struct {
 func (impl shopServiceImpl) Add(params *model.Shop) error {
 	province := provinceService.Get(&model.Province{
 		Model: model.Model{
-			Id: params.ProvinceId,
+			ID: params.ProvinceId,
 		},
 	})
 	city := cityService.Get(&model.City{
 		Model: model.Model{
-			Id: params.CityId,
+			ID: params.CityId,
 		},
 	})
 	district := districtService.Get(&model.District{
 		Model: model.Model{
-			Id: params.DistrictId,
+			ID: params.DistrictId,
 		},
 	})
 	params.ShopDetailAddress = province.ProvinceName + city.CityName + district.DistrictName + params.ShopAddress
@@ -42,21 +42,21 @@ func (impl shopServiceImpl) Delete(id uint64) error {
 func (impl shopServiceImpl) Update(params *model.Shop) error {
 	province := provinceService.Get(&model.Province{
 		Model: model.Model{
-			Id: params.ProvinceId,
+			ID: params.ProvinceId,
 		},
 	})
 	city := cityService.Get(&model.City{
 		Model: model.Model{
-			Id: params.CityId,
+			ID: params.CityId,
 		},
 	})
 	district := districtService.Get(&model.District{
 		Model: model.Model{
-			Id: params.DistrictId,
+			ID: params.DistrictId,
 		},
 	})
 	params.ShopDetailAddress = province.ProvinceName + city.CityName + district.DistrictName + params.ShopAddress
-	return global.DB.Model(&model.Shop{}).Where("id = ?", params.Id).Updates(&params).Error
+	return global.DB.Model(&model.Shop{}).Where("id = ?", params.ID).Updates(&params).Error
 }
 
 func (impl shopServiceImpl) GetOne(params *model.Shop) *model.Shop {

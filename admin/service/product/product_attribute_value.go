@@ -28,7 +28,7 @@ func (impl productAttributeValueServiceImpl) Delete(id uint64) error {
 	return global.DB.Delete(&model.ProductAttributeValue{}, id).Error
 }
 func (impl productAttributeValueServiceImpl) Update(params *model.ProductAttributeValue) error {
-	return global.DB.Model(&model.ProductAttributeValue{}).Where("id = ?", params.Id).Updates(&params).Error
+	return global.DB.Model(&model.ProductAttributeValue{}).Where("id = ?", params.ID).Updates(&params).Error
 }
 
 func (impl productAttributeValueServiceImpl) GetOne(params *model.ProductAttributeValue) *model.ProductAttributeValue {

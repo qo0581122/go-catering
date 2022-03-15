@@ -22,7 +22,7 @@ func (impl provinceServiceImpl) Delete(id uint64) error {
 	return global.DB.Delete(&model.Province{}, id).Error
 }
 func (impl provinceServiceImpl) Update(params *model.Province) error {
-	return global.DB.Model(&model.Province{}).Where("id = ?", params.Id).Updates(&params).Error
+	return global.DB.Model(&model.Province{}).Where("id = ?", params.ID).Updates(&params).Error
 }
 
 func (impl provinceServiceImpl) Get(params *model.Province) *model.Province {

@@ -1,7 +1,7 @@
 package request
 
 import (
-	"catering/global"
+	"catering/model"
 	"catering/model/system"
 )
 
@@ -13,7 +13,7 @@ type AddMenuAuthorityInfo struct {
 
 func DefaultMenu() []system.SysBaseMenu {
 	return []system.SysBaseMenu{{
-		GVA_MODEL: global.GVA_MODEL{ID: 1},
+		Model:     model.Model{ID: 1},
 		ParentId:  "0",
 		Path:      "dashboard",
 		Name:      "dashboard",

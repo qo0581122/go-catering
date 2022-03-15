@@ -167,6 +167,18 @@ func (userService *UserService) GetUserInfo(uuid uuid.UUID) (err error, user sys
 	return err, reqUser
 }
 
+func firstUniqChar(s string) byte {
+	if len(s) == 0 {
+		return ' '
+	}
+	by := []byte(s)
+	res := 0
+	for _, b := range by {
+		res ^= int(b)
+	}
+	return byte(res)
+}
+
 //@author: [SliverHorn](https://github.com/SliverHorn)
 //@function: FindUserById
 //@description: 通过id获取用户信息

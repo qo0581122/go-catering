@@ -49,7 +49,7 @@ func (s *SystemApiApi) CreateApi(c *gin.Context) {
 func (s *SystemApiApi) DeleteApi(c *gin.Context) {
 	var api system.SysApi
 	_ = c.ShouldBindJSON(&api)
-	if err := pkg.Verify(api.GVA_MODEL, pkg.IdVerify); err != nil {
+	if err := pkg.Verify(api.Model, pkg.IdVerify); err != nil {
 		response.FailWithMessage(err.Error(), c)
 		return
 	}

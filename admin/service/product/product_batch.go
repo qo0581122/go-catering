@@ -23,7 +23,7 @@ func (impl productBatchServiceImpl) Delete(id uint64) error {
 	return global.DB.Delete(&model.ProductBatch{}, id).Error
 }
 func (impl productBatchServiceImpl) Update(params *model.ProductBatch) error {
-	return global.DB.Model(&model.ProductBatch{}).Where("id = ?", params.Id).Updates(&params).Error
+	return global.DB.Model(&model.ProductBatch{}).Where("id = ?", params.ID).Updates(&params).Error
 }
 
 func (impl productBatchServiceImpl) GetOne(params *model.ProductBatch) *model.ProductBatch {

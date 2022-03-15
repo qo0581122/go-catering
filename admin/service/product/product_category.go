@@ -23,7 +23,7 @@ func (impl productCategoryServiceImpl) Delete(id uint64) error {
 	return global.DB.Delete(&model.ProductCategory{}, id).Error
 }
 func (impl productCategoryServiceImpl) Update(params *model.ProductCategory) error {
-	return global.DB.Model(&model.ProductCategory{}).Where("id = ?", params.Id).Updates(&params).Error
+	return global.DB.Model(&model.ProductCategory{}).Where("id = ?", params.ID).Updates(&params).Error
 }
 
 func (impl productCategoryServiceImpl) GetOne(params *model.ProductCategory) *model.ProductCategory {

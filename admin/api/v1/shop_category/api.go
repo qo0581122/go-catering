@@ -58,7 +58,7 @@ func Update(c *gin.Context) {
 		return
 	}
 	category := &model.ShopCategory{
-		Model:        model.Model{Id: form.Id},
+		Model:        model.Model{ID: form.Id},
 		CategoryName: form.CategoryName,
 		Status:       form.Status,
 	}

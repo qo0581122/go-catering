@@ -4,6 +4,7 @@ go 1.16
 
 require (
 	github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751
+	github.com/alexedwards/scs/v2 v2.5.0 // indirect
 	github.com/aliyun/aliyun-oss-go-sdk v2.2.0+incompatible
 	github.com/astaxie/beego v1.12.3
 	github.com/casbin/casbin/v2 v2.41.0

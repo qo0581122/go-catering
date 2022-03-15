@@ -6,6 +6,7 @@ import (
 	"strconv"
 
 	"catering/global"
+	"catering/model"
 	"catering/model/system"
 
 	"github.com/xuri/excelize/v2"
@@ -64,8 +65,8 @@ func (exa *ExcelService) ParseExcel2InfoList() ([]system.SysBaseMenu, error) {
 		hidden, _ := strconv.ParseBool(row[3])
 		sort, _ := strconv.Atoi(row[5])
 		menu := system.SysBaseMenu{
-			GVA_MODEL: global.GVA_MODEL{
-				ID: uint(id),
+			Model: model.Model{
+				ID: uint64(id),
 			},
 			Name:      row[1],
 			Path:      row[2],

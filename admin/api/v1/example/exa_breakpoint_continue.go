@@ -68,7 +68,7 @@ func (u *FileUploadAndDownloadApi) BreakpointContinue(c *gin.Context) {
 		return
 	}
 
-	if err = fileUploadAndDownloadService.CreateFileChunk(file.ID, pathc, chunkNumber); err != nil {
+	if err = fileUploadAndDownloadService.CreateFileChunk(uint(file.ID), pathc, chunkNumber); err != nil {
 		global.Log.Error("创建文件记录失败!", zap.Error(err))
 		response.FailWithMessage("创建文件记录失败", c)
 		return

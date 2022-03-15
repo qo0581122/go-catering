@@ -24,7 +24,7 @@ func (impl cityServiceImpl) Delete(id uint64) error {
 	return global.DB.Delete(&model.City{}, id).Error
 }
 func (impl cityServiceImpl) Update(params *model.City) error {
-	return global.DB.Model(&model.City{}).Where("id = ?", params.Id).Updates(&params).Error
+	return global.DB.Model(&model.City{}).Where("id = ?", params.ID).Updates(&params).Error
 }
 
 func (impl cityServiceImpl) Get(params *model.City) *model.City {

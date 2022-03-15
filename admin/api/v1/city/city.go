@@ -60,7 +60,7 @@ func Update(c *gin.Context) {
 		return
 	}
 	city := &model.City{
-		Model:      model.Model{Id: form.Id},
+		Model:      model.Model{ID: form.Id},
 		ProvinceId: form.ProvinceId,
 		CityName:   form.CityName,
 		Status:     form.Status,

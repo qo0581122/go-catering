@@ -9,7 +9,5 @@ type RouterGroup struct {
 	UserRouter
 	CasbinRouter
 	AuthorityRouter
-	DictionaryRouter
 	OperationRecordRouter
-	DictionaryDetailRouter
 }

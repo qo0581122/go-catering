@@ -46,7 +46,7 @@ func (b *BaseApi) tokenNext(c *gin.Context, user system.SysUser) {
 	j := &pkg.JWT{SigningKey: []byte(global.Config.JWT.SigningKey)} // 唯一签名
 	claims := j.CreateClaims(systemReq.BaseClaims{
 		UUID:        user.UUID,
-		ID:          user.ID,
+		ID:          uint(user.ID),
 		NickName:    user.NickName,
 		Username:    user.Username,
 		AuthorityId: user.AuthorityId,
@@ -264,7 +264,7 @@ func (b *BaseApi) SetSelfInfo(c *gin.Context) {
 	var user system.SysUser
 	_ = c.ShouldBindJSON(&user)
 	user.Username = ""
-	user.ID = pkg.GetUserID(c)
+	user.ID = uint64(pkg.GetUserID(c))
 	if err, ReqUser := userService.SetUserInfo(user); err != nil {
 		global.Log.Error("设置失败!", zap.Error(err))
 		response.FailWithMessage("设置失败", c)
@@ -300,7 +300,7 @@ func (b *BaseApi) GetUserInfo(c *gin.Context) {
 func (b *BaseApi) ResetPassword(c *gin.Context) {
 	var user system.SysUser
 	_ = c.ShouldBindJSON(&user)
-	if err := userService.ResetPassword(user.ID); err != nil {
+	if err := userService.ResetPassword(uint(user.ID)); err != nil {
 		global.Log.Error("重置失败!", zap.Error(err))
 		response.FailWithMessage("重置失败"+err.Error(), c)
 	} else {

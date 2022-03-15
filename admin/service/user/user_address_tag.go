@@ -23,7 +23,7 @@ func (impl addressTagServiceImpl) Delete(id uint64) error {
 	return global.DB.Delete(&model.UserAddressTag{}, id).Error
 }
 func (impl addressTagServiceImpl) Update(params *model.UserAddressTag) error {
-	return global.DB.Model(&model.UserAddressTag{}).Where("id = ?", params.Id).Updates(&params).Error
+	return global.DB.Model(&model.UserAddressTag{}).Where("id = ?", params.ID).Updates(&params).Error
 
 }
 

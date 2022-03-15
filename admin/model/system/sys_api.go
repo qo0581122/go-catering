@@ -1,11 +1,11 @@
 package system
 
 import (
-	"catering/global"
+	"catering/model"
 )
 
 type SysApi struct {
-	global.GVA_MODEL
+	model.Model
 	Path        string `json:"path" gorm:"comment:api路径"`             // api路径
 	Description string `json:"description" gorm:"comment:api中文描述"`    // api中文描述
 	ApiGroup    string `json:"apiGroup" gorm:"comment:api组"`          // api组

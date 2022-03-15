@@ -23,7 +23,7 @@ func (impl couponServiceImpl) Delete(id uint64) error {
 	return global.DB.Delete(&model.Coupon{}, id).Error
 }
 func (impl couponServiceImpl) Update(params *model.Coupon) error {
-	return global.DB.Model(&model.Coupon{}).Where("id = ?", params.Id).Updates(&params).Error
+	return global.DB.Model(&model.Coupon{}).Where("id = ?", params.ID).Updates(&params).Error
 }
 
 func (impl couponServiceImpl) GetOne(params *model.Coupon) *model.Coupon {

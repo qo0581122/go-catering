@@ -81,11 +81,9 @@ func (initDBService *InitDBService) initMysqlData() error {
 		system.Casbin,
 		system.BaseMenu,
 		system.Authority,
-		system.Dictionary,
 		system.UserAuthority,
 		system.DataAuthorities,
 		system.AuthoritiesMenus,
-		system.DictionaryDetail,
 		system.ViewAuthorityMenuMysql,
 		example.FileMysql,
 	)

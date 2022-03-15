@@ -76,7 +76,7 @@ func (baseMenuService *BaseMenuService) UpdateBaseMenu(menu system.SysBaseMenu) 
 		}
 		if len(menu.Parameters) > 0 {
 			for k := range menu.Parameters {
-				menu.Parameters[k].SysBaseMenuID = menu.ID
+				menu.Parameters[k].SysBaseMenuID = uint(menu.ID)
 			}
 			txErr = tx.Create(&menu.Parameters).Error
 			if txErr != nil {
