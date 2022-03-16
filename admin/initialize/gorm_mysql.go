@@ -3,34 +3,12 @@ package initialize
 import (
 	"catering/global"
 	"catering/initialize/internal"
+	"database/sql"
 	"time"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
-
-// GormMysql 初始化Mysql数据库
-// Author [piexlmax](https://github.com/piexlmax)
-// Author [SliverHorn](https://github.com/SliverHorn)
-// func GormMysql() *gorm.DB {
-// 	m := global.Config.Mysql
-// 	if m.Dbname == "" {
-// 		return nil
-// 	}
-// 	mysqlConfig := mysql.Config{
-// 		DSN:                       m.Dsn(), // DSN data source name
-// 		DefaultStringSize:         191,     // string 类型字段的默认长度
-// 		SkipInitializeWithVersion: false,   // 根据版本自动配置
-// 	}
-// 	if db, err := gorm.Open(mysql.New(mysqlConfig), internal.Gorm.Config()); err != nil {
-// 		return nil
-// 	} else {
-// 		sqlDB, _ := db.DB()
-// 		sqlDB.SetMaxIdleConns(m.MaxIdleConns)
-// 		sqlDB.SetMaxOpenConns(m.MaxOpenConns)
-// 		return db
-// 	}
-// }
 
 func GormMysql() *gorm.DB {
 	cfg := global.Config.Mysql
@@ -56,14 +34,41 @@ func GormMysql() *gorm.DB {
 	sqlDB.SetMaxOpenConns(100)
 	// SetConnMaxLifetime 设置了连接可复用的最大时间。
 	sqlDB.SetConnMaxLifetime(time.Hour)
-	if cfg.MaxIdleConns != 0 {
-		sqlDB.SetMaxIdleConns(cfg.MaxIdleConns)
-	}
-	if cfg.MaxOpenConns != 0 {
-		sqlDB.SetMaxOpenConns(cfg.MaxOpenConns)
-	}
-	if cfg.MaxLifeTime != 0 {
-		sqlDB.SetConnMaxLifetime(time.Duration(cfg.MaxLifeTime) * time.Second)
-	}
+
+	Options(sqlDB, WithMaxIdelConns(cfg.MaxIdleConns), WithMaxOpenConns(cfg.MaxOpenConns), WithMaxLifeTime(cfg.MaxLifeTime))
 	return db
+}
+
+type Option func(m *sql.DB)
+
+func WithMaxIdelConns(idle int) Option {
+	return func(m *sql.DB) {
+		if idle == 0 {
+			return
+		}
+		m.SetMaxIdleConns(idle)
+	}
+}
+
+func WithMaxOpenConns(open int) Option {
+	return func(m *sql.DB) {
+		if open == 0 {
+			return
+		}
+		m.SetMaxOpenConns(open)
+	}
+}
+
+func WithMaxLifeTime(t int) Option {
+	return func(m *sql.DB) {
+		if t == 0 {
+			return
+		}
+		m.SetConnMaxLifetime(time.Duration(t) * time.Second)
+	}
+}
+func Options(m *sql.DB, opts ...Option) {
+	for _, opt := range opts {
+		opt(m)
+	}
 }

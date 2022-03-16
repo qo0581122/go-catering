@@ -19,11 +19,4 @@ func InitConfig() {
 	if err != nil {
 		fmt.Println("err", err)
 	}
-
-	fmt.Println("in func(yaml.v2): ", global.Config.System)
-	fmt.Println("in func(yaml.v2): ", global.Config.Casbin)
-	fmt.Println("in func(yaml.v2): ", global.Config.Cors)
-	fmt.Println("in func(yaml.v2): ", global.Config.JWT)
-	fmt.Println("in func(yaml.v2): ", global.Config.Mysql)
-	fmt.Println("in func(yaml.v2): ", global.Config.Redis)
 }

@@ -10,14 +10,6 @@ import (
 	"gorm.io/gorm"
 )
 
-// var (
-// 	DB                  *gorm.DB
-// 	GVA_REDIS               *redis.Client
-// 	Config              config.Server
-// 	Log                 *zap.Logger
-// 	GVA_Concurrency_Control = &singleflight.Group{}
-// )
-
 var (
 	DB                  *gorm.DB
 	Config              config.Config
