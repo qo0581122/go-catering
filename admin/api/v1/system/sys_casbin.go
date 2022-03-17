@@ -5,7 +5,7 @@ import (
 	"catering/model/common/response"
 	"catering/model/system/request"
 	systemRes "catering/model/system/response"
-	"catering/pkg"
+	"catering/pkg/valid"
 
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
@@ -23,9 +23,9 @@ type CasbinApi struct{}
 // @Router /casbin/UpdateCasbin [post]
 func (cas *CasbinApi) UpdateCasbin(c *gin.Context) {
 	var cmr request.CasbinInReceive
-	_ = c.ShouldBindJSON(&cmr)
-	if err := pkg.Verify(cmr, pkg.AuthorityIdVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &cmr)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	if err := casbinService.UpdateCasbin(cmr.AuthorityId, cmr.CasbinInfos); err != nil {
@@ -46,9 +46,9 @@ func (cas *CasbinApi) UpdateCasbin(c *gin.Context) {
 // @Router /casbin/getPolicyPathByAuthorityId [post]
 func (cas *CasbinApi) GetPolicyPathByAuthorityId(c *gin.Context) {
 	var casbin request.CasbinInReceive
-	_ = c.ShouldBindJSON(&casbin)
-	if err := pkg.Verify(casbin, pkg.AuthorityIdVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &casbin)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	paths := casbinService.GetPolicyPathByAuthorityId(casbin.AuthorityId)

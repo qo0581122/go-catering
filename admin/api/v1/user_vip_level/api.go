@@ -4,7 +4,7 @@ import (
 	"catering/model"
 	"catering/model/common/response"
 	"catering/model/user/request"
-	"catering/pkg/app"
+	"catering/pkg/valid"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -14,7 +14,7 @@ func ListPage(c *gin.Context) {
 	var (
 		form = request.UserVipLevelQueryParams{}
 	)
-	msg, err := app.BindAndValid(c, &form)
+	msg, err := valid.BindAndValid(c, &form)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 		return
@@ -27,7 +27,7 @@ func Add(c *gin.Context) {
 	var (
 		form = request.UserVipLevelAddForm{}
 	)
-	msg, err := app.BindAndValid(c, &form)
+	msg, err := valid.BindAndValid(c, &form)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 		return
@@ -51,7 +51,7 @@ func Adds(c *gin.Context) {
 	var (
 		form = request.UserVipLevelAddForms{}
 	)
-	msg, err := app.BindAndValid(c, &form)
+	msg, err := valid.BindAndValid(c, &form)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 		return
@@ -78,7 +78,7 @@ func Update(c *gin.Context) {
 	var (
 		form = request.UserVipLevelUpdateForm{}
 	)
-	msg, err := app.BindAndValid(c, &form)
+	msg, err := valid.BindAndValid(c, &form)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 		return

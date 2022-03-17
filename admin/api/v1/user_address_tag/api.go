@@ -4,7 +4,7 @@ import (
 	"catering/model"
 	"catering/model/common/response"
 	"catering/model/user/request"
-	"catering/pkg/app"
+	"catering/pkg/valid"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -14,7 +14,7 @@ func ListPage(c *gin.Context) {
 	var (
 		form = request.UserAddressTagQueryParams{}
 	)
-	msg, err := app.BindAndValid(c, &form)
+	msg, err := valid.BindAndValid(c, &form)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 		return
@@ -31,7 +31,7 @@ func Add(c *gin.Context) {
 	var (
 		form = request.UserAddressTagAddForm{}
 	)
-	msg, err := app.BindAndValid(c, &form)
+	msg, err := valid.BindAndValid(c, &form)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 		return
@@ -56,7 +56,7 @@ func Update(c *gin.Context) {
 	var (
 		form = request.UserAddressTagUpdateForm{}
 	)
-	msg, err := app.BindAndValid(c, &form)
+	msg, err := valid.BindAndValid(c, &form)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 		return

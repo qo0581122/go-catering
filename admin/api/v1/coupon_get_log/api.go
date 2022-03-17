@@ -4,7 +4,7 @@ import (
 	"catering/model"
 	"catering/model/common/response"
 	"catering/model/coupon/request"
-	"catering/pkg/app"
+	"catering/pkg/valid"
 
 	"github.com/gin-gonic/gin"
 )
@@ -13,7 +13,7 @@ func ListPage(c *gin.Context) {
 	var (
 		params = request.CouponGetLogQueryParams{}
 	)
-	msg, err := app.BindAndValid(c, &params)
+	msg, err := valid.BindAndValid(c, &params)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 		return

@@ -4,7 +4,7 @@ import (
 	"catering/model"
 	"catering/model/common/response"
 	"catering/model/product/request"
-	"catering/pkg/app"
+	"catering/pkg/valid"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -14,7 +14,7 @@ func ListPage(c *gin.Context) {
 	var (
 		params = request.AttributeValueQueryParams{}
 	)
-	msg, err := app.BindAndValid(c, &params)
+	msg, err := valid.BindAndValid(c, &params)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 		return
@@ -32,7 +32,7 @@ func Add(c *gin.Context) {
 	var (
 		form = request.AttributeValueAddForm{}
 	)
-	msg, err := app.BindAndValid(c, &form)
+	msg, err := valid.BindAndValid(c, &form)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 		return
@@ -53,7 +53,7 @@ func Update(c *gin.Context) {
 	var (
 		form = request.AttributeValueUpdateForm{}
 	)
-	msg, err := app.BindAndValid(c, &form)
+	msg, err := valid.BindAndValid(c, &form)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 		return

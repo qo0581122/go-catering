@@ -6,7 +6,7 @@ import (
 	"catering/model/common/response"
 	"catering/model/system"
 	systemReq "catering/model/system/request"
-	"catering/pkg"
+	"catering/pkg/valid"
 
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
@@ -82,8 +82,9 @@ func (s *OperationRecordApi) DeleteSysOperationRecordByIds(c *gin.Context) {
 func (s *OperationRecordApi) FindSysOperationRecord(c *gin.Context) {
 	var sysOperationRecord system.SysOperationRecord
 	_ = c.ShouldBindQuery(&sysOperationRecord)
-	if err := pkg.Verify(sysOperationRecord, pkg.IdVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &sysOperationRecord)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	if err, resysOperationRecord := operationRecordService.GetSysOperationRecord(uint(sysOperationRecord.ID)); err != nil {

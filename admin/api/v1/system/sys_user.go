@@ -10,6 +10,7 @@ import (
 	systemReq "catering/model/system/request"
 	systemRes "catering/model/system/response"
 	"catering/pkg"
+	"catering/pkg/valid"
 
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
@@ -23,9 +24,9 @@ import (
 // @Router /base/login [post]
 func (b *BaseApi) Login(c *gin.Context) {
 	var l systemReq.Login
-	_ = c.ShouldBindJSON(&l)
-	if err := pkg.Verify(l, pkg.LoginVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &l)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	if store.Verify(l.CaptchaId, l.Captcha, true) {
@@ -73,9 +74,9 @@ func (b *BaseApi) tokenNext(c *gin.Context, user system.SysUser) {
 // @Router /user/register [post]
 func (b *BaseApi) Register(c *gin.Context) {
 	var r systemReq.Register
-	_ = c.ShouldBindJSON(&r)
-	if err := pkg.Verify(r, pkg.RegisterVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &r)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	var authorities []system.SysAuthority
@@ -103,9 +104,9 @@ func (b *BaseApi) Register(c *gin.Context) {
 // @Router /user/changePassword [post]
 func (b *BaseApi) ChangePassword(c *gin.Context) {
 	var user systemReq.ChangePasswordStruct
-	_ = c.ShouldBindJSON(&user)
-	if err := pkg.Verify(user, pkg.ChangePasswordVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &user)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	u := &system.SysUser{Username: user.Username, Password: user.Password}
@@ -127,9 +128,9 @@ func (b *BaseApi) ChangePassword(c *gin.Context) {
 // @Router /user/getUserList [post]
 func (b *BaseApi) GetUserList(c *gin.Context) {
 	var pageInfo request.PageInfo
-	_ = c.ShouldBindJSON(&pageInfo)
-	if err := pkg.Verify(pageInfo, pkg.PageInfoVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &pageInfo)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	if err, list, total := userService.GetUserInfoList(pageInfo); err != nil {
@@ -155,9 +156,9 @@ func (b *BaseApi) GetUserList(c *gin.Context) {
 // @Router /user/setUserAuthority [post]
 func (b *BaseApi) SetUserAuthority(c *gin.Context) {
 	var sua systemReq.SetUserAuth
-	_ = c.ShouldBindJSON(&sua)
-	if UserVerifyErr := pkg.Verify(sua, pkg.SetUserAuthorityVerify); UserVerifyErr != nil {
-		response.FailWithMessage(UserVerifyErr.Error(), c)
+	msg, err := valid.BindAndValid(c, &sua)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	userID := pkg.GetUserID(c)
@@ -210,9 +211,9 @@ func (b *BaseApi) SetUserAuthorities(c *gin.Context) {
 // @Router /user/deleteUser [delete]
 func (b *BaseApi) DeleteUser(c *gin.Context) {
 	var reqId request.GetById
-	_ = c.ShouldBindJSON(&reqId)
-	if err := pkg.Verify(reqId, pkg.IdVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &reqId)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	jwtId := pkg.GetUserID(c)
@@ -238,12 +239,12 @@ func (b *BaseApi) DeleteUser(c *gin.Context) {
 // @Router /user/setUserInfo [put]
 func (b *BaseApi) SetUserInfo(c *gin.Context) {
 	var user system.SysUser
-	_ = c.ShouldBindJSON(&user)
-	user.Username = ""
-	if err := pkg.Verify(user, pkg.IdVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &user)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
+	user.Username = ""
 	if err, ReqUser := userService.SetUserInfo(user); err != nil {
 		global.Log.Error("设置失败!", zap.Error(err))
 		response.FailWithMessage("设置失败", c)

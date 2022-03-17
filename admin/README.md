@@ -34,7 +34,7 @@
 | `core`       | 核心文件                | 核心组件(zap, viper, server)的初始化 |
 | `docs`       | swagger文档目录         | swagger文档目录 |
 | `global`     | 全局对象                | 全局对象 |
-| `initialize` | 初始化 | router,redis,gorm,validator, timer的初始化 |
+| `initialize` | 初始化 | router,redis,gorm的初始化 |
 | `--internal` | 初始化内部函数 | gorm 的 longger 自定义,在此文件夹的函数只能由 `initialize` 层进行调用 |
 | `middleware` | 中间件层 | 用于存放 `gin` 中间件代码 |
 | `model`      | 模型层                  | 模型对应数据表              |
@@ -49,6 +49,5 @@
 | `service`    | service层               | 存放业务逻辑问题 |
 | `source` | source层 | 存放初始化数据的函数 |
 | `utils`      | 工具包                  | 工具函数封装            |
-| `--timer` | timer | 定时器接口封装 |
 | `--upload`      | oss                  | oss接口封装        |
 

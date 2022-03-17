@@ -4,7 +4,7 @@ import (
 	"catering/model"
 	"catering/model/area/request"
 	"catering/model/common/response"
-	"catering/pkg/app"
+	"catering/pkg/valid"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -14,7 +14,7 @@ func ListPage(c *gin.Context) {
 	var (
 		params = request.CityQueryParams{}
 	)
-	msg, err := app.BindAndValid(c, &params)
+	msg, err := valid.BindAndValid(c, &params)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 		return
@@ -32,7 +32,7 @@ func Add(c *gin.Context) {
 	var (
 		form = request.CityAddForm{}
 	)
-	msg, err := app.BindAndValid(c, &form)
+	msg, err := valid.BindAndValid(c, &form)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 		return
@@ -54,7 +54,7 @@ func Update(c *gin.Context) {
 	var (
 		form = request.CityUpdateForm{}
 	)
-	msg, err := app.BindAndValid(c, &form)
+	msg, err := valid.BindAndValid(c, &form)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 		return
@@ -87,7 +87,7 @@ func List(c *gin.Context) {
 	var (
 		form = request.CityListParams{}
 	)
-	msg, err := app.BindAndValid(c, &form)
+	msg, err := valid.BindAndValid(c, &form)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 		return

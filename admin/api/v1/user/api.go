@@ -3,7 +3,7 @@ package user
 import (
 	"catering/model"
 	"catering/model/common/response"
-	"catering/pkg/app"
+	"catering/pkg/valid"
 
 	"github.com/gin-gonic/gin"
 )
@@ -19,7 +19,7 @@ func List(c *gin.Context) {
 	var (
 		form = QueryParams{}
 	)
-	msg, err := app.BindAndValid(c, &form)
+	msg, err := valid.BindAndValid(c, &form)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 		return

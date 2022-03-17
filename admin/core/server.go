@@ -15,8 +15,6 @@ type server interface {
 }
 
 func RunWindowsServer() {
-	// 初始化redis服务
-	// initialize.Redis()
 
 	Router := initialize.Routers()
 
@@ -25,7 +23,6 @@ func RunWindowsServer() {
 	address := fmt.Sprintf(":%d", global.Config.System.Addr)
 	s := initServer(address, Router)
 	// 保证文本顺序输出
-	// In order to ensure that the text order output can be deleted
 	time.Sleep(10 * time.Microsecond)
 	global.Log.Info("server run success on ", zap.String("address", address))
 

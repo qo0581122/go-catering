@@ -7,6 +7,7 @@ import (
 	"catering/model/example"
 	exampleRes "catering/model/example/response"
 	"catering/pkg"
+	"catering/pkg/valid"
 
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
@@ -24,9 +25,9 @@ type CustomerApi struct{}
 // @Router /customer/customer [post]
 func (e *CustomerApi) CreateExaCustomer(c *gin.Context) {
 	var customer example.ExaCustomer
-	_ = c.ShouldBindJSON(&customer)
-	if err := pkg.Verify(customer, pkg.CustomerVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &customer)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	customer.SysUserID = pkg.GetUserID(c)
@@ -49,9 +50,9 @@ func (e *CustomerApi) CreateExaCustomer(c *gin.Context) {
 // @Router /customer/customer [delete]
 func (e *CustomerApi) DeleteExaCustomer(c *gin.Context) {
 	var customer example.ExaCustomer
-	_ = c.ShouldBindJSON(&customer)
-	if err := pkg.Verify(customer.Model, pkg.IdVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &customer)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	if err := customerService.DeleteExaCustomer(customer); err != nil {
@@ -72,13 +73,9 @@ func (e *CustomerApi) DeleteExaCustomer(c *gin.Context) {
 // @Router /customer/customer [put]
 func (e *CustomerApi) UpdateExaCustomer(c *gin.Context) {
 	var customer example.ExaCustomer
-	_ = c.ShouldBindJSON(&customer)
-	if err := pkg.Verify(customer.Model, pkg.IdVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
-		return
-	}
-	if err := pkg.Verify(customer, pkg.CustomerVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &customer)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	if err := customerService.UpdateExaCustomer(&customer); err != nil {
@@ -99,9 +96,9 @@ func (e *CustomerApi) UpdateExaCustomer(c *gin.Context) {
 // @Router /customer/customer [get]
 func (e *CustomerApi) GetExaCustomer(c *gin.Context) {
 	var customer example.ExaCustomer
-	_ = c.ShouldBindQuery(&customer)
-	if err := pkg.Verify(customer.Model, pkg.IdVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &customer)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	err, data := customerService.GetExaCustomer(uint(customer.ID))
@@ -123,9 +120,9 @@ func (e *CustomerApi) GetExaCustomer(c *gin.Context) {
 // @Router /customer/customerList [get]
 func (e *CustomerApi) GetExaCustomerList(c *gin.Context) {
 	var pageInfo request.PageInfo
-	_ = c.ShouldBindQuery(&pageInfo)
-	if err := pkg.Verify(pageInfo, pkg.PageInfoVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &pageInfo)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	err, customerList, total := customerService.GetCustomerInfoList(pkg.GetUserAuthorityId(c), pageInfo)

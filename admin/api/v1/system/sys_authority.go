@@ -7,7 +7,7 @@ import (
 	"catering/model/system"
 	systemReq "catering/model/system/request"
 	systemRes "catering/model/system/response"
-	"catering/pkg"
+	"catering/pkg/valid"
 
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
@@ -25,9 +25,9 @@ type AuthorityApi struct{}
 // @Router /authority/createAuthority [post]
 func (a *AuthorityApi) CreateAuthority(c *gin.Context) {
 	var authority system.SysAuthority
-	_ = c.ShouldBindJSON(&authority)
-	if err := pkg.Verify(authority, pkg.AuthorityVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &authority)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	if err, authBack := authorityService.CreateAuthority(authority); err != nil {
@@ -50,13 +50,9 @@ func (a *AuthorityApi) CreateAuthority(c *gin.Context) {
 // @Router /authority/copyAuthority [post]
 func (a *AuthorityApi) CopyAuthority(c *gin.Context) {
 	var copyInfo systemRes.SysAuthorityCopyResponse
-	_ = c.ShouldBindJSON(&copyInfo)
-	if err := pkg.Verify(copyInfo, pkg.OldAuthorityVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
-		return
-	}
-	if err := pkg.Verify(copyInfo.Authority, pkg.AuthorityVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &copyInfo)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	if err, authBack := authorityService.CopyAuthority(copyInfo); err != nil {
@@ -77,9 +73,9 @@ func (a *AuthorityApi) CopyAuthority(c *gin.Context) {
 // @Router /authority/deleteAuthority [post]
 func (a *AuthorityApi) DeleteAuthority(c *gin.Context) {
 	var authority system.SysAuthority
-	_ = c.ShouldBindJSON(&authority)
-	if err := pkg.Verify(authority, pkg.AuthorityIdVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &authority)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	if err := authorityService.DeleteAuthority(&authority); err != nil { // 删除角色之前需要判断是否有用户正在使用此角色
@@ -100,9 +96,9 @@ func (a *AuthorityApi) DeleteAuthority(c *gin.Context) {
 // @Router /authority/updateAuthority [post]
 func (a *AuthorityApi) UpdateAuthority(c *gin.Context) {
 	var auth system.SysAuthority
-	_ = c.ShouldBindJSON(&auth)
-	if err := pkg.Verify(auth, pkg.AuthorityVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &auth)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	if err, authority := authorityService.UpdateAuthority(auth); err != nil {
@@ -123,9 +119,9 @@ func (a *AuthorityApi) UpdateAuthority(c *gin.Context) {
 // @Router /authority/getAuthorityList [post]
 func (a *AuthorityApi) GetAuthorityList(c *gin.Context) {
 	var pageInfo request.PageInfo
-	_ = c.ShouldBindJSON(&pageInfo)
-	if err := pkg.Verify(pageInfo, pkg.PageInfoVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &pageInfo)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	if err, list, total := authorityService.GetAuthorityInfoList(pageInfo); err != nil {
@@ -151,9 +147,9 @@ func (a *AuthorityApi) GetAuthorityList(c *gin.Context) {
 // @Router /authority/setDataAuthority [post]
 func (a *AuthorityApi) SetDataAuthority(c *gin.Context) {
 	var auth system.SysAuthority
-	_ = c.ShouldBindJSON(&auth)
-	if err := pkg.Verify(auth, pkg.AuthorityIdVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &auth)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	if err := authorityService.SetDataAuthority(auth); err != nil {

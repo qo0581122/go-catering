@@ -4,7 +4,7 @@ import (
 	"catering/model"
 	"catering/model/common/response"
 	"catering/model/product/request"
-	"catering/pkg/app"
+	"catering/pkg/valid"
 	"fmt"
 	"strconv"
 
@@ -15,7 +15,7 @@ func List(c *gin.Context) {
 	var (
 		params = request.ProductQueryParams{}
 	)
-	msg, err := app.BindAndValid(c, &params)
+	msg, err := valid.BindAndValid(c, &params)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 		return
@@ -32,7 +32,7 @@ func Add(c *gin.Context) {
 	var (
 		form = request.ProductAddForm{}
 	)
-	msg, err := app.BindAndValid(c, &form)
+	msg, err := valid.BindAndValid(c, &form)
 	if err != nil {
 		fmt.Println(err.Error())
 		response.FailWithMessage(msg, c)
@@ -61,7 +61,7 @@ func Update(c *gin.Context) {
 	var (
 		form = request.ProductUpdateForm{}
 	)
-	msg, err := app.BindAndValid(c, &form)
+	msg, err := valid.BindAndValid(c, &form)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 		return

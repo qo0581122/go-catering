@@ -3,7 +3,7 @@ package user_address
 import (
 	"catering/model"
 	"catering/model/common/response"
-	"catering/pkg/app"
+	"catering/pkg/valid"
 
 	"github.com/gin-gonic/gin"
 )
@@ -18,7 +18,7 @@ func ListPage(c *gin.Context) {
 	var (
 		form = UserAddressQueryParams{}
 	)
-	msg, err := app.BindAndValid(c, &form)
+	msg, err := valid.BindAndValid(c, &form)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 		return

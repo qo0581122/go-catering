@@ -8,6 +8,7 @@ import (
 	systemReq "catering/model/system/request"
 	systemRes "catering/model/system/response"
 	"catering/pkg"
+	"catering/pkg/valid"
 
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
@@ -60,9 +61,9 @@ func (a *AuthorityMenuApi) GetBaseMenuTree(c *gin.Context) {
 // @Router /menu/addMenuAuthority [post]
 func (a *AuthorityMenuApi) AddMenuAuthority(c *gin.Context) {
 	var authorityMenu systemReq.AddMenuAuthorityInfo
-	_ = c.ShouldBindJSON(&authorityMenu)
-	if err := pkg.Verify(authorityMenu, pkg.AuthorityIdVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &authorityMenu)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	if err := menuService.AddMenuAuthority(authorityMenu.Menus, authorityMenu.AuthorityId); err != nil {
@@ -83,9 +84,9 @@ func (a *AuthorityMenuApi) AddMenuAuthority(c *gin.Context) {
 // @Router /menu/getMenuAuthority [post]
 func (a *AuthorityMenuApi) GetMenuAuthority(c *gin.Context) {
 	var param request.GetAuthorityId
-	_ = c.ShouldBindJSON(&param)
-	if err := pkg.Verify(param, pkg.AuthorityIdVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &param)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	if err, menus := menuService.GetMenuAuthority(&param); err != nil {
@@ -106,13 +107,9 @@ func (a *AuthorityMenuApi) GetMenuAuthority(c *gin.Context) {
 // @Router /menu/addBaseMenu [post]
 func (a *AuthorityMenuApi) AddBaseMenu(c *gin.Context) {
 	var menu system.SysBaseMenu
-	_ = c.ShouldBindJSON(&menu)
-	if err := pkg.Verify(menu, pkg.MenuVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
-		return
-	}
-	if err := pkg.Verify(menu.Meta, pkg.MenuMetaVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &menu)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	if err := menuService.AddBaseMenu(menu); err != nil {
@@ -134,9 +131,9 @@ func (a *AuthorityMenuApi) AddBaseMenu(c *gin.Context) {
 // @Router /menu/deleteBaseMenu [post]
 func (a *AuthorityMenuApi) DeleteBaseMenu(c *gin.Context) {
 	var menu request.GetById
-	_ = c.ShouldBindJSON(&menu)
-	if err := pkg.Verify(menu, pkg.IdVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &menu)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	if err := baseMenuService.DeleteBaseMenu(menu.ID); err != nil {
@@ -157,13 +154,9 @@ func (a *AuthorityMenuApi) DeleteBaseMenu(c *gin.Context) {
 // @Router /menu/updateBaseMenu [post]
 func (a *AuthorityMenuApi) UpdateBaseMenu(c *gin.Context) {
 	var menu system.SysBaseMenu
-	_ = c.ShouldBindJSON(&menu)
-	if err := pkg.Verify(menu, pkg.MenuVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
-		return
-	}
-	if err := pkg.Verify(menu.Meta, pkg.MenuMetaVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &menu)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	if err := baseMenuService.UpdateBaseMenu(menu); err != nil {
@@ -184,9 +177,9 @@ func (a *AuthorityMenuApi) UpdateBaseMenu(c *gin.Context) {
 // @Router /menu/getBaseMenuById [post]
 func (a *AuthorityMenuApi) GetBaseMenuById(c *gin.Context) {
 	var idInfo request.GetById
-	_ = c.ShouldBindJSON(&idInfo)
-	if err := pkg.Verify(idInfo, pkg.IdVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &idInfo)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	if err, menu := baseMenuService.GetBaseMenuById(idInfo.ID); err != nil {
@@ -207,9 +200,9 @@ func (a *AuthorityMenuApi) GetBaseMenuById(c *gin.Context) {
 // @Router /menu/getMenuList [post]
 func (a *AuthorityMenuApi) GetMenuList(c *gin.Context) {
 	var pageInfo request.PageInfo
-	_ = c.ShouldBindJSON(&pageInfo)
-	if err := pkg.Verify(pageInfo, pkg.PageInfoVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &pageInfo)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	if err, menuList, total := menuService.GetInfoList(); err != nil {

@@ -7,7 +7,7 @@ import (
 	"catering/model/system"
 	systemReq "catering/model/system/request"
 	systemRes "catering/model/system/response"
-	"catering/pkg"
+	"catering/pkg/valid"
 
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
@@ -25,9 +25,9 @@ type SystemApiApi struct{}
 // @Router /api/createApi [post]
 func (s *SystemApiApi) CreateApi(c *gin.Context) {
 	var api system.SysApi
-	_ = c.ShouldBindJSON(&api)
-	if err := pkg.Verify(api, pkg.ApiVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &api)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	if err := apiService.CreateApi(api); err != nil {
@@ -48,9 +48,9 @@ func (s *SystemApiApi) CreateApi(c *gin.Context) {
 // @Router /api/deleteApi [post]
 func (s *SystemApiApi) DeleteApi(c *gin.Context) {
 	var api system.SysApi
-	_ = c.ShouldBindJSON(&api)
-	if err := pkg.Verify(api.Model, pkg.IdVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &api)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	if err := apiService.DeleteApi(api); err != nil {
@@ -71,9 +71,9 @@ func (s *SystemApiApi) DeleteApi(c *gin.Context) {
 // @Router /api/getApiList [post]
 func (s *SystemApiApi) GetApiList(c *gin.Context) {
 	var pageInfo systemReq.SearchApiParams
-	_ = c.ShouldBindJSON(&pageInfo)
-	if err := pkg.Verify(pageInfo.PageInfo, pkg.PageInfoVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &pageInfo)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	if err, list, total := apiService.GetAPIInfoList(pageInfo.SysApi, pageInfo.PageInfo, pageInfo.OrderKey, pageInfo.Desc); err != nil {
@@ -100,9 +100,9 @@ func (s *SystemApiApi) GetApiList(c *gin.Context) {
 // @Router /api/getApiById [post]
 func (s *SystemApiApi) GetApiById(c *gin.Context) {
 	var idInfo request.GetById
-	_ = c.ShouldBindJSON(&idInfo)
-	if err := pkg.Verify(idInfo, pkg.IdVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &idInfo)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	err, api := apiService.GetApiById(idInfo.ID)
@@ -124,9 +124,9 @@ func (s *SystemApiApi) GetApiById(c *gin.Context) {
 // @Router /api/updateApi [post]
 func (s *SystemApiApi) UpdateApi(c *gin.Context) {
 	var api system.SysApi
-	_ = c.ShouldBindJSON(&api)
-	if err := pkg.Verify(api, pkg.ApiVerify); err != nil {
-		response.FailWithMessage(err.Error(), c)
+	msg, err := valid.BindAndValid(c, &api)
+	if err != nil {
+		response.FailWithMessage(msg, c)
 		return
 	}
 	if err := apiService.UpdateApi(api); err != nil {
