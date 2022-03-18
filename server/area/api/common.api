@@ -1,0 +1,36 @@
+syntax = "v1"
+
+info(
+	title: // TODO: add title
+	desc: // TODO: add description
+	author: ""
+	email: ""
+)
+
+type GetProvincesReq {
+}
+
+type GetProvincesResp {
+}
+
+type GetCitysReq {
+}
+
+type GetCitysResp {
+}
+
+type GetDistinctsReq {
+}
+type GetDistinctsResp {
+}
+
+service common-api {
+	@handler province
+	get /common/provinces (GetProvincesReq) returns(GetProvincesResp)
+	
+	@handler city
+	get /common/citys/:provinceId (GetCitysReq) returns(GetCitysResp)
+	
+	@handler distinct
+	get /common/distincts/:cityId (GetDistinctsReq) returns(GetDistinctsResp)
+}

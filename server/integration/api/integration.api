@@ -1,0 +1,31 @@
+syntax = "v1"
+
+info(
+	title: // TODO: add title
+	desc: // TODO: add description
+	author: ""
+	email: ""
+)
+
+type (
+	GetUserIntegrationChangeLogsReq  struct{}
+	GetUserIntegrationChangeLogsResp struct{}
+	GetUserVipLevelUpLogsReq         struct{}
+	GetUserVipLevelUpLogsResp        struct{}
+	ChangeUserIntegrationReq         struct{}
+	ChangeUserIntegrationResp        struct{}
+	GetUserVipInfoReq                struct{}
+	GetUserVipInfoResp               struct{}
+)
+
+service integration-api {
+	@handler GetUserIntegrationLogs // TODO: set handler name and delete this comment
+	post /integration/logs (GetUserIntegrationChangeLogsReq) returns(GetUserIntegrationChangeLogsResp)
+	@handler GetUserVipUpLogs // TODO: set handler name and delete this comment
+	post /integration/vipLogs (GetUserVipLevelUpLogsReq) returns(GetUserVipLevelUpLogsResp)
+	@handler GetUserVipInfo // TODO: set handler name and delete this comment
+	post /integration/vip (GetUserVipInfoReq) returns(GetUserVipInfoResp)
+	@handler ChangeUserIntegration // TODO: set handler name and delete this comment
+	post /integration/change (ChangeUserIntegrationReq) returns(ChangeUserIntegrationResp)
+	
+}

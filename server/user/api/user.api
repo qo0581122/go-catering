@@ -1,0 +1,57 @@
+syntax = "v1"
+
+info(
+	title: // TODO: add title
+	desc: // TODO: add description
+	author: ""
+	email: ""
+)
+
+type (
+	RegisterReq {
+		Mobie    string `json:"mobie"`
+		Password string `json:"password"`
+		Smscode  string `json:"smscode"`
+	}
+	RegisterResp {
+	}
+)
+
+type (
+	LoginReq {
+		Mobie     string `json:"mobie"`
+		Password  string `json:"password"`
+		Smscode   string `json:"smscode"`
+		LoginType int64  `json:"loginType"`
+	}
+
+	LoginResp {
+		JwtToken
+	}
+)
+
+type (
+	UserInfoReq {
+		Uid string `json:"uid"`
+	}
+
+	UserInfoResp {
+	}
+)
+
+type JwtToken {
+	AccessToken  string `json:"access_token,omitempty"`
+	AccessExpire int64  `json:"access_expire,omitempty"`
+	RefreshAfter int64  `json:"refresh_after,omitempty"`
+}
+
+service user-api {
+	@handler register
+	post /user/register (RegisterReq) returns (RegisterResp)
+	
+	@handler login
+	post /user/login (LoginReq) returns (LoginResp)
+	
+	@handler info
+	post /user/info (UserInfoReq) returns (UserInfoResp)
+}

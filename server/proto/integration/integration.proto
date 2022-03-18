@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+package proto;
+
+message GetUserVipInfoReq {
+    int64 uid = 1;
+}
+
+message GetUserVipInfoResp{
+    UserIntegration integration = 1;
+    UserVipLevel level = 2;
+}
+
+message GetUserIntegrationChangeLogsReq {
+    int64 uid = 1;
+    int32 begin = 2;
+    int32 count = 3;
+}
+
+message GetUserIntegrationChangeLogsResp {
+    repeated UserIntegrationLog logs = 1;
+}
+
+message GetUserVipLevelUpLogsReq{
+    int64 uid = 1;
+    int32 begin = 2;
+    int32 count = 3;
+}
+
+message GetUserVipLevelUpLogsResp{
+    repeated UserVipUpLog logs = 1;
+}
+
+message ChangeUserIntegrationReq {
+    int64 uid = 1;
+    int32 change_value = 2;
+    int32 change_type = 3;
+    int32 is_add = 4; //1->增加 2->减少
+}
+
+message ChangeUserIntegrationResp {
+}
+
+message UserVipLevel {
+    int64 id = 1;
+    string level_name = 2;
+    int64 up_need_integration = 3;
+    int32 level_discount = 4;
+    string updated_time = 5;
+    int64 next_level_id = 6;
+    string next_level_name = 7;
+}
+
+message UserVipUpLog {
+    int64 id = 1;
+    int64 uid = 2;
+    int64 before_level_id = 3;
+    int64 after_level_id = 4;
+    string up_time = 5;
+}
+
+message UserIntegration {
+    int64 id = 1;
+    int64 uid = 2;
+    int64 current_integration = 3;
+    int64 history_integration = 4;
+    string updated_time = 5;
+    string created_time = 6;
+    int64 consume_integration = 7;
+    int64 level_id = 8;
+}
+
+message UserIntegrationLog {
+    int64 id = 1;
+    int64 uid = 2;
+    int64 change_type = 3;
+    int64 change_value = 4;
+    int64 before_value = 5;
+    int64 after_value = 6;
+    string change_time = 7;
+}
+
+service IntegrationHandler {
+  rpc GetUserIntegrationChangeLogs(GetUserIntegrationChangeLogsReq) returns (GetUserIntegrationChangeLogsResp) {}
+  rpc GetUserVipLevelUpLogs(GetUserVipLevelUpLogsReq) returns (GetUserVipLevelUpLogsResp) {}
+  rpc ChangeUserIntegration(ChangeUserIntegrationReq) returns (ChangeUserIntegrationResp) {}
+  rpc GetUserVipInfo(GetUserVipInfoReq) returns (GetUserVipInfoResp) {}
+}

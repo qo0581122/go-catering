@@ -1,0 +1,83 @@
+syntax = "proto3";
+package proto;
+import "product/product.proto";
+
+service AdvertisementHandler {
+    rpc AdBannerList(GetAdBannerListReq) returns (GetAdBannerListResp);
+    rpc AdHotActivities(GetAdHotActivitieReq) returns (GetAdHotActivitieResp);
+    rpc AdRecommendDailyProducts(GetAdRecommendDailyProductReq) returns (GetAdRecommendDailyProductResp);
+}
+
+
+message GetAdBannerListReq {
+    int32 banner_type = 1;
+}
+
+message GetAdBannerListResp {
+    repeated AdBanner banners = 1;
+}
+
+message GetAdHotActivitieReq {
+
+}
+
+message GetAdHotActivitieResp {
+    repeated AdHotActivitie activities = 1;
+}
+
+message GetAdRecommendDailyProductReq {
+
+}
+
+message GetAdRecommendDailyProductResp {
+    repeated AdRecommendDailyProduct dailys = 1;
+}
+
+message AdBanner {
+    int64 id = 1;
+    int32 banner_type = 2;
+    string title = 3;
+    string pic_url = 4;
+    string remark = 5;
+    int32 status = 6;
+    int32 sort = 7;
+    string begin_time = 8;
+    string end_time = 9;
+    int64 created_time = 10;
+    string updated_time = 11;
+}
+
+message AdHotActivitie {
+    int64 id = 1;
+    string activatie_name = 2;
+    string title = 3;
+    string subtitle = 4;
+    string content = 5;
+    int32 status = 6;
+    int32 sort = 7;
+    string pic_url = 8;
+    string begin_time = 9;
+    string end_time = 10;
+    int64 created_time = 11;
+    string updated_time = 12;
+}
+
+message AdRecommendDailyProduct {
+    AdRecommendDaily ad = 1;
+    ProductBase product = 2;
+}
+
+message AdRecommendDaily {
+    int64 id = 1;
+    int64 product_id = 2;
+    string title = 3;
+    string subtitle = 4;
+    string content = 5;
+    string pic_url = 6;
+    int32 sort = 7;
+    int32 status = 8;
+    string begin_time = 9;
+    string end_time = 10;
+    int64 created_time = 11;
+    string updated_time = 12;
+}

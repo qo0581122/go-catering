@@ -1,0 +1,91 @@
+syntax = "proto3";
+package proto;
+option go_package = "product";
+
+message ProductInfo {
+    ProductBase base = 1;
+    repeated ProductBatch batchs = 2;
+    repeated ProductAttribute attributes = 3;
+    ProductCategory category = 4;
+}
+
+message ProductBase {
+    int64 id = 1;
+    string productName = 2;
+    string description = 3;
+    int64 specis = 4;
+    string picUrl = 5;
+    int64 oldMoney = 6;
+    int64 money = 7;
+    int64 categoryId = 8;
+    int32 sort = 9;
+}
+
+message ProductCategory {
+    int64 id = 1;
+    string categoryName = 2;
+    int32 sort = 3;
+}
+
+message ProductDetail {
+    ProductInfo product = 1;
+    repeated ProductInfo childProduct = 2;
+}
+
+message ProductBatch {
+    int64 id = 1;
+    string batchName = 2;
+    int32 sort = 3;
+}
+
+message ProductAttribute {
+    int64 id = 1;
+    string attributeName = 2;
+    int32 sort = 3;
+    repeated ProductAttributeValue attributeValues = 4;
+}
+
+message ProductAttributeValue {
+    int64 id = 1;
+    string value = 2;
+    int32 sort = 3;
+}
+
+message GetProductReq {
+    int64 product_id = 1;
+}
+
+message GetProductResp {
+    repeated ProductBase bases = 1;
+}
+
+message GetProductCategoryReq {
+    int64 product_category_id = 1;
+}
+
+message GetProductCategoryResp {
+    repeated ProductCategory categorys = 1;
+}
+
+message GetProductDetailReq {
+    int64 product_id = 1;
+}
+message GetProductDetailResp {
+    repeated ProductDetail details = 1;
+}
+
+message GetProductListReq {
+    int64 product_category_id = 1;
+}
+message GetProductListResp {
+    repeated ProductBase bases = 1;
+}
+
+service ProductHandler {
+    rpc GetProduct(GetProductReq) returns (GetProductResp) {}
+    rpc GetProductCategory(GetProductCategoryReq) returns (GetProductCategoryResp) {}
+    rpc GetProductDetail(GetProductDetailReq) returns (GetProductDetailResp) {}
+    rpc GetProductList(GetProductListReq) returns (GetProductListResp) {}
+}
+
+

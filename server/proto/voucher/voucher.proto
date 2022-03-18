@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+package proto;
+
+service VoucherHandler {
+    rpc GetUserVoucher(GetUserVoucherReq) returns(GetUserVoucherResp);
+    rpc DrawVoucher(DrawVoucherReq) returns(DrawVoucherResp);
+    rpc GetVoucherInfo(GetVoucherInfoReq) returns(GetVoucherInfoResp);
+    rpc UseVoucher(UseVoucherReq) returns(UseVoucherResp);
+}
+
+message GetVoucherInfoReq {
+    int64 voucher_id = 1;
+}
+
+message GetVoucherInfoResp {
+    Voucher voucher = 1;
+}
+
+message GetUserVoucherReq {
+    int64 uid = 1;
+    int32 begin = 2;
+    int32 count = 3;
+}
+
+message GetUserVoucherResp {
+    repeated UserVoucher vouchers = 1;
+}
+
+message DrawVoucherReq {
+    int64 voucher_id = 1;
+    int64 uid = 2;
+    int64 count = 3;
+}
+
+message DrawVoucherResp {
+    repeated UserVoucher vouchers = 1;
+}
+
+message UseVoucherReq {
+    int64 uid = 1;
+    int64 voucher_id = 2;
+    int64 user_voucher_id = 3;
+    int64 order_id = 4;
+}
+
+message UseVoucherResp {
+}
+
+message UserVoucher {
+    int64 user_voucher_id = 1;
+    string get_time = 2;
+    string use_begin_time = 3;
+    string use_end_time = 4;
+    int32 use_status = 5;
+    Voucher voucher = 6;
+}
+
+message Voucher {
+    int64 id = 1;
+    string voucher_name = 2;
+    int32 least_use_price = 3; //最低消费可用
+    int32 price = 4; //抵扣面额
+    string pic_url = 5;
+    int32 use_type = 6; //使用方式，1->可与其他券一起使用，2->不可
+    string get_begin_time = 7; //开始获取时间
+    string get_end_time = 8; //获取结束时间
+    string use_begin_time = 9; //使用开始时间
+    string use_end_time = 10; //使用结束时间
+    int32 status = 11; //
+    int32 total_count = 12;
+    int32 remain_count = 13;
+    int32 get_count = 14;
+    int32 valid_time_type = 15;
+    int32 valid_day = 16;
+    string description = 17; //描述
+    int32 get_type = 18;
+}

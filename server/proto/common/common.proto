@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package common;
+
+service CommonHandler {
+    rpc GetProvinces(GetProvincesReq) returns(GetProvincesResp){}
+    rpc GetCitys(GetCitysReq) returns(GetCitysResp){}
+    rpc GetDistincts(GetDistinctsReq) returns(GetDistinctsResp){}
+    rpc GetProvincesDetail(GetProvincesDetailReq) returns(GetProvincesDetailResp) {}
+}
+
+message GetProvincesReq {
+}
+message GetProvincesResp {
+    repeated Province provinces = 1;
+}
+
+message GetCitysReq {
+    int64 province_id = 1;
+}
+message GetCitysResp {
+    repeated City citys = 1;
+}
+message GetDistinctsReq {
+    int64 city_id = 1;
+}
+message GetDistinctsResp {
+    repeated Distinct distincts = 1;
+}
+message GetProvincesDetailReq {
+}
+message GetProvincesDetailResp {
+    repeated Province provinces = 1;
+}
+
+message Province {
+    int64 id = 1;
+    string provinceName = 2;
+    repeated City citys = 3;
+}
+
+message City {
+    int64 id = 1;
+    string cityName = 2;
+    repeated Distinct distincts = 3;
+}
+
+message Distinct {
+    int64 id = 1;
+    string distinctName = 2;
+}
+message OrderByOptions {
+    repeated OrderByOption options = 1;
+}
+
+message OrderByOption {
+    string column = 1;
+    int32 desc = 2; //1->desc
+}

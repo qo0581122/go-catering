@@ -1,0 +1,18 @@
+Name: user.rpc
+ListenOn: 127.0.0.1:8083
+Etcd:
+  Hosts:
+  - localhost:2379
+  Key: user.rpc
+Mysql: 
+  DataSource: root:root@tcp(localhost:3306)/test
+  MaxIdle: 10
+  MaxOpen: 10
+  MaxIdleTime: 2000
+Cache:
+  - Host: localhost:6379
+Snowflake:
+  Timestamp: 1577808000000
+  Workerid: 1
+  Datacenterid: 1
+  Sequence: 1

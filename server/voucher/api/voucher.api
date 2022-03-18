@@ -1,0 +1,30 @@
+syntax = "v1"
+
+info(
+	title: // TODO: add title
+	desc: // TODO: add description
+	author: ""
+	email: ""
+)
+
+type (
+	GetUserVoucherReq  struct{}
+	GetUserVoucherResp struct{}
+	DrawVoucherReq     struct{}
+	DrawVoucherResp    struct{}
+	GetVoucherInfoReq  struct{}
+	GetVoucherInfoResp struct{}
+	UseVoucherReq      struct{}
+	UseVoucherResp     struct{}
+)
+
+service voucher-api {
+	@handler GetUserVoucher // TODO: set handler name and delete this comment
+	post /voucher/user (GetUserVoucherReq) returns(GetUserVoucherResp)
+	@handler GetVoucherInfo // TODO: set handler name and delete this comment
+	post /voucher/info (GetVoucherInfoReq) returns(GetVoucherInfoResp)
+	@handler DrawVoucher // TODO: set handler name and delete this comment
+	post /voucher/draw (DrawVoucherReq) returns(DrawVoucherResp)
+	@handler UseVoucher // TODO: set handler name and delete this comment
+	post /voucher/use (UseVoucherReq) returns(UseVoucherResp)
+}

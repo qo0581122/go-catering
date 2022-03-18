@@ -1,0 +1,26 @@
+syntax = "v1"
+
+info(
+	title: // TODO: add title
+	desc: // TODO: add description
+	author: ""
+	email: ""
+)
+
+type (
+	GetAdBannerListReq             struct{}
+	GetAdBannerListResp            struct{}
+	GetAdHotActivitieReq           struct{}
+	GetAdHotActivitieResp          struct{}
+	GetAdRecommendDailyProductReq  struct{}
+	GetAdRecommendDailyProductResp struct{}
+)
+
+service advertisement-api {
+	@handler GetAdBanner
+	post /ad/banner (GetAdBannerListReq) returns(GetAdBannerListResp)
+	@handler GetHotActivitie
+	post /ad/hotActivitie (GetAdHotActivitieReq) returns(GetAdHotActivitieResp)
+	@handler GetAdRecommendDaily
+	post /ad/dailyProduct (GetAdRecommendDailyProductReq) returns(GetAdRecommendDailyProductResp)
+}

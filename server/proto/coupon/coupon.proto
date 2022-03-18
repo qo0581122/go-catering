@@ -1,0 +1,82 @@
+syntax = "proto3";
+
+package proto;
+import "product/product.proto";
+
+service CouponHandler {
+    rpc GetUserCoupon(GetUserCouponReq) returns(GetUserCouponResp);
+    rpc DrawCoupon(DrawCouponReq) returns(DrawCouponResp);
+    rpc GetCouponInfo(GetCouponInfoReq) returns(GetCouponInfoResp);
+    rpc UseCoupon(UseCouponReq) returns(UseCouponResp);
+}
+
+
+message UseCouponReq {
+    int64 uid = 1;
+    int64 coupon_id = 2;
+    int64 user_coupon_id = 3;
+    int64 order_id = 4;
+}
+
+message UseCouponResp {
+}
+
+
+message GetUserCouponReq {
+    int64 uid = 1;
+    int32 begin = 2;
+    int32 count = 3;
+}
+
+message GetUserCouponResp {
+    repeated UserCoupon coupons = 1;
+}
+
+message DrawCouponReq {
+    int64 coupon_id = 1;
+    int64 uid = 2;
+    int32 count = 3;
+    int32 get_type = 4;
+}
+
+message DrawCouponResp {
+}
+
+message GetCouponInfoReq {
+    int64 coupon_id = 1;
+}
+
+message GetCouponInfoResp {
+    Coupon coupon = 1;
+}
+
+message Coupon {
+    int64 id = 1;
+    string coupon_name = 2;
+    int32 least_use_price = 3; //最低消费可用
+    int32 price = 4; //面额
+    string pic_url = 5;
+    int32 use_type = 6; //使用方式，1->可与其他券一起使用，2->不可
+    int32 get_type = 7; //获取方式
+    string use_begin_time = 8; //使用开始时间
+    string use_end_time = 9; //使用结束时间
+    int32 valid_time_type = 10;
+    int32 valid_day = 11;
+    string get_begin_time = 12;
+    string get_end_time = 13;
+    int32 get_count = 14;
+    string description = 15;
+    ProductBase product = 16;
+    int32 remain_count = 17;
+    int32 total_count = 18;
+}
+
+message UserCoupon {
+    int64 id = 1;
+    string get_time = 2; //开始获取时间
+    string use_begin_time = 3; //使用开始时间
+    string use_end_time = 4; //使用结束时间
+    int32 use_status = 5; //使用状态
+    int32 get_type = 6; //获取方式
+    Coupon coupon = 7;
+}

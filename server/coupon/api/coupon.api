@@ -1,0 +1,30 @@
+syntax = "v1"
+
+info(
+	title: // TODO: add title
+	desc: // TODO: add description
+	author: ""
+	email: ""
+)
+
+type (
+	GetUserCouponReq  struct{}
+	GetUserCouponResp struct{}
+	DrawCouponReq     struct{}
+	DrawCouponResp    struct{}
+	GetCouponInfoReq  struct{}
+	GetCouponInfoResp struct{}
+	UseCouponReq      struct{}
+	UseCouponResp     struct{}
+)
+
+service coupon-api {
+	@handler GetUserCoupon // TODO: set handler name and delete this comment
+	post /coupon/user (GetUserCouponReq) returns(GetUserCouponResp)
+	@handler GetCouponInfo // TODO: set handler name and delete this comment
+	post /coupon/info (GetCouponInfoReq) returns(GetCouponInfoResp)
+	@handler DrawCoupon // TODO: set handler name and delete this comment
+	post /coupon/draw (DrawCouponReq) returns(DrawCouponResp)
+	@handler UseCoupon // TODO: set handler name and delete this comment
+	post /coupon/use (UseCouponReq) returns(UseCouponResp)
+}

@@ -1,0 +1,106 @@
+syntax = "proto3";
+
+package proto;
+
+message RegisterReq {
+    string mobie = 1;
+    string password = 2;
+    string smscode = 3;
+}
+
+message RegisterResp {
+    int32 code = 1;
+    string msg = 2;
+    string desc = 3;
+}
+
+message LoginReq {
+    string mobie = 1;
+    string password = 2;
+    string smscode = 3;
+    int32 loginType = 4;
+}
+
+message LoginResp {
+    UserInfo user = 1;
+}
+
+message UserInfoReq {
+    int64 uid = 1;
+}
+
+message UserInfoResp {
+    UserInfo user = 1;
+}
+
+message UserInfo {
+    string mobie = 1;
+    string password = 2;
+    string nickname = 3;
+    int32 sex = 4;
+    int32 platform = 5;
+    string avatar = 6;
+    int64 uid = 7;
+    string registry_did = 8;
+    string registry_time = 9;
+    string recent_login_did = 10;
+    string recent_login_time = 11;
+}
+
+message GetUserAddressReq {
+    int64 uid = 1;
+}
+message GetUserAddressResp {
+    repeated UserAddress address = 1;
+}
+
+message AddressTag {
+    int64 id = 1;
+    string tag_name = 2;
+    int32 sort = 3;
+}
+
+message UserAddress {
+    int64 id = 1;
+    int64 user_id = 2;
+    string receive_name = 3;
+    int64 receive_sex = 4;
+    string receive_phone = 5;
+    int64 province_id = 6;
+    int64 city_id = 7;
+    int64 distinct_id = 8;
+    string detail_address = 9;
+    int32 is_default = 10;
+    int32 sort = 11;
+    string deletedTime = 12;
+    repeated AddressTag tags = 13;
+}
+
+message UserIntegration {
+    int64 id = 1;
+    int64 uid = 2;
+    int64 current_integration = 3;
+    int64 history_integration = 4;
+    string updated_time = 5;
+    string created_time = 6;
+    int64 consume_integration = 7;
+    int64 level_id = 8;
+}
+
+message UserIntegrationLogs {
+    int64 id = 1;
+    int64 uid = 2;
+    int64 change_type = 3;
+    int64 change_value = 4;
+    int64 before_value = 5;
+    int64 after_value = 6;
+    string change_time = 7;
+    int32 deleted_time = 8;
+}
+
+service UserHandler {
+  rpc Register(RegisterReq) returns(RegisterResp);
+  rpc Login(LoginReq) returns(LoginResp);
+  rpc UserInfo(UserInfoReq) returns(UserInfoResp);
+  rpc GetUserAddress(GetUserAddressReq) returns(GetUserAddressResp){}
+}

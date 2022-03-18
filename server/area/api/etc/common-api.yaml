@@ -1,0 +1,10 @@
+Name: area-api
+Host: 0.0.0.0
+Port: 8888
+
+Common:
+    Etcd:
+        Hosts:
+            - localhost:2379
+        Key: area.rpc
+
