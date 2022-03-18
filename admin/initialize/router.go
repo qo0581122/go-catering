@@ -99,8 +99,6 @@ func Routers() *gin.Engine {
 		orderRouter.InitOrderRouter(PrivateGroup)
 	}
 
-	InstallPlugin(PublicGroup, PrivateGroup) // 安装插件
-
 	global.Log.Info("router register success")
 	return Router
 }

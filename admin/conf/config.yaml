@@ -23,16 +23,6 @@ redis:
   addr: '127.0.0.1:6379'
   password: ''
 
-# email configuration
-email:
-  to: 'xxx@qq.com'
-  port: 465
-  from: 'xxx@163.com'
-  host: 'smtp.163.com'
-  is-ssl: true
-  secret: 'xxx'
-  nickname: 'test'
-
 # casbin configuration
 casbin:
   model-path: './resource/rbac_model.conf'
@@ -71,24 +61,6 @@ mysql:
 # local configuration
 local:
   path: 'uploads/file'
-
-# autocode configuration
-autocode:
-  transfer-restart: true
-  # root 自动适配项目根目录
-  # 请不要手动配置,他会在项目加载的时候识别出根路径
-  root: ""
-  server: /server
-  server-api: /api/v1/autocode
-  server-initialize: /initialize
-  server-model: /model/autocode
-  server-request: /model/autocode/request/
-  server-router: /router/autocode
-  server-service: /service/autocode
-  web: /web/src
-  web-api: /api
-  web-form: /view
-  web-table: /view
 
 # aliyun oss configuration
 aliyun-oss:

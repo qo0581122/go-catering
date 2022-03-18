@@ -1,2 +1,0 @@
-2022-02-12 19:47:05.375	info	C:/Users/fujj/Desktop/server/server/initialize/router.go:32	use middleware logger
-2022-02-12 19:47:05.409	info	C:/Users/fujj/Desktop/server/server/initialize/router.go:36	use middleware cors

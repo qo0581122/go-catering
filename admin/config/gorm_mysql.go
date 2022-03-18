@@ -19,8 +19,8 @@ type Mysql struct {
 }
 
 func (m *Mysql) Check() error {
-	if m.Username == "" || m.Dbname == "" {
-		return e.Err_Mysql_Config_Check_Fail
+	if m.Username == "" || m.Dbname == "" || m.Host == "" || m.Port == "" {
+		return e.ErrMysqlConfigCheckFail
 	}
 	return nil
 }
