@@ -21,6 +21,20 @@ func JWTAuth() gin.HandlerFunc {
 			c.Abort()
 			return
 		}
+
+		session, _ := global.SESSION.Get(c.Request, "SessionId")
+		t := session.Values["token"]
+
+		if tk, ok := t.(string); !ok {
+			response.FailWithDetailed(gin.H{"reload": true}, "授权已过期", c)
+			c.Abort()
+			return
+		} else if tk != token {
+			response.FailWithDetailed(gin.H{"reload": true}, "授权已过期", c)
+			c.Abort()
+			return
+		}
+
 		j := pkg.NewJWT()
 		// parseToken 解析token包含的信息
 		claims, err := j.ParseToken(token)

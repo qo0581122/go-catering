@@ -22,6 +22,7 @@ func main() {
 	initialize.InitConfig()
 	initialize.InitZap()
 	initialize.InitGorm()
+	initialize.InitSession()
 	// 初始化redis服务
 	// initialize.Redis()
 	if global.DB != nil {

@@ -1,6 +1,7 @@
 package system
 
 import (
+	"fmt"
 	"strconv"
 
 	"catering/global"
@@ -58,6 +59,12 @@ func (b *BaseApi) tokenNext(c *gin.Context, user system.SysUser) {
 		response.FailWithMessage("获取token失败", c)
 		return
 	}
+	session, err := global.SESSION.Get(c.Request, "SessionId")
+	if err != nil {
+		fmt.Println(err)
+	}
+	session.Values["token"] = token
+	session.Save(c.Request, c.Writer)
 	response.OkWithDetailed(systemRes.LoginResponse{
 		User:      user,
 		Token:     token,

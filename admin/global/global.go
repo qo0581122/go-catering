@@ -2,6 +2,7 @@ package global
 
 import (
 	"github.com/go-redis/redis/v8"
+	"github.com/gorilla/sessions"
 	"go.uber.org/zap"
 	"golang.org/x/sync/singleflight"
 
@@ -16,4 +17,5 @@ var (
 	Log                 *zap.Logger
 	REDIS               *redis.Client
 	Concurrency_Control = &singleflight.Group{}
+	SESSION             *sessions.CookieStore
 )

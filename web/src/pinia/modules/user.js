@@ -1,10 +1,10 @@
 import { login, getUserInfo, setSelfInfo } from '@/api/user'
-import { jsonInBlacklist } from '@/api/jwt'
 import router from '@/router/index'
 import { ElMessage } from 'element-plus'
 import { defineStore } from 'pinia'
 import { ref, computed, watch } from 'vue'
 import { useRouterStore } from './router'
+import {removeSession} from '@/utils/cookie.js'
 
 export const useUserStore = defineStore('user', () => {
   const userInfo = ref({
@@ -29,6 +29,7 @@ export const useUserStore = defineStore('user', () => {
     token.value = ''
     window.localStorage.removeItem('token')
     localStorage.clear()
+    removeSession()
     router.push({ name: 'Init', replace: true })
   }
 
@@ -68,6 +69,7 @@ export const useUserStore = defineStore('user', () => {
     localStorage.clear()
     router.push({ name: 'Login', replace: true })
     window.location.reload()
+    removeSession()
   }
   /* 设置侧边栏模式*/
   const changeSideMode = async (data) => {
