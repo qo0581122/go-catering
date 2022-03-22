@@ -4,6 +4,7 @@ import (
 	"catering/core"
 	"catering/global"
 	"catering/initialize"
+	"fmt"
 )
 
 //go:generate go env -w GO111MODULE=on
@@ -19,15 +20,26 @@ import (
 // @name x-token
 // @BasePath /
 func main() {
-	initialize.InitConfig()
-	initialize.InitZap()
-	initialize.InitGorm()
-	initialize.InitSession()
-	// 初始化redis服务
-	// initialize.Redis()
+	err := InitOptions(initialize.InitConfig, initialize.InitZap, initialize.InitGorm, initialize.InitSession)
+	if err != nil {
+		fmt.Println("server run fail:", err.Error())
+		return
+	}
 	if global.DB != nil {
 		db, _ := global.DB.DB()
 		defer db.Close()
 	}
 	core.RunWindowsServer()
+}
+
+type InitFuc func() error
+
+func InitOptions(fuc ...InitFuc) error {
+	for _, f := range fuc {
+		err := f()
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }

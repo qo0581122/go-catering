@@ -11,7 +11,7 @@ import (
 	"go.uber.org/zap/zapcore"
 )
 
-func InitZap() {
+func InitZap() error {
 	cfg := global.Config.Zap
 	// 判断是否有Director文件夹
 	if ok, _ := pkg.PathExists(cfg.Director); !ok {
@@ -42,7 +42,7 @@ func InitZap() {
 		getEncoderCore(fmt.Sprintf("./%s/server_error.log", cfg.Director), errorPriority),
 	}
 
-	logger := zap.New(zapcore.NewTee(cores[:]...))
+	logger := zap.New(zapcore.NewTee(cores[:]...), zap.AddCaller())
 
 	//用文件名、行号和zap调用者的函数名注释每条消息
 	if cfg.ShowLine {
@@ -50,6 +50,7 @@ func InitZap() {
 	}
 
 	global.Log = logger
+	return nil
 }
 
 // getEncoderConfig 获取zapcore.EncoderConfig

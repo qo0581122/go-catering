@@ -7,8 +7,9 @@ import (
 	"github.com/gorilla/sessions"
 )
 
-func InitSession() {
+func InitSession() error {
 	session := sessions.NewCookieStore([]byte(securecookie.GenerateRandomKey(32)))
 	session.Options.MaxAge = 0
 	global.SESSION = session
+	return nil
 }

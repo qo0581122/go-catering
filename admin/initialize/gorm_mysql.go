@@ -13,13 +13,13 @@ import (
 	"gorm.io/gorm/logger"
 )
 
-func GormMysql() *gorm.DB {
+func GormMysql() (*gorm.DB, error) {
 	//获取配置文件的配置
 	cfg := global.Config.Mysql
 	//检查配置
 	if err := cfg.Check(); err != nil {
 		global.Log.Error(err.Error())
-		return nil
+		return nil, err
 	}
 	mysqlConfig := mysql.Config{
 		DSN:                       cfg.Dsn(), // DSN data source name
@@ -32,12 +32,12 @@ func GormMysql() *gorm.DB {
 	//连接数据库
 	db, err := gorm.Open(mysql.New(mysqlConfig), getGormConfig())
 	if err != nil {
-		return nil
+		return nil, err
 	}
 	sqlDB, _ := db.DB()
 	if err := sqlDB.Ping(); err != nil {
 		global.Log.Error(err.Error())
-		return nil
+		return nil, err
 	}
 	// 设置默认值
 	// SetMaxIdleConns 设置空闲连接池中连接的最大数量
@@ -48,7 +48,7 @@ func GormMysql() *gorm.DB {
 	sqlDB.SetConnMaxLifetime(time.Hour)
 
 	Options(sqlDB, WithMaxIdelConns(cfg.MaxIdleConns), WithMaxOpenConns(cfg.MaxOpenConns), WithMaxLifeTime(cfg.MaxLifeTime))
-	return db
+	return db, nil
 }
 
 func getGormConfig() *gorm.Config {
