@@ -59,3 +59,22 @@ type ShopCategoryUpdateForm struct {
 	Status       int    `form:"status" json:"status" valid:"Range(1,2)"`
 	CategoryName string `json:"category_name" form:"category_name" valid:"Required"`
 }
+
+type ShopProductQueryParams struct {
+	request.PageParams
+	ProductId uint64 `uri:"product_id" json:"product_id" form:"product_id"`
+	ShopId    uint64 `uri:"shop_id" json:"shop_id" form:"shop_id"`
+	Status    uint32 `form:"status" json:"status" valid:"Range(1,2)"`
+}
+
+type ShopProductAddForm struct {
+	ProductId uint64 `json:"product_id" form:"product_id"  valid:"Required"`
+	ShopId    uint64 `json:"shop_id" form:"shop_id"  valid:"Required"`
+	Status    uint32 `form:"status" json:"status" valid:"Range(1,2)"`
+}
+
+type ShopProductUpdateForm struct {
+	ProductId uint64 `json:"product_id" form:"product_id"  valid:"Required"`
+	ShopId    uint64 `json:"shop_id" form:"shop_id"  valid:"Required"`
+	Status    uint32 `form:"status" json:"status" valid:"Range(1,2)"`
+}

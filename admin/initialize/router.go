@@ -90,6 +90,7 @@ func Routers() *gin.Engine {
 
 		shopRouter.InitShopCategoryRouter(PrivateGroup)
 		shopRouter.InitShopRouter(PrivateGroup)
+		shopRouter.InitShopCategoryRouter(PrivateGroup)
 
 		userRouter.InitIntegrationRouter(PrivateGroup)
 		userRouter.InitUserAddressRouter(PrivateGroup)

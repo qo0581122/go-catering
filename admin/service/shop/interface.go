@@ -24,3 +24,13 @@ type shopService interface {
 	Update(params *model.Shop) error
 	Delete(id uint64) error
 }
+
+type shopProductService interface {
+	ListPage(pageNum, pageSize int, params *model.ShopProduct) *response.ApiResponse
+	GetOne(params *model.ShopProduct) *model.ShopProduct
+	List(params *model.ShopProduct) []*model.ShopProduct
+	Count() int
+	Add(params *model.ShopProduct) error
+	Update(params *model.ShopProduct) error
+	Delete(id uint64) error
+}
