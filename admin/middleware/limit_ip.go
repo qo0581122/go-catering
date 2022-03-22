@@ -39,7 +39,7 @@ func (l LimitConfig) LimitWithTime() gin.HandlerFunc {
 
 // DefaultGenerationKey 默认生成key
 func DefaultGenerationKey(c *gin.Context) string {
-	return "GVA_Limit" + c.ClientIP()
+	return "CATERING_LIMIT:" + c.ClientIP()
 }
 
 func DefaultCheckOrMark(key string, expire int, limit int) (err error) {

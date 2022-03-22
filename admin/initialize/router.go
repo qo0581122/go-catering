@@ -18,6 +18,9 @@ import (
 func Routers() *gin.Engine {
 	Router := gin.Default()
 
+	if global.REDIS != nil {
+		Router.Use(middleware.DefaultLimit())
+	}
 	// 如果想要不使用nginx代理前端网页，可以修改 web/.env.production 下的
 	// VUE_APP_BASE_API = /
 	// VUE_APP_BASE_PATH = http://localhost
