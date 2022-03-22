@@ -18,7 +18,7 @@ WORKDIR /go/src/catering
 
 COPY --from=0 /go/src/catering/server ./
 COPY --from=0 /go/src/catering/resource ./resource/
-COPY --from=0 /go/src/catering/config.docker.yaml ./
+COPY --from=0 /go/src/catering/conf/config.yaml ./
 
 EXPOSE 8888
-ENTRYPOINT ./server -c config.docker.yaml
+ENTRYPOINT ./server -c config.yaml

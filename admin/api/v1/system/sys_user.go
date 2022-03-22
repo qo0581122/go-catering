@@ -36,6 +36,7 @@ func (b *BaseApi) Login(c *gin.Context) {
 			global.Log.Error("登陆失败! 用户名不存在或者密码错误!", zap.Error(err))
 			response.FailWithMessage("用户名不存在或者密码错误", c)
 		} else {
+			//登录成功，生成token
 			b.tokenNext(c, *user)
 		}
 	} else {
@@ -45,7 +46,8 @@ func (b *BaseApi) Login(c *gin.Context) {
 
 // 登录以后签发jwt
 func (b *BaseApi) tokenNext(c *gin.Context, user system.SysUser) {
-	j := &pkg.JWT{SigningKey: []byte(global.Config.JWT.SigningKey)} // 唯一签名
+	j := pkg.NewJWT()
+	//新建claims
 	claims := j.CreateClaims(systemReq.BaseClaims{
 		UUID:        user.UUID,
 		ID:          uint(user.ID),
@@ -53,18 +55,22 @@ func (b *BaseApi) tokenNext(c *gin.Context, user system.SysUser) {
 		Username:    user.Username,
 		AuthorityId: user.AuthorityId,
 	})
+	//生成token
 	token, err := j.CreateToken(claims)
 	if err != nil {
 		global.Log.Error("获取token失败!", zap.Error(err))
 		response.FailWithMessage("获取token失败", c)
 		return
 	}
+	//生成session
 	session, err := global.SESSION.Get(c.Request, "SessionId")
 	if err != nil {
 		fmt.Println(err)
 	}
 	session.Values["token"] = token
+	//把session数据存放到cookie并在response的head中返回
 	session.Save(c.Request, c.Writer)
+	//返回token
 	response.OkWithDetailed(systemRes.LoginResponse{
 		User:      user,
 		Token:     token,
@@ -175,12 +181,14 @@ func (b *BaseApi) SetUserAuthority(c *gin.Context) {
 		response.FailWithMessage(err.Error(), c)
 	} else {
 		claims := pkg.GetUserInfo(c)
-		j := &pkg.JWT{SigningKey: []byte(global.Config.JWT.SigningKey)} // 唯一签名
+		j := pkg.NewJWT()
 		claims.AuthorityId = sua.AuthorityId
+		//生成token
 		if token, err := j.CreateToken(*claims); err != nil {
 			global.Log.Error("修改失败!", zap.Error(err))
 			response.FailWithMessage(err.Error(), c)
 		} else {
+			//生成失败，返回token，前端会用此值更新token
 			c.Header("new-token", token)
 			c.Header("new-expires-at", strconv.FormatInt(claims.ExpiresAt, 10))
 			response.OkWithMessage("修改成功", c)

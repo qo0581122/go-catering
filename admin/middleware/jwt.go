@@ -14,7 +14,7 @@ import (
 
 func JWTAuth() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		// 我们这里jwt鉴权取头部信息 x-token 登录时回返回token信息 这里前端需要把token存储到cookie或者本地localStorage中 不过需要跟后端协商过期时间 可以约定刷新令牌或者重新登录
+		// 我们这里jwt鉴权取头部信息 x-token 登录时回返回token信息
 		token := c.Request.Header.Get("x-token")
 		if token == "" {
 			response.FailWithDetailed(gin.H{"reload": true}, "未登录或非法访问", c)
@@ -22,9 +22,11 @@ func JWTAuth() gin.HandlerFunc {
 			return
 		}
 
+		// 获取session
 		session, _ := global.SESSION.Get(c.Request, "SessionId")
 		t := session.Values["token"]
 
+		//判断session和对session中的token进行比对
 		if tk, ok := t.(string); !ok {
 			response.FailWithDetailed(gin.H{"reload": true}, "授权已过期", c)
 			c.Abort()
@@ -37,9 +39,10 @@ func JWTAuth() gin.HandlerFunc {
 
 		j := pkg.NewJWT()
 		// parseToken 解析token包含的信息
+		// 判断该token是否已经到达有效期
 		claims, err := j.ParseToken(token)
 		if err != nil {
-			if err == pkg.TokenExpired {
+			if err == pkg.ErrTokenExpired {
 				response.FailWithDetailed(gin.H{"reload": true}, "授权已过期", c)
 				c.Abort()
 				return

@@ -3,7 +3,7 @@
 # jwt configuration
 jwt:
   signing-key: 'catering'
-  expires-time: 604800
+  expires-time: 86400
   buffer-time: 86400
   issuer: 'catering'
 # zap logger configuration
@@ -20,7 +20,7 @@ zap:
 # redis configuration
 redis:
   db: 0
-  addr: '127.0.0.1:6379'
+  addr: '192.168.138.128:6379'
   password: ''
 
 # casbin configuration
