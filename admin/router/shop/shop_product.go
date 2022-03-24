@@ -14,7 +14,7 @@ func (d *ShopProductRouter) InitShopProductRouter(Router *gin.RouterGroup) {
 	{
 		r.GET("page", shop_product.ListPage)
 	}
-	r = Router.Group("shop").Use(middleware.OperationRecord())
+	r = Router.Group("shop").Group("product").Use(middleware.OperationRecord())
 	{
 		r.PUT("", shop_product.Add)
 		r.POST("", shop_product.Update)
