@@ -61,11 +61,8 @@ func (a *AuthorityMenuApi) GetBaseMenuTree(c *gin.Context) {
 // @Router /menu/addMenuAuthority [post]
 func (a *AuthorityMenuApi) AddMenuAuthority(c *gin.Context) {
 	var authorityMenu systemReq.AddMenuAuthorityInfo
-	msg, err := valid.BindAndValid(c, &authorityMenu)
-	if err != nil {
-		response.FailWithMessage(msg, c)
-		return
-	}
+	valid.BindAndValid(c, &authorityMenu)
+
 	if err := menuService.AddMenuAuthority(authorityMenu.Menus, authorityMenu.AuthorityId); err != nil {
 		global.Log.Error("添加失败!", zap.Error(err))
 		response.FailWithMessage("添加失败", c)

@@ -51,7 +51,7 @@ func (impl shopProductServiceImpl) Count() int {
 
 func (impl shopProductServiceImpl) ListPage(pageNum, pageSize int, params *model.ShopProduct) *response.ApiResponse {
 	var shops []*model.ShopProduct
-	err := global.DB.Preload("Product").Where(&params).Scopes(model.Paginate(pageNum, pageSize)).Find(&shops).Error
+	err := global.DB.Preload("Product").Preload("Shop").Where(&params).Scopes(model.Paginate(pageNum, pageSize)).Find(&shops).Error
 	if err != nil {
 		return nil
 	}

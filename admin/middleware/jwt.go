@@ -1,6 +1,7 @@
 package middleware
 
 import (
+	"fmt"
 	"strconv"
 	"time"
 
@@ -27,15 +28,16 @@ func JWTAuth() gin.HandlerFunc {
 		t := session.Values["token"]
 
 		//判断session和对session中的token进行比对
-		if tk, ok := t.(string); !ok {
-			response.FailWithDetailed(gin.H{"reload": true}, "授权已过期", c)
-			c.Abort()
-			return
-		} else if tk != token {
-			response.FailWithDetailed(gin.H{"reload": true}, "授权已过期", c)
-			c.Abort()
-			return
-		}
+		fmt.Println(t, token)
+		// if tk, ok := t.(string); !ok {
+		// 	response.FailWithDetailed(gin.H{"reload": true}, "授权已过期", c)
+		// 	c.Abort()
+		// 	return
+		// } else if tk != token {
+		// 	response.FailWithDetailed(gin.H{"reload": true}, "授权已过期", c)
+		// 	c.Abort()
+		// 	return
+		// }
 
 		j := pkg.NewJWT()
 		// parseToken 解析token包含的信息

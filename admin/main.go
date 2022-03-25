@@ -20,7 +20,7 @@ import (
 // @name x-token
 // @BasePath /
 func main() {
-	err := InitOptions(initialize.InitConfig, initialize.InitZap, initialize.InitGorm, initialize.InitSession, initialize.InitRedis)
+	err := InitOptions(initialize.InitConfig, initialize.InitZap, initialize.InitGorm, initialize.InitSession)
 	if err != nil {
 		fmt.Println("server run fail:", err.Error())
 		return

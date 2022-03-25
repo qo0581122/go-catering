@@ -43,3 +43,10 @@
 [catering]2022-03-13 17:38:58.464	[31merror[0m	D:/goProject/src/catering/admin/api/v1/system/sys_user.go:286	获取失败!	{"error": "record not found"}
 [catering]2022-03-13 17:57:53.046	[31merror[0m	D:/goProject/src/catering/admin/api/v1/system/sys_user.go:286	获取失败!	{"error": "record not found"}
 [catering]2022-03-13 17:58:11.983	[31merror[0m	D:/goProject/src/catering/admin/api/v1/system/sys_user.go:286	获取失败!	{"error": "record not found"}
+[catering]2022-03-25 19:45:23.010	[31merror[0m	E:/GoPath/project/go-catering/admin/pkg/valid/request.go:13	Status.Range.	{"message": "Status Range is 1 to 2"}
+[catering]2022-03-25 20:33:01.915	[31merror[0m	E:/GoPath/project/go-catering/admin/pkg/valid/request.go:13	Status.Range.	{"message": "Status Range is 1 to 2"}
+[catering]2022-03-25 20:37:04.048	[31merror[0m	E:/GoPath/project/go-catering/admin/pkg/valid/request.go:13	Status.Range.	{"message": "Status Range is 1 to 2"}
+[catering]2022-03-25 20:38:30.396	[31merror[0m	E:/GoPath/project/go-catering/admin/pkg/valid/request.go:13	Status.Range.	{"message": "Status Range is 1 to 2"}
+[catering]2022-03-25 20:45:02.718	[31merror[0m	E:/GoPath/project/go-catering/admin/pkg/valid/request.go:13	Status.Range.	{"message": "Status Range is 1 to 2"}
+[catering]2022-03-25 20:46:07.200	[31merror[0m	E:/GoPath/project/go-catering/admin/pkg/valid/request.go:13	Status.Range.	{"message": "Status Range is 1 to 2"}
+[catering]2022-03-25 20:46:08.184	[31merror[0m	E:/GoPath/project/go-catering/admin/pkg/valid/request.go:13	Status.Range.	{"message": "Status Range is 1 to 2"}

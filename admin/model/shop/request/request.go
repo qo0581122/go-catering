@@ -64,7 +64,7 @@ type ShopProductQueryParams struct {
 	request.PageParams
 	ProductId uint64 `uri:"product_id" json:"product_id" form:"product_id"`
 	ShopId    uint64 `uri:"shop_id" json:"shop_id" form:"shop_id"`
-	Status    uint32 `form:"status" json:"status" valid:"Range(1,2)"`
+	Status    uint32 `form:"status" json:"status"`
 }
 
 type ShopProductAddForm struct {
@@ -74,6 +74,7 @@ type ShopProductAddForm struct {
 }
 
 type ShopProductUpdateForm struct {
+	Id        uint64 `json:"id" form:"id"  valid:"Required"`
 	ProductId uint64 `json:"product_id" form:"product_id"  valid:"Required"`
 	ShopId    uint64 `json:"shop_id" form:"shop_id"  valid:"Required"`
 	Status    uint32 `form:"status" json:"status" valid:"Range(1,2)"`

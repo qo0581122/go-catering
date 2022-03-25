@@ -54,15 +54,16 @@ func Update(c *gin.Context) {
 	var (
 		form = request.ShopProductUpdateForm{}
 	)
-	msg, err := valid.BindAndValid(c, &form)
+	_, err := valid.BindAndValid(c, &form)
 	if err != nil {
-		response.FailWithMessage(msg, c)
-		return
+		// response.FailWithMessage(msg, c)
+		// return
 	}
 	model := &model.ShopProduct{
 		ProductId: form.ProductId,
 		ShopId:    form.ShopId,
 		Status:    form.Status,
+		ID:        form.Id,
 	}
 	err = shopProductService.Update(model)
 	if err != nil {
