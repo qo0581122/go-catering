@@ -3,19 +3,19 @@
     <el-container style="margin: 15px 20px 20px 20px">
       <el-main>
         <el-form :inline="true">
-          <el-form-item label="UID">
-            <el-input v-model="listQuery.uid" placeholder="UID"></el-input>
+          <el-form-item label="Uid">
+            <el-input v-model="listQuery.uid" placeholder="Uid"></el-input>
           </el-form-item>
-          <el-form-item label="升级前等级ID">
+          <el-form-item label="升级前等级id">
             <el-input
               v-model="listQuery.before_level_id"
-              placeholder="升级前等级ID"
+              placeholder="升级前等级id"
             ></el-input>
           </el-form-item>
-          <el-form-item label="升级后等级ID">
+          <el-form-item label="升级后等级id">
             <el-input
               v-model="listQuery.after_level_id"
-              placeholder="升级后等级ID"
+              placeholder="升级后等级id"
             ></el-input>
           </el-form-item>
           <el-form-item>
@@ -29,21 +29,21 @@
         <el-table :data="data" style="width: 100%" :loading="loading" border>
           <el-table-column
             prop="id"
-            label="ID"
+            label="id"
             align="center"
             width="200px"
           >
           </el-table-column>
           <el-table-column
             prop="uid"
-            label="UID"
+            label="Uid"
             align="center"
             width="200px"
           >
           </el-table-column>
           <el-table-column
             prop="before_level_id"
-            label="升级前等级ID"
+            label="升级前等级id"
             align="center"
             width="200px"
           >
@@ -66,7 +66,7 @@
           </el-table-column>
           <el-table-column
             prop="after_level_id"
-            label="升级后等级ID"
+            label="升级后等级id"
             align="center"
             width="200px"
           >

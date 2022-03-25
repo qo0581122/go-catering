@@ -32,7 +32,7 @@
           border
           align="center"
         >
-          <el-table-column prop="id" label="ID" align="center">
+          <el-table-column prop="id" label="id" align="center">
             <template #default="scope">
               {{ scope.row.id }}
             </template>

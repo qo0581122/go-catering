@@ -74,7 +74,7 @@ export const getMenuAuthority = (data) => {
 
 // @Summary 获取用户menu关联关系
 // @Produce  application/json
-// @Param ID float64
+// @Param id float64
 // @Router /menu/deleteBaseMenu [post]
 export const deleteBaseMenu = (data) => {
   return service({

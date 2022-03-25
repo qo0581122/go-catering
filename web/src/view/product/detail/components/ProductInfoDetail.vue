@@ -7,7 +7,7 @@
       label-width="120px"
     >
       <div v-if="isEdit">
-        <el-form-item label="ID">
+        <el-form-item label="id">
           <el-input
             v-model="value.id"
             :disabled="isEdit"

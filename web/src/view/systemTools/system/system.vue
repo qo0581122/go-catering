@@ -215,8 +215,8 @@
             <el-form-item label="region">
               <el-input v-model="config.tencentCOS.region" />
             </el-form-item>
-            <el-form-item label="secretID">
-              <el-input v-model="config.tencentCOS.secretID" />
+            <el-form-item label="secretid">
+              <el-input v-model="config.tencentCOS.secretid" />
             </el-form-item>
             <el-form-item label="secretKey">
               <el-input v-model="config.tencentCOS.secretKey" />

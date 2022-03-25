@@ -26,7 +26,7 @@
           </el-form-item>
         </el-form>
         <el-table :data="data" style="width: 100%" :loading="loading" border>
-          <el-table-column prop="id" label="ID" align="center">
+          <el-table-column prop="id" label="id" align="center">
             <template #default="scope">
               {{ scope.row.id }}
             </template>

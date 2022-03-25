@@ -10,7 +10,7 @@
       :props="menuDefaultProps"
       default-expand-all
       highlight-current
-      node-key="ID"
+      node-key="id"
       show-checkbox
       @check="nodeChange"
     >

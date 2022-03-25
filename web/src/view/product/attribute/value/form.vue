@@ -8,7 +8,7 @@
         :before-close="handleClose">
         <el-form ref="dialogForm" :model="dialogForm" label-width="80px" label-position="right" :rules="formRules">
             <div v-if="isEdit">
-                <el-form-item label="ID">
+                <el-form-item label="id">
                     <el-input v-model="dialogForm.id"  :disabled="isEdit"></el-input>
                 </el-form-item>
             </div>

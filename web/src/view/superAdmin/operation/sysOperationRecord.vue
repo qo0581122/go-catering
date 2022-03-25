@@ -36,7 +36,7 @@
         :data="tableData"
         style="width: 100%"
         tooltip-effect="dark"
-        row-key="ID"
+        row-key="id"
         @selection-change="handleSelectionChange"
       >
         <el-table-column align="left" type="selection" width="55" />
@@ -184,7 +184,7 @@ const onDelete = async() => {
   const ids = []
   multipleSelection.value &&
         multipleSelection.value.forEach(item => {
-          ids.push(item.ID)
+          ids.push(item.id)
         })
   const res = await deleteSysOperationRecordByIds({ ids })
   if (res.code === 0) {
@@ -201,7 +201,7 @@ const onDelete = async() => {
 }
 const deleteSysOperationRecordFunc = async(row) => {
   row.visible = false
-  const res = await deleteSysOperationRecord({ ID: row.ID })
+  const res = await deleteSysOperationRecord({ id: row.id })
   if (res.code === 0) {
     ElMessage({
       type: 'success',

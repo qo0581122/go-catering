@@ -3,8 +3,8 @@
     <el-container style="margin: 15px 20px 20px 20px">
       <el-main>
         <el-form :inline="true">
-          <el-form-item label="UID">
-            <el-input v-model="listQuery.uid" placeholder="UID"></el-input>
+          <el-form-item label="Uid">
+            <el-input v-model="listQuery.uid" placeholder="Uid"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="handleQuery">查询</el-button>
@@ -14,12 +14,12 @@
           </el-form-item>
         </el-form>
         <el-table :data="data" style="width: 100%" :loading="loading" border>
-          <el-table-column prop="id" label="ID" align="center">
+          <el-table-column prop="id" label="id" align="center">
             <template #default="scope">
               {{ scope.row.id }}
             </template>
           </el-table-column>
-          <el-table-column prop="uid" width="120px" label="UID" align="center">
+          <el-table-column prop="uid" width="120px" label="Uid" align="center">
             <template #default="scope">
               {{ scope.row.uid }}
             </template>

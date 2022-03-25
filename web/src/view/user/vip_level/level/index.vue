@@ -3,13 +3,13 @@
     <el-container style="margin: 15px 20px 20px 20px">
       <el-main>
         <el-form :inline="true">
-          <el-form-item label="UID">
-            <el-input v-model="listQuery.uid" placeholder="UID"></el-input>
+          <el-form-item label="Uid">
+            <el-input v-model="listQuery.uid" placeholder="Uid"></el-input>
           </el-form-item>
-          <el-form-item label="等级ID">
+          <el-form-item label="等级id">
             <el-input
               v-model="listQuery.level_id"
-              placeholder="等级ID"
+              placeholder="等级id"
             ></el-input>
           </el-form-item>
           <el-form-item>
@@ -25,7 +25,7 @@
           </el-form-item>
         </el-form>
         <el-table :data="data" style="width: 100%" :loading="loading" border>
-          <el-table-column prop="id" label="ID" align="center">
+          <el-table-column prop="id" label="id" align="center">
           </el-table-column>
           <el-table-column
             prop="level"
@@ -56,7 +56,7 @@
           </el-table-column>
           <el-table-column
             prop="next_level_id"
-            label="下一等级的ID"
+            label="下一等级的id"
             align="center"
             width="200px"
           >

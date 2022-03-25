@@ -119,7 +119,7 @@ export const deleteApi = (data) => {
 // @Security ApiKeyAuth
 // @accept application/json
 // @Produce application/json
-// @Param data body request.IdsReq true "ID"
+// @Param data body request.IdsReq true "id"
 // @Success 200 {string} string "{"success":true,"data":{},"msg":"删除成功"}"
 // @Router /api/deleteApisByIds [delete]
 export const deleteApisByIds = (data) => {

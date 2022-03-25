@@ -32,9 +32,9 @@
           border
           align="center"
         >
-          <el-table-column prop="id" label="ID" align="center">
+          <el-table-column prop="id" label="id" align="center">
           </el-table-column>
-          <el-table-column prop="uid" width="120px" label="UID" align="center">
+          <el-table-column prop="uid" width="120px" label="Uid" align="center">
           </el-table-column>
           <el-table-column prop="order_type" label="订单类型">
             <template #default="scope">
@@ -93,7 +93,7 @@
             align="center"
           >
           </el-table-column>
-          <el-table-column label="订单餐厅ID" width="200px">
+          <el-table-column label="订单餐厅id" width="200px">
             <template #default="scope">
               {{ scope.row.order_shop.id }}
             </template>

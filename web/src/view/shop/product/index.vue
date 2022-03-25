@@ -27,32 +27,32 @@
             style="width: 100%" :loading="loading" border >
                 <el-table-column
                     prop="id"
-                    label="ID"
+                    label="id" align="center"
                     >
                 </el-table-column>
                 <el-table-column
-                    label="店铺ID"
+                    label="店铺id" align="center"
                     >
-                    <template #default>
+                    <template #default="scope">
                         {{scope.row.shop.id}}
                     </template>
                 </el-table-column>
                <el-table-column
-                    label="商铺名称"
+                    label="商铺名称" align="center" width="200px"
                     >
-                    <template #default>
+                    <template #default="scope">
                         {{scope.row.shop.shop_name}}
                     </template>
                 </el-table-column>
                 <el-table-column
-                    label="商铺地址"
+                    label="商铺地址" align="center" width="200px"
                     >
-                    <template #default>
+                    <template #default="scope">
                         {{scope.row.shop.shop_detail_address}}
                     </template>
                 </el-table-column>
                 <el-table-column
-                    label="商铺营业状态"
+                    label="商铺营业状态" align="center" width="200px"
                     >
                     <template #default="scope">
                         <el-tag
@@ -70,28 +70,43 @@
                     </template>
                 </el-table-column>
                <el-table-column
-                    label="产品ID"
+                    label="产品id" align="center"
                     >
-                    <template #default>
+                    <template #default="scope">
                         {{scope.row.product.id}}
                     </template>
                 </el-table-column>
                 <el-table-column
-                    label="产品名称"
+                    label="产品名称" align="center" width="200px"
                     >
-                    <template #default>
+                    <template #default="scope">
                         {{scope.row.product.product_name}}
                     </template>
                 </el-table-column>
-                <el-table-column prop="url" label="产品展示图" width="200px">
+                <el-table-column prop="url" label="产品展示图" width="200px" align="center">
                     <template #default="scope">
-                    {{ scope.row.product.url }}
+                        <ShowPic :url="scope.row.product.url" />
                     </template>
                 </el-table-column>
-                <el-table-column prop="url" label="上架状态" width="200px">
+                <el-table-column prop="url" label="原价"  align="center">
                     <template #default="scope">
-                        <e-tag type="success" v-if="scope.row.status == 1">上架</e-tag>
-                        <e-tag type="danger" v-if="scope.row.status == 2">下架</e-tag>
+                        {{scope.row.product.original_price / 100}}元
+                    </template>
+                </el-table-column>
+                <el-table-column prop="url" label="折扣价"  align="center">
+                    <template #default="scope">
+                        {{scope.row.product.pay_price / 100}}元
+                    </template>
+                </el-table-column>
+                <el-table-column prop="url" label="折扣" align="center">
+                    <template #default="scope">
+                        {{scope.row.product.discount / 10}}折
+                    </template>
+                </el-table-column>
+                <el-table-column prop="url" label="上架状态" align="center">
+                    <template #default="scope">
+                        <el-tag type="success" v-if="scope.row.status == 1">上架</el-tag>
+                        <el-tag type="danger" v-if="scope.row.status == 2">下架</el-tag>
                     </template>
                 </el-table-column>
                 <el-table-column
@@ -99,8 +114,8 @@
                     label="操作"
                     width="200px">
                     <template #default="scope">
-                        <el-button  v-if="scope.row.status == 1" @click="handleUpdate(scope.row)" type="success" size="small">下架</el-button>
-                        <el-button  v-if="scope.row.status == 2" @click="handleUpdate(scope.row)" type="success" size="small">上架</el-button>
+                        <el-button  v-if="scope.row.status == 1" @click="handleUpdate(scope.row, 2)" type="danger" size="small">下架</el-button>
+                        <el-button  v-if="scope.row.status == 2" @click="handleUpdate(scope.row, 1)" type="success" size="small">上架</el-button>
                         <el-button type="success" size="small" @click="handleDelete(scope.row)">删除</el-button>
                     </template>
                 </el-table-column>
@@ -126,7 +141,8 @@
 
 <script>
 import Dform from './form.vue'
-import {fetchShopCategoryPage, createShopCategory, updateShopCategory, deleteShopCategory} from '@/api/shop_category.js'
+import {fetchShopProductPage, createShopProduct, updateShopProduct, deleteShopProduct} from '@/api/shop_product.js'
+import ShowPic from '@/components/showPic/index.vue'
 const defaultPageSize = [10, 20, 50, 100, 200]
 const defaultListQuery = {
     pageSize: 20,
@@ -140,7 +156,7 @@ const defaultForm = {
     status: true
 }
 export default {
-    components: { Dform },
+    components: { Dform, ShowPic },
     name: 'Provinces',
     data() {
         return {
@@ -160,7 +176,7 @@ export default {
     methods: {
         handleListData() {
             this.loading = true
-            fetchShopCategoryPage(this.listQuery).then(res => {
+            fetchShopProductPage(this.listQuery).then(res => {
                 this.data = res.data.list
                 this.total = res.data.total
                 this.$message({
@@ -181,10 +197,17 @@ export default {
             this.dialogVisiable = false
             this.form = Object.assign({}, defaultForm)
         },
-        handleUpdate(data) {
-            this.dialogVisiable = true
-            this.isEdit = true
-            this.form = data
+        handleUpdate(va, status) {
+            let data = Object.assign({}, va)
+            data.status = status
+            console.log(data)
+            updateShopProduct(data).then((res)=> {
+                console.log(res)
+                this.handleListData()
+            }).catch((err) => {
+                console.log(err)
+                this.handleListData()
+            })
         },
         handleAdd() {
             this.dialogVisiable = true
@@ -212,7 +235,7 @@ export default {
             form.status = form.status == true ? 1 : 2
             if (this.isEdit) {
                 //更新
-                updateShopCategory(form).then(res => {
+                updateShopProduct(form).then(res => {
                     this.$message({
                         message: res.msg,
                         type: 'success'
@@ -227,7 +250,7 @@ export default {
                 })
             }else {
                 //增加
-                createShopCategory(form).then( res=> {
+                createShopProduct(form).then( res=> {
                     this.$message({
                         message: res.msg,
                         type: 'success'

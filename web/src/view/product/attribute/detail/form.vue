@@ -15,7 +15,7 @@
         :rules="formRules"
       >
         <div v-if="isEdit">
-          <el-form-item label="ID">
+          <el-form-item label="id">
             <el-input v-model="dialogForm.id" :disabled="isEdit"></el-input>
           </el-form-item>
         </div>

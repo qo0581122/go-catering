@@ -27,7 +27,7 @@
             style="width: 100%" :loading="loading" border >
                 <el-table-column
                     prop="id"
-                    label="ID"
+                    label="id"
                     >
                 </el-table-column>
                 <el-table-column

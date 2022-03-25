@@ -11,7 +11,7 @@
         row-key="authorityId"
         style="width: 100%"
       >
-        <el-table-column label="角色ID" min-width="180" prop="authorityId" />
+        <el-table-column label="角色id" min-width="180" prop="authorityId" />
         <el-table-column align="left" label="角色名称" min-width="180" prop="authorityName" />
         <el-table-column align="left" label="操作" width="460">
           <template #default="scope">
@@ -63,7 +63,7 @@
             filterable
           />
         </el-form-item>
-        <el-form-item label="角色ID" prop="authorityId">
+        <el-form-item label="角色id" prop="authorityId">
           <el-input v-model="form.authorityId" :disabled="dialogType=='edit'" autocomplete="off" />
         </el-form-item>
         <el-form-item label="角色姓名" prop="authorityName">
@@ -140,7 +140,7 @@ const form = ref({
 })
 const rules = ref({
   authorityId: [
-    { required: true, message: '请输入角色ID', trigger: 'blur' },
+    { required: true, message: '请输入角色id', trigger: 'blur' },
     { validator: mustUint, trigger: 'blur' }
   ],
   authorityName: [

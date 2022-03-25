@@ -26,7 +26,7 @@
           </el-form-item>
         </el-form>
         <el-table :data="data" style="width: 100%" :loading="loading" border>
-          <el-table-column prop="id" label="ID"> </el-table-column>
+          <el-table-column prop="id" label="id"> </el-table-column>
           <el-table-column  label="省名称">
             <template #default="scope">
                 {{ scope.row.province.province_name}}    

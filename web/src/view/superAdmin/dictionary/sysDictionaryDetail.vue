@@ -29,7 +29,7 @@
         :data="tableData"
         style="width: 100%"
         tooltip-effect="dark"
-        row-key="ID"
+        row-key="id"
       >
         <el-table-column type="selection" width="55" />
         <el-table-column align="left" label="日期" width="180">
@@ -167,9 +167,9 @@ const page = ref(1)
 const total = ref(0)
 const pageSize = ref(10)
 const tableData = ref([])
-const searchInfo = ref({ sysDictionaryID: Number(route.params.id) })
+const searchInfo = ref({ sysDictionaryid: Number(route.params.id) })
 const onReset = () => {
-  searchInfo.value = { sysDictionaryID: Number(route.params.id) }
+  searchInfo.value = { sysDictionaryid: Number(route.params.id) }
 }
 
 // 条件搜索前端看此方法
@@ -213,7 +213,7 @@ getTableData()
 const type = ref('')
 const dialogFormVisible = ref(false)
 const updateSysDictionaryDetailFunc = async(row) => {
-  const res = await findSysDictionaryDetail({ ID: row.ID })
+  const res = await findSysDictionaryDetail({ id: row.id })
   type.value = 'update'
   if (res.code === 0) {
     formData.value = res.data.resysDictionaryDetail
@@ -228,12 +228,12 @@ const closeDialog = () => {
     value: null,
     status: true,
     sort: null,
-    sysDictionaryID: ''
+    sysDictionaryid: ''
   }
 }
 const deleteSysDictionaryDetailFunc = async(row) => {
   row.visible = false
-  const res = await deleteSysDictionaryDetail({ ID: row.ID })
+  const res = await deleteSysDictionaryDetail({ id: row.id })
   if (res.code === 0) {
     ElMessage({
       type: 'success',
@@ -248,7 +248,7 @@ const deleteSysDictionaryDetailFunc = async(row) => {
 
 const dialogForm = ref(null)
 const enterDialog = async() => {
-  formData.value.sysDictionaryID = Number(route.params.id)
+  formData.value.sysDictionaryid = Number(route.params.id)
   dialogForm.value.validate(async valid => {
     if (!valid) return
     let res

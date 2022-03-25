@@ -49,7 +49,7 @@
         :data="tableData"
         style="width: 100%"
         tooltip-effect="dark"
-        row-key="ID"
+        row-key="id"
       >
         <el-table-column type="selection" width="55" />
         <el-table-column align="left" label="日期" width="180">
@@ -300,7 +300,7 @@ const toDetile = (row) => {
   router.push({
     name: 'dictionaryDetail',
     params: {
-      id: row.ID,
+      id: row.id,
     },
   })
 }
@@ -308,7 +308,7 @@ const toDetile = (row) => {
 const dialogFormVisible = ref(false)
 const type = ref('')
 const updateSysDictionaryFunc = async(row) => {
-  const res = await findSysDictionary({ ID: row.ID })
+  const res = await findSysDictionary({ id: row.id })
   type.value = 'update'
   if (res.code === 0) {
     formData.value = res.data.resysDictionary
@@ -326,7 +326,7 @@ const closeDialog = () => {
 }
 const deleteSysDictionaryFunc = async(row) => {
   row.visible = false
-  const res = await deleteSysDictionary({ ID: row.ID })
+  const res = await deleteSysDictionary({ id: row.id })
   if (res.code === 0) {
     ElMessage({
       type: 'success',
