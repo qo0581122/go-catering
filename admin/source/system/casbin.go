@@ -134,30 +134,6 @@ func (c *casbin) Initialize() error {
 
 		// {Ptype: "p", V0: "888", V1: "/user-address", V2: "GET"},
 
-		// {Ptype: "p", V0: "888", V1: "/citys", V2: "GET"},
-		// {Ptype: "p", V0: "888", V1: "/city/create", V2: "POST"},
-		// {Ptype: "p", V0: "888", V1: "/city/update", V2: "POST"},
-		// {Ptype: "p", V0: "888", V1: "/city/delete", V2: "DELETE"},
-		// {Ptype: "p", V0: "888", V1: "/citys/province", V2: "GET"},
-
-		// {Ptype: "p", V0: "888", V1: "/citys", V2: "GET"},
-		// {Ptype: "p", V0: "888", V1: "/city/create", V2: "POST"},
-		// {Ptype: "p", V0: "888", V1: "/city/update", V2: "POST"},
-		// {Ptype: "p", V0: "888", V1: "/city/delete", V2: "DELETE"},
-		// {Ptype: "p", V0: "888", V1: "/citys/province", V2: "GET"},
-
-		// {Ptype: "p", V0: "888", V1: "/citys", V2: "GET"},
-		// {Ptype: "p", V0: "888", V1: "/city/create", V2: "POST"},
-		// {Ptype: "p", V0: "888", V1: "/city/update", V2: "POST"},
-		// {Ptype: "p", V0: "888", V1: "/city/delete", V2: "DELETE"},
-		// {Ptype: "p", V0: "888", V1: "/citys/province", V2: "GET"},
-
-		// {Ptype: "p", V0: "888", V1: "/citys", V2: "GET"},
-		// {Ptype: "p", V0: "888", V1: "/city/create", V2: "POST"},
-		// {Ptype: "p", V0: "888", V1: "/city/update", V2: "POST"},
-		// {Ptype: "p", V0: "888", V1: "/city/delete", V2: "DELETE"},
-		// {Ptype: "p", V0: "888", V1: "/citys/province", V2: "GET"},
-
 		{Ptype: "p", V0: "8881", V1: "/base/login", V2: "POST"},
 		{Ptype: "p", V0: "8881", V1: "/systemUser/register", V2: "POST"},
 		{Ptype: "p", V0: "8881", V1: "/api/createApi", V2: "POST"},

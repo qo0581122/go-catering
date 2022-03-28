@@ -50,7 +50,6 @@ func (initDBService *InitDBService) initTables() error {
 // createDatabase 创建数据库(mysql)
 // Author [SliverHorn](https://github.com/SliverHorn)
 // Author: [songzhibin97](https://github.com/songzhibin97)
-
 func (initDBService *InitDBService) createDatabase(dsn string, driver string, createSql string) error {
 	db, err := sql.Open(driver, dsn)
 	if err != nil {

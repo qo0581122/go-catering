@@ -212,7 +212,34 @@ export default {
             this.handleCloseDialog()
         },
         handleDelete(data) {
-
+            this.$confirm('此操作将永久删除该记录, 是否继续?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning',
+                center: true,
+            })
+            .then(() => {
+                deleteProductAttribute(data.id)
+                    .then((res) => {
+                    this.$message({
+                        message: res.data,
+                        type: 'success',
+                    })
+                    this.handleListData()
+                    })
+                    .catch((res) => {
+                    this.$message({
+                        message: res.data,
+                        type: 'error',
+                    })
+                    })
+                })
+            .catch(() => {
+                this.$message({
+                    type: 'info',
+                    message: '已取消删除',
+                })
+            })
         }
     }
 }

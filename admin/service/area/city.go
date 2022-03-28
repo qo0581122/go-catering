@@ -3,7 +3,6 @@ package area
 import (
 	"catering/global"
 	"catering/model"
-	"catering/model/area/response"
 	common "catering/model/common/response"
 	"fmt"
 )
@@ -54,12 +53,12 @@ func (impl cityServiceImpl) Count() int {
 
 func (impl cityServiceImpl) ListPage(pageNum, pageSize int, params *model.City) *common.ApiResponse {
 	res := &common.ApiResponse{}
-	var cities []*response.CityDetail
+	var cities []*model.City
 	if params.CityName != "" {
 		global.DB = global.DB.Where("city_name LIKE ?", "%"+params.CityName+"%")
 		params.CityName = ""
 	}
-	err := global.DB.Preload("Province").Where(&params).Scopes(model.Paginate(pageNum, pageSize)).Find(&cities).Error
+	err := global.DB.Preload("Province").Where(&params).Scopes(model.Paginate(pageNum, pageSize)).Order("id desc").Find(&cities).Error
 	if err != nil {
 		return res
 	}

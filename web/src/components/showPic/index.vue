@@ -36,7 +36,8 @@ export default {
       if (this.url !== '' && this.url.slice(0, 4) === 'http') {
         return this.url
       }
-      return path.value + this.url
+      console.log(path + this.url)
+      return path + this.url
     }
   },
   methods: {

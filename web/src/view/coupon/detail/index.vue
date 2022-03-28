@@ -61,17 +61,12 @@
               {{ scope.row.product.product_name }}
             </template>
           </el-table-column>
-          <el-table-column prop="url" label="图片地址" width="200px">
-            <template #default="scope">
-              {{ scope.row.pic_url }}
-            </template>
-          </el-table-column>
-          <el-table-column prop="url" label="发放数量" width="200px">
+          <el-table-column prop="total_count" label="发放数量" width="200px">
             <template #default="scope">
               {{ scope.row.total_count }}
             </template>
           </el-table-column>
-          <el-table-column prop="url" label="剩余数量" width="200px">
+          <el-table-column prop="remain_count" label="剩余数量" width="200px">
             <template #default="scope">
               {{ scope.row.remain_count }}
             </template>
@@ -93,7 +88,7 @@
               </span>
             </template>
           </el-table-column>
-          <el-table-column prop="url" label="单用户限定获取数量" width="200px">
+          <el-table-column prop="get_count" label="单用户限定获取数量" width="200px">
             <template #default="scope">
               {{ scope.row.get_count }}
             </template>
@@ -115,12 +110,12 @@
               </span>
             </template>
           </el-table-column>
-          <el-table-column prop="url" label="获取开始时间" width="200px">
+          <el-table-column prop="get_begin_time" label="获取开始时间" width="200px">
             <template #default="scope">
               {{ scope.row.get_begin_time }}
             </template>
           </el-table-column>
-          <el-table-column prop="url" label="获取结束时间" width="200px">
+          <el-table-column prop="get_end_time" label="获取结束时间" width="200px">
             <template #default="scope">
               {{ scope.row.get_end_time }}
             </template>
@@ -258,7 +253,6 @@ const defaultForm = {
   price: 0,
   least_use_price: 0,
   product_id: null,
-  pic_url: null,
   total_count: 0,
   remain_count: 0,
   get_type: null,
@@ -329,7 +323,6 @@ export default {
         price: data.coupon.price,
         least_use_price: data.coupon.least_use_price,
         product_id: data.coupon.product_id,
-        pic_url: data.coupon.pic_url,
         total_count: data.coupon.total_count,
         remain_count: data.coupon.remain_count,
         get_type: data.coupon.get_type,

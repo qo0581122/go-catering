@@ -215,7 +215,6 @@ export default {
       this.handleCloseDialog();
     },
     handleDelete(data) {
-      console.log(data.id);
       deleteCity(data.id);
     },
   },

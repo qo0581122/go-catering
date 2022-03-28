@@ -88,12 +88,6 @@
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="图片地址" prop="pic_url">
-          <el-input
-            v-model="dialogForm.pic_url"
-            style="width: 300px"
-          ></el-input>
-        </el-form-item>
         <el-form-item label="状态">
           <el-switch v-model="dialogForm.status"></el-switch>
         </el-form-item>
@@ -175,7 +169,6 @@ const defaultForm = {
   voucher_name: null,
   price: 0,
   least_use_price: 0,
-  pic_url: null,
   total_count: 0,
   remain_count: 0,
   get_type: null,

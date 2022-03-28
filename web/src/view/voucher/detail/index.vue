@@ -66,11 +66,6 @@
               {{ scope.row.least_use_price }}
             </template>
           </el-table-column>
-          <el-table-column prop="pic_url" label="图片地址" width="200px">
-            <template #default="scope">
-              {{ scope.row.pic_url }}
-            </template>
-          </el-table-column>
           <el-table-column prop="total_count" label="发放数量" width="200px">
             <template #default="scope">
               {{ scope.row.total_count }}
@@ -269,7 +264,6 @@ const defaultForm = {
   voucher_name: null,
   price: 0,
   least_use_price: 0,
-  pic_url: null,
   total_count: 0,
   remain_count: 0,
   get_type: null,
@@ -341,7 +335,6 @@ export default {
         voucher_name: data.voucher_name,
         price: data.price,
         least_use_price: data.least_use_price,
-        pic_url: data.pic_url,
         total_count: data.total_count,
         remain_count: data.remain_count,
         get_type: data.get_type,

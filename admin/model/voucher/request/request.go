@@ -12,7 +12,6 @@ type VoucherAddForm struct {
 	VoucherName   string `json:"voucher_name" form:"voucher_name" valid:"Required"`
 	Price         uint64 `json:"price" form:"price" valid:"Required"`
 	LeastUsePrice uint64 `json:"least_use_price" form:"least_use_price" `
-	PicUrl        string `json:"pic_url" form:"pic_url" `
 	TotalCount    uint64 `json:"total_count" form:"total_count" valid:"Required"`
 	GetType       uint32 `json:"get_type" form:"get_type" valid:"Required"`
 	ValidTimeType uint32 `json:"valid_time_type" form:"valid_time_type"  `
@@ -32,7 +31,6 @@ type VoucherUpdateForm struct {
 	VoucherName   string `json:"voucher_name" form:"voucher_name" valid:"Required"`
 	Price         uint64 `json:"price" form:"price" valid:"Required"`
 	LeastUsePrice uint64 `json:"least_use_price" form:"least_use_price" `
-	PicUrl        string `json:"pic_url" form:"pic_url" `
 	TotalCount    uint64 `json:"total_count" form:"total_count" valid:"Required"`
 	RemainCount   uint64 `json:"remain_count" form:"remain_count" valid:"Required"`
 	GetType       uint32 `json:"get_type" form:"get_type" valid:"Required"`

@@ -61,7 +61,7 @@ func (impl provinceServiceImpl) ListPage(pageNum, pageSize int, params *model.Pr
 		global.DB = global.DB.Where("province_name LIKE ?", "%"+params.ProvinceName+"%")
 		params.ProvinceName = ""
 	}
-	err := global.DB.Where(&params).Scopes(model.Paginate(pageNum, pageSize)).Find(&provinces).Error
+	err := global.DB.Where(&params).Scopes(model.Paginate(pageNum, pageSize)).Order("id desc").Find(&provinces).Error
 	if err != nil {
 		return res
 	}

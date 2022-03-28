@@ -56,7 +56,7 @@ func (impl productAttributeValueServiceImpl) Count() int {
 
 func (impl productAttributeValueServiceImpl) ListPage(pageNum, pageSize int, params *model.ProductAttributeValue) *response.ApiResponse {
 	var productAttributeValues []*model.ProductAttributeValue
-	err := global.DB.Where(&params).Scopes(model.Paginate(pageNum, pageSize)).Find(&productAttributeValues).Error
+	err := global.DB.Where(&params).Scopes(model.Paginate(pageNum, pageSize)).Preload("Attribute").Find(&productAttributeValues).Error
 	if err != nil {
 		fmt.Println(err)
 		return nil

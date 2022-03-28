@@ -855,3 +855,33 @@
 [catering]2022-03-25 20:38:27.970	[34minfo[0m	E:/GoPath/project/go-catering/admin/initialize/router.go:38	register swagger handler
 [catering]2022-03-25 20:38:27.997	[34minfo[0m	E:/GoPath/project/go-catering/admin/initialize/router.go:103	router register success
 [catering]2022-03-25 20:38:27.999	[34minfo[0m	E:/GoPath/project/go-catering/admin/core/server.go:27	server run success on 	{"address": ":8888"}
+[catering]2022-03-28 11:11:33.608	[34minfo[0m	E:/GoPath/project/go-catering/admin/initialize/router.go:34	use middleware logger
+[catering]2022-03-28 11:11:33.624	[34minfo[0m	E:/GoPath/project/go-catering/admin/initialize/router.go:36	use middleware cors
+[catering]2022-03-28 11:11:33.625	[34minfo[0m	E:/GoPath/project/go-catering/admin/initialize/router.go:38	register swagger handler
+[catering]2022-03-28 11:11:33.651	[34minfo[0m	E:/GoPath/project/go-catering/admin/initialize/router.go:103	router register success
+[catering]2022-03-28 11:11:33.652	[34minfo[0m	E:/GoPath/project/go-catering/admin/core/server.go:27	server run success on 	{"address": ":8888"}
+[catering]2022-03-28 11:47:49.152	[34minfo[0m	E:/GoPath/project/go-catering/admin/initialize/router.go:34	use middleware logger
+[catering]2022-03-28 11:47:49.167	[34minfo[0m	E:/GoPath/project/go-catering/admin/initialize/router.go:36	use middleware cors
+[catering]2022-03-28 11:47:49.168	[34minfo[0m	E:/GoPath/project/go-catering/admin/initialize/router.go:38	register swagger handler
+[catering]2022-03-28 11:47:49.227	[34minfo[0m	E:/GoPath/project/go-catering/admin/initialize/router.go:103	router register success
+[catering]2022-03-28 11:47:49.231	[34minfo[0m	E:/GoPath/project/go-catering/admin/core/server.go:27	server run success on 	{"address": ":8888"}
+[catering]2022-03-28 13:40:31.906	[34minfo[0m	E:/GoPath/project/go-catering/admin/initialize/router.go:34	use middleware logger
+[catering]2022-03-28 13:40:31.922	[34minfo[0m	E:/GoPath/project/go-catering/admin/initialize/router.go:36	use middleware cors
+[catering]2022-03-28 13:40:31.923	[34minfo[0m	E:/GoPath/project/go-catering/admin/initialize/router.go:38	register swagger handler
+[catering]2022-03-28 13:40:31.964	[34minfo[0m	E:/GoPath/project/go-catering/admin/initialize/router.go:103	router register success
+[catering]2022-03-28 13:40:31.965	[34minfo[0m	E:/GoPath/project/go-catering/admin/core/server.go:27	server run success on 	{"address": ":8888"}
+[catering]2022-03-28 13:44:24.110	[34minfo[0m	E:/GoPath/project/go-catering/admin/initialize/router.go:34	use middleware logger
+[catering]2022-03-28 13:44:24.125	[34minfo[0m	E:/GoPath/project/go-catering/admin/initialize/router.go:36	use middleware cors
+[catering]2022-03-28 13:44:24.125	[34minfo[0m	E:/GoPath/project/go-catering/admin/initialize/router.go:38	register swagger handler
+[catering]2022-03-28 13:44:24.156	[34minfo[0m	E:/GoPath/project/go-catering/admin/initialize/router.go:103	router register success
+[catering]2022-03-28 13:44:24.158	[34minfo[0m	E:/GoPath/project/go-catering/admin/core/server.go:27	server run success on 	{"address": ":8888"}
+[catering]2022-03-28 16:52:06.730	[34minfo[0m	E:/GoPath/project/go-catering/admin/initialize/router.go:34	use middleware logger
+[catering]2022-03-28 16:52:06.744	[34minfo[0m	E:/GoPath/project/go-catering/admin/initialize/router.go:36	use middleware cors
+[catering]2022-03-28 16:52:06.744	[34minfo[0m	E:/GoPath/project/go-catering/admin/initialize/router.go:38	register swagger handler
+[catering]2022-03-28 16:52:06.784	[34minfo[0m	E:/GoPath/project/go-catering/admin/initialize/router.go:103	router register success
+[catering]2022-03-28 16:52:06.787	[34minfo[0m	E:/GoPath/project/go-catering/admin/core/server.go:27	server run success on 	{"address": ":8888"}
+[catering]2022-03-28 16:54:30.659	[34minfo[0m	E:/GoPath/project/go-catering/admin/initialize/router.go:34	use middleware logger
+[catering]2022-03-28 16:54:30.674	[34minfo[0m	E:/GoPath/project/go-catering/admin/initialize/router.go:36	use middleware cors
+[catering]2022-03-28 16:54:30.675	[34minfo[0m	E:/GoPath/project/go-catering/admin/initialize/router.go:38	register swagger handler
+[catering]2022-03-28 16:54:30.702	[34minfo[0m	E:/GoPath/project/go-catering/admin/initialize/router.go:103	router register success
+[catering]2022-03-28 16:54:30.703	[34minfo[0m	E:/GoPath/project/go-catering/admin/core/server.go:27	server run success on 	{"address": ":8888"}

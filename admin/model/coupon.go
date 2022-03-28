@@ -6,7 +6,6 @@ type Coupon struct {
 	Price         uint64  `json:"price"`
 	ProductId     uint64  `json:"product_id"`
 	LeastUsePrice uint64  `json:"least_use_price"`
-	PicUrl        string  `json:"pic_url"`
 	TotalCount    uint64  `json:"total_count"`
 	RemainCount   uint64  `json:"remain_count"`
 	GetType       uint32  `json:"get_type"`
@@ -21,4 +20,8 @@ type Coupon struct {
 	GetCount      uint32  `json:"get_count"`
 	Description   string  `json:"description"`
 	Product       Product `gorm:"foreignKey:ProductId" json:"product"`
+}
+
+func (*Coupon) TableName() string {
+	return "coupon"
 }

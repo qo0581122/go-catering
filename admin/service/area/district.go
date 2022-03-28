@@ -41,7 +41,7 @@ func (impl districtServiceImpl) List(params *model.District) []*model.District {
 		global.DB = global.DB.Where("district_name LIKE ?", "%"+params.DistrictName+"%")
 		params.DistrictName = ""
 	}
-	err := global.DB.Where(&params).Find(&districts).Error
+	err := global.DB.Where(&params).Order("id desc").Find(&districts).Error
 	if err != nil {
 		return nil
 	}

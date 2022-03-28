@@ -3,7 +3,6 @@ package system
 import (
 	"fmt"
 
-	"catering/config"
 	"catering/global"
 	model "catering/model/system"
 	"catering/model/system/request"
@@ -13,20 +12,6 @@ import (
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
-
-// writeMysqlConfig mysql回写配置
-// Author [SliverHorn](https://github.com/SliverHorn)
-// Author [songzhibin97](https://github.com/songzhibin97)
-func (initDBService *InitDBService) writeMysqlConfig(mysql config.Mysql) error {
-	// global.Config.Mysql = mysql
-	// cs := utils.StructToMap(global.Config)
-	// for k, v := range cs {
-	// 	global.GVA_VP.Set(k, v)
-	// }
-	// global.GVA_VP.Set("jwt.signing-key", uuid.NewV4().String())
-	// return global.GVA_VP.WriteConfig()
-	return nil
-}
 
 // initMsqlDB 创建数据库并初始化 mysql
 // Author [piexlmax](https://github.com/piexlmax)
@@ -61,10 +46,6 @@ func (initDBService *InitDBService) initMsqlDB(conf request.InitDB) error {
 
 	if err := initDBService.initMysqlData(); err != nil {
 		global.DB = nil
-		return err
-	}
-
-	if err := initDBService.writeMysqlConfig(mysqlConfig); err != nil {
 		return err
 	}
 

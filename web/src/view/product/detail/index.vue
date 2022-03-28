@@ -111,7 +111,7 @@
           </el-table-column>
           <el-table-column prop="url" label="图片地址" width="200px">
             <template #default="scope">
-              {{ scope.row.product.url }}
+              <ShowPic :url="scope.row.product.url" />
             </template>
           </el-table-column>
           <el-table-column prop="status" align="center" label="状态">
@@ -199,6 +199,7 @@
 
 <script>
 import ProductDetail from "./components/ProductDetail.vue";
+import ShowPic from '@/components/showPic/index.vue'
 import {
   fetchProductList,
   createProduct,
@@ -218,7 +219,7 @@ const defaultForm = {
   }
 };
 export default {
-  components: { ProductDetail },
+  components: { ProductDetail, ShowPic },
   name: "Provinces",
   data() {
     return {
@@ -323,7 +324,32 @@ export default {
           });
       }
     },
-    handleDelete(data) {},
+    handleDelete(data) {
+      this.$confirm("此操作将永久删除该记录, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+        center: true,
+      }).then(() => {
+        deleteProduct(data.product.id).then((res) => {
+          this.$message({
+              message: res.data,
+              type: "success",
+          });
+          this.handleListData();
+        }).catch((res) => {
+          this.$message({
+              message: res.data,
+              type: "error",
+          });
+        });
+      }).catch(() => {
+        this.$message({
+            type: "info",
+            message: "已取消删除",
+        });
+      });
+    },
   },
 };
 </script>

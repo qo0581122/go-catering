@@ -5,7 +5,6 @@ type Voucher struct {
 	Name          string `gorm:"column:voucher_name" json:"voucher_name"`
 	LeastUsePrice uint64 `json:"least_use_price"`
 	Price         uint64 `json:"price"`
-	PicUrl        string `json:"pic_url"`
 	Description   string `json:"description"`
 	TotalCount    uint64 `json:"total_count"`
 	RemainCount   uint64 `json:"remain_count"`
