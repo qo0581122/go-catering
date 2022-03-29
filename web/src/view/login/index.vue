@@ -3,11 +3,6 @@
     <div class="login_panle">
       <div class="login_panle_form">
         <div class="login_panle_form_title">
-          <img
-            class="login_panle_form_title_logo"
-            :src="$GIN_VUE_ADMIN.appLogo"
-            alt
-          >
           <p class="login_panle_form_title_p">{{ $GIN_VUE_ADMIN.appName }}</p>
         </div>
         <el-form
@@ -68,41 +63,12 @@
           <el-form-item>
             <el-button
               type="primary"
-              style="width: 46%"
               size="large"
-              @click="checkInit"
-            >前往初始化</el-button>
-            <el-button
-              type="primary"
-              size="large"
-              style="width: 46%; margin-left: 8%"
+              style="width: 100%;"
               @click="submitForm"
             >登 录</el-button>
           </el-form-item>
         </el-form>
-      </div>
-      <div class="login_panle_right" />
-      <div class="login_panle_foot">
-        <div class="links">
-          <a href="http://doc.henrongyi.top/" target="_blank">
-            <img src="@/assets/docs.png" class="link-icon">
-          </a>
-          <a href="https://support.qq.com/product/371961" target="_blank">
-            <img src="@/assets/kefu.png" class="link-icon">
-          </a>
-          <a
-            href="https://github.com/flipped-aurora/gin-vue-admin"
-            target="_blank"
-          >
-            <img src="@/assets/github.png" class="link-icon">
-          </a>
-          <a href="https://space.bilibili.com/322210472" target="_blank">
-            <img src="@/assets/video.png" class="link-icon">
-          </a>
-        </div>
-        <div class="copyright">
-          <bootomInfo />
-        </div>
       </div>
     </div>
   </div>

@@ -31,7 +31,6 @@ func NewJWT() *JWT {
 func (j *JWT) CreateClaims(baseClaims request.BaseClaims) request.CustomClaims {
 	claims := request.CustomClaims{
 		BaseClaims: baseClaims,
-		BufferTime: global.Config.JWT.BufferTime, // 缓冲时间1天 缓冲时间内会获得新的token刷新令牌 此时一个用户会存在两个有效令牌 但是前端只留一个 另一个会丢失
 		StandardClaims: jwt.StandardClaims{
 			NotBefore: time.Now().Unix() - 1000,                          // 签名生效时间
 			ExpiresAt: time.Now().Unix() + global.Config.JWT.ExpiresTime, // 过期时间 7天  配置文件
@@ -46,14 +45,6 @@ func (j *JWT) CreateToken(claims request.CustomClaims) (string, error) {
 	//对token进行签名加密
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	return token.SignedString(j.SigningKey)
-}
-
-// CreateTokenByOldToken 旧token 换新token 用concurrency_control对token进行加锁避免并发问题（加锁粒度为oldToken）
-func (j *JWT) CreateTokenByOldToken(oldToken string, claims request.CustomClaims) (string, error) {
-	v, err, _ := global.Concurrency_Control.Do("JWT:"+oldToken, func() (interface{}, error) {
-		return j.CreateToken(claims)
-	})
-	return v.(string), err
 }
 
 // 解析 token

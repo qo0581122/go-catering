@@ -222,14 +222,14 @@ export default {
                 deleteProductAttribute(data.id)
                     .then((res) => {
                     this.$message({
-                        message: res.data,
+                        message: res.message,
                         type: 'success',
                     })
                     this.handleListData()
                     })
                     .catch((res) => {
                     this.$message({
-                        message: res.data,
+                        message: res.message,
                         type: 'error',
                     })
                     })

@@ -182,14 +182,14 @@ export default {
                 //更新
                 updateProvince(form).then(res => {
                     this.$message({
-                        message: res.data,
+                        message: res.message,
                         type: 'success'
                     });
                     this.handleListData()
                 }).catch(res => {
                     console.log(res)
                     this.$message({
-                        message: res.data,
+                        message: res.message,
                         type: 'error'
                     });
                 })
@@ -197,13 +197,13 @@ export default {
                 //增加
                 createProvince(form).then( res=> {
                     this.$message({
-                        message: res.data,
+                        message: res.message,
                         type: 'success'
                     });
                      this.handleListData()
                 }).catch(res => {
                     this.$message({
-                        message: res.data,
+                        message: res.message,
                         type: 'error'
                     });
                 })

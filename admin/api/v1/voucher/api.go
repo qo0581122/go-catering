@@ -107,7 +107,7 @@ func Update(c *gin.Context) {
 }
 
 func Delete(c *gin.Context) {
-	id, _ := strconv.Atoi(c.DefaultQuery("id", ""))
+	id, _ := strconv.Atoi(c.Param("id"))
 	err := voucherService.Delete(uint64(id))
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)

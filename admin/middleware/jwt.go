@@ -2,8 +2,6 @@ package middleware
 
 import (
 	"fmt"
-	"strconv"
-	"time"
 
 	"catering/pkg"
 
@@ -29,15 +27,16 @@ func JWTAuth() gin.HandlerFunc {
 
 		//判断session和对session中的token进行比对
 		fmt.Println(t, token)
-		// if tk, ok := t.(string); !ok {
-		// 	response.FailWithDetailed(gin.H{"reload": true}, "授权已过期", c)
-		// 	c.Abort()
-		// 	return
-		// } else if tk != token {
-		// 	response.FailWithDetailed(gin.H{"reload": true}, "授权已过期", c)
-		// 	c.Abort()
-		// 	return
-		// }
+		if tk, ok := t.(string); !ok {
+			fmt.Println(11111111)
+			response.FailWithDetailed(gin.H{"reload": true}, "授权已过期", c)
+			c.Abort()
+			return
+		} else if tk != token {
+			response.FailWithDetailed(gin.H{"reload": true}, "授权已过期", c)
+			c.Abort()
+			return
+		}
 
 		j := pkg.NewJWT()
 		// parseToken 解析token包含的信息
@@ -52,13 +51,6 @@ func JWTAuth() gin.HandlerFunc {
 			response.FailWithDetailed(gin.H{"reload": true}, err.Error(), c)
 			c.Abort()
 			return
-		}
-		if claims.ExpiresAt-time.Now().Unix() < claims.BufferTime {
-			claims.ExpiresAt = time.Now().Unix() + global.Config.JWT.ExpiresTime
-			newToken, _ := j.CreateTokenByOldToken(token, *claims)
-			newClaims, _ := j.ParseToken(newToken)
-			c.Header("new-token", newToken)
-			c.Header("new-expires-at", strconv.FormatInt(newClaims.ExpiresAt, 10))
 		}
 		c.Set("claims", claims)
 		c.Next()

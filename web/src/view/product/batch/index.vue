@@ -180,14 +180,14 @@ export default {
                 //更新
                 updateProductBatch(form).then(res => {
                     this.$message({
-                        message: res.data,
+                        message: res.message,
                         type: 'success'
                     });
                     this.handleListData()
                 }).catch(res => {
                     console.log(res)
                     this.$message({
-                        message: res.data,
+                        message: res.message,
                         type: 'error'
                     });
                 })
@@ -195,13 +195,13 @@ export default {
                 //增加
                 createProductBatch(form).then( res=> {
                     this.$message({
-                        message: res.data,
+                        message: res.message,
                         type: 'success'
                     });
                      this.handleListData()
                 }).catch(res => {
                     this.$message({
-                        message: res.data,
+                        message: res.message,
                         type: 'error'
                     });
                 })
@@ -219,14 +219,14 @@ export default {
                 deleteProductBatch(data.id)
                     .then((res) => {
                     this.$message({
-                        message: res.data,
+                        message: res.message,
                         type: 'success',
                     })
                     this.handleListData()
                     })
                     .catch((res) => {
                     this.$message({
-                        message: res.data,
+                        message: res.message,
                         type: 'error',
                     })
                     })

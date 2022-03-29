@@ -27,7 +27,7 @@ export function updateProductBatch(data) {
 
 export function deleteProductBatch(id) {
   return service({
-    url: '/product/batch' + id,
+    url: '/product/batch/' + id,
     method: 'delete',
   })
 }

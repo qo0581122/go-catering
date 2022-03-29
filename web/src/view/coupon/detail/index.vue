@@ -367,7 +367,7 @@ export default {
         updateCoupon(form)
           .then((res) => {
             this.$message({
-              message: res.data,
+              message: res.message,
               type: "success",
             });
             this.handleListData();
@@ -375,7 +375,7 @@ export default {
           .catch((res) => {
             console.log(res);
             this.$message({
-              message: res.data,
+              message: res.message,
               type: "error",
             });
           });
@@ -384,14 +384,14 @@ export default {
         createCoupon(form)
           .then((res) => {
             this.$message({
-              message: res.data,
+              message: res.message,
               type: "success",
             });
             this.handleListData();
           })
           .catch((res) => {
             this.$message({
-              message: res.data,
+              message: res.message,
               type: "error",
             });
           });
@@ -406,22 +406,23 @@ export default {
         center: true,
       })
         .then(() => {
-          deleteCoupon(data.coupon.id)
+          deleteCoupon(data.id)
             .then((res) => {
               this.$message({
-                message: res.data,
+                message: res.message,
                 type: "success",
               });
               this.handleListData();
             })
             .catch((res) => {
               this.$message({
-                message: res.data,
+                message: res.message,
                 type: "error",
               });
             });
         })
-        .catch(() => {
+        .catch((err) => {
+          console.log(err)
           this.$message({
             type: "info",
             message: "已取消删除",
