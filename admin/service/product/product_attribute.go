@@ -4,6 +4,7 @@ import (
 	"catering/global"
 	"catering/model"
 	"catering/model/common/response"
+	"errors"
 	"fmt"
 
 	"gorm.io/gorm"
@@ -40,6 +41,16 @@ func (impl productAttributeServiceImpl) Add(params *model.ProductAttribute, valu
 	})
 }
 func (impl productAttributeServiceImpl) Delete(id uint64) error {
+	query := model.ProductAttributeRelation{
+		AttributeId: id,
+	}
+	var relation model.ProductAttributeRelation
+	if err := global.DB.Where(&query).Find(&relation).Error; err != nil {
+		return err
+	}
+	if relation.Id > 0 {
+		return errors.New("存在关联，无法删除")
+	}
 	return global.DB.Delete(&model.ProductAttribute{}, id).Error
 }
 func (impl productAttributeServiceImpl) Update(params *model.ProductAttribute, values []string) error {

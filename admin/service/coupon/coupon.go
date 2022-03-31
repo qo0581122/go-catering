@@ -4,6 +4,7 @@ import (
 	"catering/global"
 	"catering/model"
 	"catering/model/common/response"
+	"errors"
 	"fmt"
 )
 
@@ -20,6 +21,16 @@ func (impl couponServiceImpl) Add(params *model.Coupon) error {
 	return global.DB.Create(&params).Error
 }
 func (impl couponServiceImpl) Delete(id uint64) error {
+	query := model.CouponGetLog{
+		CouponId: id,
+	}
+	var log model.CouponGetLog
+	if err := global.DB.Where(&query).Find(&log).Error; err != nil {
+		return err
+	}
+	if log.Id > 0 {
+		return errors.New("存在关联，无法删除")
+	}
 	return global.DB.Delete(&model.Coupon{}, id).Error
 }
 func (impl couponServiceImpl) Update(params *model.Coupon) error {

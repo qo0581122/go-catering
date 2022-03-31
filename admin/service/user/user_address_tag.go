@@ -4,6 +4,7 @@ import (
 	"catering/global"
 	"catering/model"
 	"catering/model/common/response"
+	"errors"
 	"fmt"
 )
 
@@ -20,6 +21,16 @@ func (impl addressTagServiceImpl) Add(params *model.UserAddressTag) error {
 	return global.DB.Create(&params).Error
 }
 func (impl addressTagServiceImpl) Delete(id uint64) error {
+	query := model.UserAddressTagRelation{
+		TagId: id,
+	}
+	var relation model.UserAddressTagRelation
+	if err := global.DB.Where(&query).Find(&relation).Error; err != nil {
+		return err
+	}
+	if relation.ID > 0 {
+		return errors.New("存在关联，无法删除")
+	}
 	return global.DB.Delete(&model.UserAddressTag{}, id).Error
 }
 func (impl addressTagServiceImpl) Update(params *model.UserAddressTag) error {

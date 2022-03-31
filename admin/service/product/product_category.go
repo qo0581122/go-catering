@@ -4,6 +4,7 @@ import (
 	"catering/global"
 	"catering/model"
 	"catering/model/common/response"
+	"errors"
 	"fmt"
 )
 
@@ -20,6 +21,16 @@ func (impl productCategoryServiceImpl) Add(params *model.ProductCategory) error 
 	return global.DB.Create(&params).Error
 }
 func (impl productCategoryServiceImpl) Delete(id uint64) error {
+	query := model.Product{
+		CategoryId: id,
+	}
+	var product model.Product
+	if err := global.DB.Where(&query).Find(&product).Error; err != nil {
+		return err
+	}
+	if product.ID > 0 {
+		return errors.New("存在关联，无法删除")
+	}
 	return global.DB.Delete(&model.ProductCategory{}, id).Error
 }
 func (impl productCategoryServiceImpl) Update(params *model.ProductCategory) error {

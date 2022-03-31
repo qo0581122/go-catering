@@ -4,6 +4,7 @@ import (
 	"catering/global"
 	"catering/model"
 	"catering/model/common/response"
+	"errors"
 )
 
 var VoucherService voucherService = NewVoucherService()
@@ -18,9 +19,21 @@ type voucherServiceImpl struct {
 func (impl voucherServiceImpl) Add(params *model.Voucher) error {
 	return global.DB.Create(&params).Error
 }
+
 func (impl voucherServiceImpl) Delete(id uint64) error {
+	query := model.VoucherGetLog{
+		VoucherId: id,
+	}
+	var log model.VoucherGetLog
+	if err := global.DB.Where(&query).Find(&log).Error; err != nil {
+		return err
+	}
+	if log.Id > 0 {
+		return errors.New("存在关联，无法删除")
+	}
 	return global.DB.Delete(&model.Voucher{}, id).Error
 }
+
 func (impl voucherServiceImpl) Update(params *model.Voucher) error {
 	return global.DB.Model(&model.Voucher{}).Where("id = ?", params.ID).Updates(&params).Error
 }

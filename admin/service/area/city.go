@@ -4,6 +4,7 @@ import (
 	"catering/global"
 	"catering/model"
 	common "catering/model/common/response"
+	"errors"
 	"fmt"
 )
 
@@ -20,6 +21,16 @@ func (impl cityServiceImpl) Add(params *model.City) error {
 	return global.DB.Create(&params).Error
 }
 func (impl cityServiceImpl) Delete(id uint64) error {
+	query := model.District{
+		CityId: id,
+	}
+	var district model.District
+	if err := global.DB.Where(&query).Find(&district).Error; err != nil {
+		return err
+	}
+	if district.ID > 0 {
+		return errors.New("存在关联，无法删除")
+	}
 	return global.DB.Delete(&model.City{}, id).Error
 }
 func (impl cityServiceImpl) Update(params *model.City) error {

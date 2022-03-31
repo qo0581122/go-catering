@@ -83,8 +83,8 @@ func (impl userVipLevelServiceImpl) Adds(params []model.UserVipLevel) error {
 
 func (impl userVipLevelServiceImpl) Delete(id uint64) error {
 	return global.DB.Delete(&model.UserVipLevel{}, id).Error
-
 }
+
 func (impl userVipLevelServiceImpl) Update(params *model.UserVipLevel) error {
 	return global.DB.Model(&model.UserVipLevel{}).Where("id = ?", params.Id).Updates(&params).Error
 }

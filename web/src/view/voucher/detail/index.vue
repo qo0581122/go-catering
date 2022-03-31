@@ -379,7 +379,7 @@ export default {
         updateVoucher(form)
           .then((res) => {
             this.$message({
-              message: res.message,
+              message: res.msg,
               type: "success",
             });
             this.handleListData();
@@ -387,7 +387,7 @@ export default {
           .catch((res) => {
             console.log(res);
             this.$message({
-              message: res.message,
+              message: res.msg,
               type: "error",
             });
           });
@@ -396,14 +396,14 @@ export default {
         createVoucher(form)
           .then((res) => {
             this.$message({
-              message: res.message,
+              message: res.msg,
               type: "success",
             });
             this.handleListData();
           })
           .catch((res) => {
             this.$message({
-              message: res.message,
+              message: res.msg,
               type: "error",
             });
           });
@@ -420,15 +420,17 @@ export default {
         .then(() => {
           deleteVoucher(data.id)
             .then((res) => {
-              this.$message({
-                message: res.message,
-                type: "success",
-              });
-              this.handleListData();
+              if (res.code == 0) {
+                this.$message({
+                  message: res.msg,
+                  type: "success",
+                });
+                this.handleListData();
+              }
             })
             .catch((res) => {
               this.$message({
-                message: res.message,
+                message: res.msg,
                 type: "error",
               });
             });

@@ -5,6 +5,7 @@ import (
 	"catering/model"
 	"catering/model/common/response"
 	shopResponse "catering/model/shop/response"
+	"errors"
 	"fmt"
 )
 
@@ -37,6 +38,16 @@ func (impl shopServiceImpl) Add(params *model.Shop) error {
 	return global.DB.Create(&params).Error
 }
 func (impl shopServiceImpl) Delete(id uint64) error {
+	query := model.ShopProduct{
+		ShopId: id,
+	}
+	var shopProduct model.ShopProduct
+	if err := global.DB.Where(&query).Find(&shopProduct).Error; err != nil {
+		return err
+	}
+	if shopProduct.ID > 0 {
+		return errors.New("存在关联，无法删除")
+	}
 	return global.DB.Delete(&model.Shop{}, id).Error
 }
 func (impl shopServiceImpl) Update(params *model.Shop) error {

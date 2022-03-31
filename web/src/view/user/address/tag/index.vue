@@ -247,7 +247,7 @@ export default {
         updateUserAddressTag(form)
           .then((res) => {
             this.$message({
-              message: res.message,
+              message: res.msg,
               type: "success",
             });
             this.handleListData();
@@ -255,7 +255,7 @@ export default {
           .catch((res) => {
             console.log(res);
             this.$message({
-              message: res.message,
+              message: res.msg,
               type: "error",
             });
           });
@@ -264,14 +264,14 @@ export default {
         createUserAddressTag(form)
           .then((res) => {
             this.$message({
-              message: res.message,
+              message: res.msg,
               type: "success",
             });
             this.handleListData();
           })
           .catch((res) => {
             this.$message({
-              message: res.message,
+              message: res.msg,
               type: "error",
             });
           });
@@ -289,16 +289,18 @@ export default {
           deleteUserAddressTag(data.id)
             .then((res) => {
               console.log(res)
-              this.$message({
-                message: res.message,
+              if (res.code == 0) {
+                this.$message({
+                message: res.msg,
                 type: "success",
-              });
-              this.handleListData();
+                });
+                this.handleListData();
+              }
             })
             .catch((res) => {
               console.log(res)
               this.$message({
-                message: res.message,
+                message: res.msg,
                 type: "error",
               });
             });

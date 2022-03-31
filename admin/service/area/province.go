@@ -4,6 +4,7 @@ import (
 	"catering/global"
 	"catering/model"
 	"catering/model/common/response"
+	"errors"
 )
 
 var ProvinceService provinceService = NewProvinceService()
@@ -19,6 +20,16 @@ func (impl provinceServiceImpl) Add(params *model.Province) error {
 	return global.DB.Create(&params).Error
 }
 func (impl provinceServiceImpl) Delete(id uint64) error {
+	query := model.City{
+		ProvinceId: id,
+	}
+	var city model.City
+	if err := global.DB.Where(&query).Find(&city).Error; err != nil {
+		return err
+	}
+	if city.ID > 0 {
+		return errors.New("存在关联，无法删除")
+	}
 	return global.DB.Delete(&model.Province{}, id).Error
 }
 func (impl provinceServiceImpl) Update(params *model.Province) error {

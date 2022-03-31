@@ -332,14 +332,16 @@ export default {
         center: true,
       }).then(() => {
         deleteProduct(data.product.id).then((res) => {
-          this.$message({
-              message: res.message,
-              type: "success",
-          });
-          this.handleListData();
+          if (res.code == 0) {
+            this.$message({
+            message: res.msg,
+            type: "success",
+            });
+            this.handleListData();
+          }
         }).catch((res) => {
           this.$message({
-              message: res.message,
+              message: res.msg,
               type: "error",
           });
         });

@@ -4,6 +4,7 @@ import (
 	"catering/global"
 	"catering/model"
 	"catering/model/common/response"
+	"errors"
 	"fmt"
 )
 
@@ -20,6 +21,16 @@ func (impl productBatchServiceImpl) Add(params *model.ProductBatch) error {
 	return global.DB.Create(&params).Error
 }
 func (impl productBatchServiceImpl) Delete(id uint64) error {
+	query := model.ProductBatchRelation{
+		BatchId: id,
+	}
+	var relation model.ProductBatchRelation
+	if err := global.DB.Where(&query).Find(&relation).Error; err != nil {
+		return err
+	}
+	if relation.Id > 0 {
+		return errors.New("存在关联，无法删除")
+	}
 	return global.DB.Delete(&model.ProductBatch{}, id).Error
 }
 func (impl productBatchServiceImpl) Update(params *model.ProductBatch) error {

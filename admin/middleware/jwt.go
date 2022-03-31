@@ -26,7 +26,6 @@ func JWTAuth() gin.HandlerFunc {
 		t := session.Values["token"]
 
 		//判断session和对session中的token进行比对
-		fmt.Println(t, token)
 		if tk, ok := t.(string); !ok {
 			fmt.Println(11111111)
 			response.FailWithDetailed(gin.H{"reload": true}, "授权已过期", c)
