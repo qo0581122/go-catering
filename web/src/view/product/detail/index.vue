@@ -3,6 +3,12 @@
     <el-container style="margin: 15px 20px 20px 20px">
       <el-main>
         <el-form :inline="true">
+        <el-form-item label="商品ID">
+            <el-input
+              v-model="listQuery.id"
+              placeholder="商品ID"
+            ></el-input>
+          </el-form-item>
           <el-form-item label="属性值">
             <el-input
               v-model="listQuery.attribute_value"
@@ -212,6 +218,7 @@ const defaultListQuery = {
   pageNum: 1,
   attribute_value: "",
   status: null,
+  id: null,
 };
 const defaultForm = {
   product: {
@@ -236,6 +243,10 @@ export default {
     };
   },
   created() {
+    let productId = this.$route.query.id
+    if (productId != 0) {
+      this.listQuery.id = productId
+    }
     this.handleListData();
   },
   methods: {

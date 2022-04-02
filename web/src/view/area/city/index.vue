@@ -3,6 +3,12 @@
     <el-container style="margin: 15px 20px 20px 20px">
       <el-main>
         <el-form :inline="true">
+          <el-form-item label="省份ID">
+            <el-input
+              v-model="listQuery.province_id"
+              placeholder="省份ID"
+            ></el-input>
+          </el-form-item>
           <el-form-item label="城市名称">
             <el-input
               v-model="listQuery.city_name"
@@ -45,7 +51,7 @@
           </el-table-column>
           <el-table-column prop="updated_time" label="更新时间" width="200px">
           </el-table-column>
-          <el-table-column fixed="right" label="操作" width="200px">
+          <el-table-column fixed="right" label="操作" width="300px">
             <template #default="scope">
               <el-button
                 @click="handleUpdate(scope.row)"
@@ -59,13 +65,13 @@
                 @click="handleDelete(scope.row)"
                 >删除</el-button
               >
+              <el-button type="success" size="small" @click="handleGetDistricts(scope.row)">查看区域</el-button>
             </template>
           </el-table-column>
         </el-table>
       </el-main>
       <el-footer>
         <div style="text-align: center">
-          <!-- <el-pagination layout="prev, pager, next" :total="total"></el-pagination> -->
           <el-pagination
             @size-change="handleSizeChange"
             @current-change="handleCurrentChange"
@@ -98,6 +104,7 @@ const defaultListQuery = {
   pageNum: 1,
   city_name: "",
   status: null,
+  province_id: null,
 };
 const defaultForm = {
   province_id: null,
@@ -120,6 +127,10 @@ export default {
     };
   },
   created() {
+    let provinceId = this.$route.query.id
+    if (provinceId != 0) {
+      this.listQuery.province_id = provinceId
+    }
     this.handleListData();
   },
   methods: {
@@ -144,6 +155,9 @@ export default {
           });
           this.loading = false;
         });
+    },
+    handleGetDistricts(row) {
+      this.$router.push({path:"areaDistrict", query:{id:row.id}})
     },
     handleCloseDialog(value) {
       this.dialogVisiable = false;

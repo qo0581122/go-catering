@@ -66,10 +66,11 @@
                 <el-table-column
                     fixed="right"
                     label="操作"
-                    width="200px">
+                    width="300px">
                     <template #default="scope">
                         <el-button @click="handleUpdate(scope.row)" type="success" size="small">编辑</el-button>
                         <el-button type="success" size="small" @click="handleDelete(scope.row)">删除</el-button>
+                        <el-button type="success" size="small" @click="handleGetCitys(scope.row)">查看城市</el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -144,6 +145,9 @@ export default {
                 });
                 this.loading = false
             })
+        },
+        handleGetCitys(row) {
+            this.$router.push({path:"areaCity", query:{id:row.id}})
         },
         handleCloseDialog(value) {
             this.dialogVisiable = false

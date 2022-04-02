@@ -3,6 +3,9 @@
       <el-container style="margin: 15px 20px 20px 20px">
         <el-main>
             <el-form :inline="true" >
+                <el-form-item label="城市ID">
+                    <el-input v-model="listQuery.city_id" placeholder="城市ID"></el-input>
+                </el-form-item>
                 <el-form-item label="区域名称">
                     <el-input v-model="listQuery.district_name" placeholder="区域名称"></el-input>
                 </el-form-item>
@@ -108,7 +111,8 @@ const defaultListQuery = {
     pageSize: 20,
     pageNum: 1,
     district_name: '',
-    status: null
+    status: null,
+    city_id: null,
 }
 const defaultForm = {
     city_id: null,
@@ -132,6 +136,10 @@ export default {
         }
     },
     created() {
+        let cityId = this.$route.query.id
+        if (cityId != 0) {
+        this.listQuery.city_id = cityId
+        }
         this.handleListData()
     },
     methods: {

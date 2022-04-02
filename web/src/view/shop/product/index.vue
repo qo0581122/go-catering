@@ -112,11 +112,12 @@
                 <el-table-column
                     fixed="right"
                     label="操作"
-                    width="200px">
+                    width="300px">
                     <template #default="scope">
                         <el-button  v-if="scope.row.status == 1" @click="handleUpdate(scope.row, 2)" type="danger" size="small">下架</el-button>
                         <el-button  v-if="scope.row.status == 2" @click="handleUpdate(scope.row, 1)" type="success" size="small">上架</el-button>
                         <el-button type="success" size="small" @click="handleDelete(scope.row)">删除</el-button>
+                        <el-button type="success" size="small" @click="handleGetProductDetail(scope.row.product.id)">查看商品详情</el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -192,6 +193,9 @@ export default {
                 });
                 this.loading = false
             })
+        },
+        handleGetProductDetail(id) {
+            this.$router.push({path:"../product/productDetail", query:{id:id}})
         },
         handleCloseDialog(value) {
             this.dialogVisiable = false

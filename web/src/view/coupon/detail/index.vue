@@ -46,14 +46,14 @@
               {{ scope.row.description }}
             </template>
           </el-table-column>
-          <el-table-column prop="price" label="优惠后价格" align="center">
+          <el-table-column prop="price" label="优惠后价格（元）" align="center">
             <template #default="scope">
-              {{ scope.row.price }}
+              {{ scope.row.price / 100}}
             </template>
           </el-table-column>
-          <el-table-column prop="price" label="最低使用订单价格" align="center">
+          <el-table-column prop="price" label="最低使用订单价格（元）" align="center">
             <template #default="scope">
-              {{ scope.row.least_use_price }}
+              {{ scope.row.least_use_price / 100}}
             </template>
           </el-table-column>
           <el-table-column prop="specis" label="商品名称" align="center">
@@ -142,7 +142,7 @@
             <template #default="scope">
               <div v-if="scope.row.valid_time_type == 2">
                 用户领取后<span style="color: red">{{
-                  scope.row.valid_time_type
+                  scope.row.valid_day
                 }}</span
                 >天过期
               </div>

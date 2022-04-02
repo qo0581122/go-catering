@@ -115,23 +115,23 @@ const toolCards = ref([
     bg: 'rgba(179, 127, 235,.3)'
   },
   {
-    label: '代码生成器',
-    icon: 'cpu',
-    name: 'autoCode',
+    label: '商品管理',
+    icon: 'food',
+    name: 'productDetail',
     color: '#ffd666',
     bg: 'rgba(255, 214, 102,.3)'
   },
   {
-    label: '表单生成器',
-    icon: 'document-checked',
-    name: 'formCreate',
+    label: '店铺管理',
+    icon: 'shop',
+    name: 'shopDetail',
     color: '#ff85c0',
     bg: 'rgba(255, 133, 192,.3)'
   },
   {
-    label: '关于我们',
-    icon: 'user',
-    name: 'about',
+    label: '订单管理',
+    icon: 'shopping-cart-full',
+    name: 'orderDetail',
     color: '#5cdbd3',
     bg: 'rgba(92, 219, 211,.3)'
   }

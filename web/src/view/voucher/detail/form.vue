@@ -36,7 +36,7 @@
             style="width: 300px"
           ></el-input>
         </el-form-item>
-        <el-form-item label="优惠后价格" prop="price">
+        <el-form-item label="面额" prop="price">
           <el-input-number
             v-model="dialogForm.price"
             :min="0"
@@ -93,7 +93,8 @@
         </el-form-item>
         <el-form-item label="获取开始时间">
           <el-date-picker
-            value-format="yyyy-MM-dd HH:mm:ss"
+            format="YYYY-MM-DD hh:mm:ss"
+            value-format="YYYY-MM-DD hh:mm:ss"
             v-model="dialogForm.get_begin_time"
             type="datetime"
             placeholder="获取开始时间"
@@ -102,7 +103,8 @@
         </el-form-item>
         <el-form-item label="获取结束时间">
           <el-date-picker
-            value-format="yyyy-MM-dd HH:mm:ss"
+            format="YYYY-MM-DD hh:mm:ss"
+            value-format="YYYY-MM-DD hh:mm:ss"
             v-model="dialogForm.get_end_time"
             type="datetime"
             placeholder="获取结束时间"
@@ -123,7 +125,8 @@
         <div v-if="dialogForm.valid_time_type == 1">
           <el-form-item label="使用开始时间">
             <el-date-picker
-              value-format="yyyy-MM-dd HH:mm:ss"
+              format="YYYY-MM-DD hh:mm:ss"
+              value-format="YYYY-MM-DD hh:mm:ss"
               v-model="dialogForm.use_begin_time"
               type="datetime"
               placeholder="使用开始时间"
@@ -132,7 +135,8 @@
           </el-form-item>
           <el-form-item label="使用结束时间">
             <el-date-picker
-              value-format="yyyy-MM-dd HH:mm:ss"
+              format="YYYY-MM-DD hh:mm:ss"
+              value-format="YYYY-MM-DD hh:mm:ss"
               v-model="dialogForm.use_end_time"
               type="datetime"
               placeholder="使用结束时间"

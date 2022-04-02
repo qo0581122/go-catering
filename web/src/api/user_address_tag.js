@@ -2,7 +2,7 @@ import service from '@/utils/request'
 
 export function fetchUserAddressTagList(query) {
   return service({
-    url: '/user/address/tags',
+    url: '/user/address/tags/page',
     method: 'get',
     params: query,
   })
